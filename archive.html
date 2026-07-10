@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive — Vol8Hub</title>
+<meta name="description" content="Searchable archive of peer-submitted simulator check sessions. Filter by fleet, cycle, and year.">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline'
+    https://subscribe-forms.beehiiv.com
+    https://www.googletagmanager.com
+    https://www.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://www.google-analytics.com;
+  connect-src 'self'
+    https://www.google-analytics.com
+    https://analytics.google.com;
+  frame-ancestors 'none';
+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC4GTRMK1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PQC4GTRMK1');</script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ─── ARCHIVE PAGE STYLES ────────────────────────────────────────────── */
+.archive-hero {
+  background: var(--navy);
+  padding: 4.5rem 2rem 3rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.archive-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(15,76,129,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,76,129,0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-pan 20s linear infinite;
+}
+@keyframes grid-pan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+.archive-hero-inner { position: relative; z-index: 1; }
+.archive-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800; color: #fff;
+  letter-spacing: -0.02em; margin-bottom: 0.6rem;
+}
+.archive-hero p {
+  font-size: 1rem; color: rgba(255,255,255,0.5);
+  max-width: 460px; margin: 0 auto;
+}
+.archive-count {
+  display: inline-block;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+
+/* ─── ARCHIVE BODY ───────────────────────────────────────────────────── */
+.archive-body {
+  background: var(--off-white);
+  padding: 2.5rem 2rem 4rem;
+  min-height: 60vh;
+}
+
+/* ─── FILTER SECTION ─────────────────────────────────────────────────── */
+.filter-section {
+  max-width: 1060px; margin: 0 auto 2rem;
+}
+.filter-section .filter-bar { margin-bottom: 0; }
+.results-count {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; color: var(--text-3);
+  margin-top: 0.85rem;
+}
+
+/* ─── ENTRY CARDS ────────────────────────────────────────────────────── */
+.entry-grid {
+  max-width: 1060px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 0.85rem;
+}
+
+.entry-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.entry-card:hover { border-color: var(--blue-light); }
+.entry-card.hidden { display: none; }
+
+/* Card header — always visible */
+.card-header {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.card-header:hover .card-toggle { color: var(--blue); }
+
+/* Fleet column */
+.card-fleet-col {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 5px;
+}
+.card-fleet-box {
+  width: 60px; height: 60px;
+  background: var(--blue); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.06em; color: #fff;
+  text-align: center; line-height: 1.2;
+}
+.card-cycle-lbl {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--blue);
+  text-align: center;
+}
+
+/* Meta column */
+.card-meta { display: flex; flex-direction: column; gap: 0.45rem; }
+.card-badges { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.card-date-loc {
+  font-size: 12px; color: var(--text-3);
+  font-family: var(--mono); letter-spacing: 0.06em;
+}
+.card-tip-preview {
+  font-size: 0.88rem; color: var(--text-2); font-style: italic;
+  font-weight: 500;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-tags-row { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+/* Toggle */
+.card-toggle {
+  font-size: 20px; color: var(--border-strong);
+  transition: transform 0.3s var(--ease-out), color 0.15s;
+  flex-shrink: 0; align-self: flex-start; margin-top: 4px;
+}
+.entry-card.open .card-toggle { transform: rotate(90deg); color: var(--blue); }
+
+/* Mobile "tap to expand" hint — hidden on desktop, shown below 768px */
+.mobile-tap-hint { display: none; }
+
+/* Card body — expanded content */
+.card-body {
+  display: none;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  background: var(--off-white);
+}
+.entry-card.open .card-body { display: block; }
+
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.body-col h4 {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: 0.6rem;
+}
+.body-col ul {
+  list-style: none; display: flex; flex-direction: column; gap: 0.35rem;
+}
+.body-col ul li {
+  font-size: 0.85rem; color: var(--text-2); line-height: 1.55;
+  padding-left: 1rem; position: relative;
+}
+.body-col ul li::before {
+  content: '·'; position: absolute; left: 0;
+  color: var(--blue-light);
+}
+
+.tips-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+.tips-block h4 {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: 0.6rem;
+}
+.tips-block ul {
+  list-style: none; display: flex; flex-direction: column; gap: 0.45rem;
+}
+.tips-block ul li {
+  font-size: 0.88rem; color: var(--text-1);
+  line-height: 1.6; padding-left: 1.1rem; position: relative;
+}
+.tips-block ul li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--blue); font-size: 0.8rem;
+}
+
+.card-body-footer {
+  margin-top: 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem;
+}
+.source-tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.08em; color: var(--text-3);
+}
+.add-entry-btn {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--blue); border: 1.5px solid var(--blue);
+  background: transparent;
+  padding: 0.35rem 0.9rem; border-radius: 6px;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  display: inline-block;
+}
+.add-entry-btn:hover { background: var(--blue); color: #fff; }
+
+/* No results */
+#noResults {
+  text-align: center; padding: 3rem 1rem;
+  font-size: 0.95rem; color: var(--text-3);
+  display: none;
+}
+#noResults a { color: var(--blue); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .body-grid { grid-template-columns: 1fr; }
+  .card-header { grid-template-columns: 60px 1fr auto; gap: 0.85rem; padding: 1rem; }
+  .card-fleet-box { width: 50px; height: 50px; font-size: 11px; }
+  .archive-body { padding: 1.5rem 1rem 3rem; }
+}
+@media (max-width: 480px) {
+  .card-header { grid-template-columns: 1fr auto; }
+  .card-fleet-col { display: none; }
+}
+@media (max-width: 768px) {
+  .card-toggle { font-size: 28px; }
+  .mobile-tap-hint {
+    display: block;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; color: var(--text-3);
+    margin-top: 0.35rem;
+  }
+}
+</style>
+</head>
+<body class="page-body">
+
+<header>
+  <a href="index.html" class="logo">VOL8HUB.COM</a>
+  <button class="hamburger" id="ham" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="nav">
+    <a href="index.html">Home</a>
+    <a href="archive.html" class="active">Archive</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="archive-hero">
+  <div class="archive-hero-inner">
+    <div class="archive-count">19 entries · A320 · A330 · A350 · B777 · B777ER</div>
+    <h1>Sim Archive</h1>
+    <p>Peer-submitted check sessions. Filter by cycle, fleet, or year. Expand any entry to read in full.</p>
+  </div>
+</section>
+
+<!-- ARCHIVE BODY -->
+<div class="archive-body">
+
+  <!-- FILTERS -->
+  <div class="filter-section reveal">
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-group-label">Cycle</span>
+        <div class="filter-pills">
+          <button class="fpill active" data-filter="cycle" data-val="all">All</button>
+          <button class="fpill" data-filter="cycle" data-val="P6">PC6</button>
+          <button class="fpill" data-filter="cycle" data-val="P5">PC5</button>
+          <button class="fpill" data-filter="cycle" data-val="P4">PC4</button>
+          <button class="fpill" data-filter="cycle" data-val="P3">PC3</button>
+          <button class="fpill" data-filter="cycle" data-val="P2">PC2</button>
+          <button class="fpill" data-filter="cycle" data-val="P1">PC1</button>
+          <button class="fpill" data-filter="cycle" data-val="6R">RT6</button>
+          <button class="fpill" data-filter="cycle" data-val="5R">RT5</button>
+          <button class="fpill" data-filter="cycle" data-val="3R">RT3</button>
+          <button class="fpill" data-filter="cycle" data-val="2R">RT2</button>
+          <button class="fpill" data-filter="cycle" data-val="1R">RT1</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">Fleet</span>
+        <div class="filter-pills">
+          <button class="fpill active" data-filter="fleet" data-val="all">All</button>
+          <button class="fpill" data-filter="fleet" data-val="A320">A320</button>
+          <button class="fpill" data-filter="fleet" data-val="A330">A330</button>
+          <button class="fpill" data-filter="fleet" data-val="A350">A350</button>
+          <button class="fpill" data-filter="fleet" data-val="B777">B777</button>
+          <button class="fpill" data-filter="fleet" data-val="B777ER">B777ER</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">Year</span>
+        <div class="filter-pills">
+          <button class="fpill active" data-filter="year" data-val="all">All</button>
+          <button class="fpill" data-filter="year" data-val="2026">2026</button>
+          <button class="fpill" data-filter="year" data-val="2025">2025</button>
+          <button class="fpill" data-filter="year" data-val="2024">2024</button>
+          <button class="fpill" data-filter="year" data-val="2023">2023</button>
+        </div>
+      </div>
+    </div>
+    <div class="results-count" id="resultsCount">Showing all 19 entries</div>
+  </div>
+
+  <!-- ENTRY LIST -->
+  <div class="entry-grid" id="entryGrid">
+
+    <!-- ══ ENTRY 019 — A350 PC P6 Apr 2026 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-019"
+         data-cycle="P6" data-fleet="A350" data-year="2026">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">PC6</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">PC · P6</span>
+            <span class="badge-unverified">Unverified</span>
+          </div>
+          <div class="card-date-loc">Apr 2026 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"RNP AR 13L: if it doesn't sequence from COVIR automatically, enter manually and direct COVIR — don't wait. DTO to MCT: must pull back to CLB first before selecting MCT."</p>
+          <div class="card-tags-row">
+            <span class="tag">PUCKY ARRIVAL</span><span class="tag">RNP AR</span><span class="tag">HOLD</span><span class="tag">ENGINE FIRE AIRBORNE</span><span class="tag">EOSID</span><span class="tag">MLG FIRE</span><span class="tag">EVAC</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>Turbulence during descent; high in profile during PUCKY arrival</li>
+              <li>RNP AR 13L did not sequence from COVIR — had to enter manually; direct COVIR; one hold</li>
+              <li>After FAF: braking action POOR → go around; sidestep to 13R discussed in debrief</li>
+              <li>After PF swap: further hold; ATC uncertain on duration; only 7 minutes of fuel; hold max 210kt</li>
+              <li>RNP AR CAPABILITY DOWNGRADED on final; missed approach</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>Engine fire after airborne (NOT typical V1 fire — aircraft will NOT remain in SRS mode)</li>
+              <li>Both pilots elected NOT to pull HDG at 400ft for EOSID; continued 520° as per SID</li>
+              <li>TOGA not available below F speed with derated T/O</li>
+              <li>DTO to MCT: pull back to CLB first, then to MCT — cannot go direct</li>
+              <li>Profile B ends with RTO due MLG fire; evacuation checklist built in</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>RNP AR 13L: doesn't sequence from COVIR automatically — enter manually and direct COVIR. Don't wait.</li>
+            <li>Hold maximum speed: 210kt — note and brief before entering</li>
+            <li>After PF swap in hold: brief the new PF on fuel state and time limit before they take control</li>
+            <li>Engine fire after airborne (not V1): aircraft will NOT stay in SRS mode — be ready to manage manually</li>
+            <li>DTO to MCT sequence: must pull back to CLB first — cannot go direct DTO to MCT</li>
+            <li>Advise ATC immediately of inability to maintain altitude restrictions after engine failure</li>
+            <li>Braking action POOR go-around: consider sidestep to alternate runway; brief this in the approach plan</li>
+            <li>MLG fire RTO: checklist includes evacuation — it is built in, don't skip it</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: Direct email submission · Seat: Captain + FO</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 018 — A350 RT 5R Jan 2026 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-018"
+         data-cycle="5R" data-fleet="A350" data-year="2026">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT5</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 5R</span>
+            <span class="badge-unverified">Unverified</span>
+          </div>
+          <div class="card-date-loc">Jan 2026 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"Decision making under fuel/weather/runway pressure: structure the options clearly before committing. Set a mental fuel limit before entering the hold."</p>
+          <div class="card-tags-row">
+            <span class="tag">RUNWAY CHANGE</span><span class="tag">TCAS</span><span class="tag">GO AROUND</span><span class="tag">DIVERSION DECISION</span><span class="tag">HOLD</span><span class="tag">WINDSHEAR</span><span class="tag">UPRT</span><span class="tag">LOW ENERGY</span><span class="tag">STALL CRUISE</span><span class="tag">3RS ENGINE FAIL</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>Arrives in STAR for 25R; runway change to 07L</li>
+              <li>TCAS event on approach</li>
+              <li>ATC advises previous aircraft made hard landing → runway inspection → go around</li>
+              <li>WX assessment: VHHH 07L only; Shenzhen one runway; Kaohsiung OK but 2T extra fuel; Macau OK</li>
+              <li>Hold to wait for runway inspection; planned one more approach then divert to Macau; decision made</li>
+              <li>Predictive and reactive windshear exercises</li>
+              <li>Approach to stall in landing config</li>
+              <li>UPRT: low energy scenario; stall in cruise</li>
+              <li>Max TOW on 07C with engine failure in the red zone</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Key Manoeuvres</h4>
+            <ul>
+              <li>Runway change mid-arrival</li>
+              <li>TCAS resolution advisory</li>
+              <li>Go around — runway inspection in progress</li>
+              <li>Multi-option diversion decision under fuel pressure</li>
+              <li>Hold fuel planning with hard limit</li>
+              <li>Predictive and reactive windshear</li>
+              <li>Low energy UPRT</li>
+              <li>Stall in cruise configuration</li>
+              <li>3RS — max TOW 07C red zone engine failure</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Structure diversion options clearly before committing: available runways, fuel state, alternates</li>
+            <li>When in hold waiting for runway inspection: set a mental fuel limit for divert decision</li>
+            <li>Low energy UPRT: use V/S, acknowledge being off-track, talk to ATC early — don't fix it silently</li>
+            <li>Max TOW 07C red zone: know fuel/weight state before departure — max TOW changes EO trajectory significantly</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: Direct email submission · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 017 — A350 PC P4 Jun 2025 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-017"
+         data-cycle="P4" data-fleet="A350" data-year="2025">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">PC4</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">PC · P4</span>
+          </div>
+          <div class="card-date-loc">Jun 2025 &nbsp;·&nbsp; OMDW / OMAA (Dubai / Abu Dhabi)</div>
+          <p class="card-tip-preview">"G/S failure at 1700ft during CAT3B: missed approach — don't attempt to continue. TUGVA hold: 306° inbound, RH pattern — brief early; hold can be cancelled before reaching the fix."</p>
+          <div class="card-tags-row">
+            <span class="tag">RTO</span><span class="tag">V1 CUT SEVERE</span><span class="tag">LVO CAT3B</span><span class="tag">RNP AR</span><span class="tag">HOLD</span><span class="tag">LOC/DME</span><span class="tag">G/S FAILURE</span><span class="tag">EVAC</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios (OMDW)</h4>
+            <ul>
+              <li>RTO — reverser unlocked just after 100kt call; discuss post-RTO actions</li>
+              <li>V1 cut; severe damage; levelled at 4000ft; VIP restrictions at other fields → back to OMDW</li>
+              <li>ILS 30 LVO CAT3B (EO); G/S failure at ~1700ft → missed approach</li>
+              <li>RAVEC to OMAA; direct TUGVA hold (306° inbound, RH pattern); hold cancelled</li>
+              <li>RNP Y(AR) 31R OMAA (EO); nil sighting → missed approach</li>
+              <li>LOC/DME 31R OMAA (EO); visibility improves; landed</li>
+              <li>Reposition: all-engines LVO CAT3B 31R OMAA; landed; check LVO exits on FD Pro</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios (OMAA)</h4>
+            <ul>
+              <li>RTO by Pilot B</li>
+              <li>V1 cut with likely severe damage</li>
+              <li>ILS 31R OMAA (EO); missed approach</li>
+              <li>Hold at TUGVA — cancelled before arriving at fix</li>
+              <li>RNP Y(AR) 31R OMAA; missed approach (nav failure/downgrade)</li>
+              <li>LOC/DME 31R OMAA; landed</li>
+              <li>Fuselage fire on landing roll → evacuation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Green dot 197kt throughout — SID speed restrictions not a factor; no active speed management needed</li>
+            <li>TUGVA hold: 306° inbound, RH pattern — brief early; hold can be cancelled before reaching fix</li>
+            <li>G/S failure at 1700ft during CAT3B: missed approach — do not attempt to continue</li>
+            <li>LVO exits at OMAA: check on FD Pro before arrival</li>
+            <li>Profile B: verify LOC/DME is OMAA 31R (not OMDB) when briefed</li>
+            <li>No SO in this session — engine fail in cruise was skipped</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 016 — A350 RT 3R Feb 2025 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-016"
+         data-cycle="3R" data-fleet="A350" data-year="2025">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT3</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 3R</span>
+          </div>
+          <div class="card-date-loc">Feb 2025 &nbsp;·&nbsp; RKSI (Seoul Incheon)</div>
+          <p class="card-tip-preview">"LVO taxi: know routing and be ready for runway change close to threshold (M5). FCOM fuel penalty tables: HYD abnormal can impose up to 65% fuel penalty."</p>
+          <div class="card-tags-row">
+            <span class="tag">HYDRAULIC FAULT</span><span class="tag">F/CTL STABILISER</span><span class="tag">LVO TAXI</span><span class="tag">UPRT</span><span class="tag">HIGH ALT STALL</span><span class="tag">RNP</span><span class="tag">ERRONEOUS QNH</span><span class="tag">VISUAL APPROACH</span><span class="tag">CROSSWIND</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>Runway change from 34L during taxi at M5; departure checklist completed; LVO 150m vis</li>
+              <li>Green HYD overheat ECAM at acceleration alt; followed by Low LVL Y HYD</li>
+              <li>Level off at 5000ft; vectors to PAMBI hold; ILS 34L; landed; stopped on runway</li>
+              <li>UPRT at FL350; high altitude stall</li>
+              <li>RNP 34L with wrong QNH; sim frozen at MDA — instructional freeze to show wrong QNH appearance</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>T/O 34L; passing 8000ft: HYD ENG 2 Y PMP Fault; then F/CTL Stabiliser fault</li>
+              <li>Elected to return RKSI; hold at PAMBI; fuel penalty tables in FCOM (up to 65%)</li>
+              <li>ILS 34L; UPRT; more stalls</li>
+              <li>RNP 34L wrong QNH — this time to a go-around</li>
+              <li>RJFF 34 visual: Captains at night 15kt crosswind; S/O daytime nil wind</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>LVO taxi: know routing and be ready for runway change close to threshold (M5); have departure change checklist ready</li>
+            <li>FCOM fuel penalty tables: HYD abnormal can impose up to 65% fuel penalty — check early in the hold</li>
+            <li>Stabiliser fault + HYD: work methodically; elected return is sensible with multiple F/CTL faults</li>
+            <li>RNP wrong QNH: go-around if unable to reconcile visual picture with approach path — don't try to salvage</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 015 — A330 RT 3R Feb 2025 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-015"
+         data-cycle="3R" data-fleet="A330" data-year="2025">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A330</div>
+          <div class="card-cycle-lbl">RT3</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A330</span>
+            <span class="badge-check">RT · 3R</span>
+          </div>
+          <div class="card-date-loc">Feb 2025 &nbsp;·&nbsp; RKSI (Seoul Incheon)</div>
+          <p class="card-tip-preview">"Dual hydraulic loss (G+B): slats jam at 0. Not a dual failure of single systems — work through QRH methodically. Erroneous QNH: know what to expect on final when QNH is wrong."</p>
+          <div class="card-tags-row">
+            <span class="tag">GEAR FAULT</span><span class="tag">HYDRAULIC DUAL LOSS</span><span class="tag">SLATS JAMMED</span><span class="tag">LVP TAXI</span><span class="tag">UPRT</span><span class="tag">APPROACH TO STALL</span><span class="tag">RNP</span><span class="tag">ERRONEOUS QNH</span><span class="tag">VISUAL APPROACH</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>T/O 34L (runway change during taxi); RVR 150M; LVP; CAT3B available</li>
+              <li>After T/O: all gear cannot retract; gear doors remain open; lose G HYD</li>
+              <li>After flap retraction: lose B HYD; G+B HYD with slats jammed at 0</li>
+              <li>Flight freeze at RKSI; ECAM and QRH summary; delayed vector for long final</li>
+              <li>ILS 34L; landed and stopped on runway</li>
+              <li>RNP 34L with wrong QNH: instructional freeze — discuss appearance when visual with wrong QNH</li>
+              <li>UPRT and approach to stall at FL350</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>T/O 34R; vis increased to 5km; wet runway</li>
+              <li>Normal T/O; lose B HYD then Y HYD; stop climb; delayed vector; ECAM/QRH</li>
+              <li>ILS 34L; landed</li>
+              <li>RNP 34L wrong QNH (crew on own); react when visual — land or go-around</li>
+              <li>UPRT (same as Profile A)</li>
+              <li>Visual RWY 34R RJFF (CN only; sim charts show 34 only — it is now 34R)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Dual hydraulic loss (G+B): slats jam at 0 — not a dual failure of single systems; work QRH methodically</li>
+            <li>Erroneous QNH: know what to expect on final; discuss during freeze; be ready for go-around when visual</li>
+            <li>RJFF visual 34: sim has only original 34 charts; it is now 34R — confirm sim designation before briefing</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 014 — A330 PC P3 Dec 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-014"
+         data-cycle="P3" data-fleet="A330" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A330</div>
+          <div class="card-cycle-lbl">PC3</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A330</span>
+            <span class="badge-check">PC · P3</span>
+          </div>
+          <div class="card-date-loc">Dec 2024 &nbsp;·&nbsp; WSSS (Singapore)</div>
+          <p class="card-tip-preview">"Speed pre-selection matters: confirm above F speed before selecting TOGA after ENG fail. VOR approach: at 800ft visual but displaced left — FD off; TRK/FPA; QDM 203."</p>
+          <div class="card-tags-row">
+            <span class="tag">V1 CUT EO</span><span class="tag">SEVERE DAMAGE</span><span class="tag">VOR APPROACH</span><span class="tag">EXPLOSIVE DECOMPRESSION</span><span class="tag">CAB PRESS</span><span class="tag">EGPWS</span><span class="tag">3RS TRAINING</span><span class="tag">DIVERSION</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios (WSSS)</h4>
+            <ul>
+              <li>Contaminated runway; FlySmart D24; RTOW in classroom</li>
+              <li>ENG 1 fail with severe damage; ILS 20C (EO, manual) → missed approach</li>
+              <li>VOR 20C (EO, manual); at 800ft visual but left of centreline → FD off; TRK/FPA; landed</li>
+              <li>CAT2 ILS 20C (EO, A/P); nil sighting → missed approach</li>
+              <li>LOS: explosive decompression at FL350; divert WSSS; WSSS closed → divert WIDD; RNP 22; landed</li>
+              <li>CAB PRESS SYS 1+2 fault at FL350; memory item; high speed; ECAM; exercise done</li>
+              <li>EGPWS: two exercises — caution then warning; ALPHA FLOOR on second exercise</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>ENG 1 fail; ILS 04 (EO, manual) → missed approach; VOR 20C; landed</li>
+              <li>3RS training: multiple T/Os different colour zones</li>
+              <li>GD 221kt; EO GD 211kt</li>
+              <li>Red zone: set V2+10, climb to 2600ft, secure ENG, PRESS ALT, clean up</li>
+              <li>Green zone: don't intervene speed; let aircraft climb to 2600ft naturally</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Confirm above F speed before selecting TOGA after ENG fail; below F speed → MCT only</li>
+            <li>Three post-failure thrust options: CLB (leave), V2+10 select, or TOGA — all acceptable depending on terrain</li>
+            <li>3RS Green zone: don't intervene with speed; let aircraft climb naturally to 2600ft then PRESS ALT</li>
+            <li>3RS Red zone: set V2+10; maintain good climb rate to 2600ft</li>
+            <li>VOR approach: at 800ft visual but displaced left — FD off; TRK/FPA; QDM 203</li>
+            <li>EGPWS: after ALPHA FLOOR from pulling through warning — watch speed after leveloff; may be below VLS</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 013 — B777 RT 2R Sep 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-013"
+         data-cycle="2R" data-fleet="B777" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">B777</div>
+          <div class="card-cycle-lbl">RT2</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">B777</span>
+            <span class="badge-check">RT · 2R</span>
+          </div>
+          <div class="card-date-loc">Sep 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"RED zone: decision based on location of failure, not action point. Delay ENG FIRE memory items if tracking/terrain threat is greater. Both pilots must land with oxygen masks ON."</p>
+          <div class="card-tags-row">
+            <span class="tag">3RS EO T/O</span><span class="tag">ALL ZONES</span><span class="tag">PILOT INCAP</span><span class="tag">AUTOLAND</span><span class="tag">UPRT</span><span class="tag">TCAS RA</span><span class="tag">SMOKE LOS</span><span class="tag">OVERWEIGHT DIVERSION</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>3RS Scenarios</h4>
+            <ul>
+              <li>AMBER 07C: ENG fail before HH302; E/O SID; LNAV+AP</li>
+              <li>RED 07C: failure just before D7ARP; TRK SEL right turn 191; delay ENG FIRE items if terrain threat</li>
+              <li>GREEN 07C: continue SID; confirm failure; TOGA; erase E/O SID from PM; re-engage LNAV</li>
+              <li>AMBER 07R (DALOL 1X): after HH301 — left turn to R1 before right turn 191; E/O SID + LNAV</li>
+              <li>GREEN 07R: same as 07C green</li>
+              <li>FO incapacitated after healthy climb; pilot incap checklist; ILS 07R Autoland</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>LOS / Additional Items</h4>
+            <ul>
+              <li>UPRT: wake turbulence vortex; aircraft flipped mid-manoeuvre; 2 exercises per pilot</li>
+              <li>TCAS: sandwiched between two military aircraft (+600ft / -500ft); disconnect AP and AT; hands off</li>
+              <li>LOS: ~100nm north of WAMM; smoke in forward J class; oxygen masks on; Smoke/Fire/Fumes checklist</li>
+              <li>MAYDAY; ILS 36 WAMM; MSA 8600ft → initial 9000ft; overweight; landed; evacuation checklist</li>
+              <li>Manual landing ILS 18 WAMM from 6nm; slightly high ROD ~950fpm</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>RED zone: decision based on location of failure, not action point; delay ENG FIRE memory items if tracking/terrain threat is greater</li>
+            <li>TCAS sandwiched: disconnect AP and AT; hands off; trust the system to fly between aircraft</li>
+            <li>Both pilots must land with oxygen masks ON (full landing, not just approach); purge if fogged</li>
+            <li>WAMM MSA 8600ft — don't descend below 9000ft initially (not 8500ft as commonly assumed)</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 012 — A350 RT 2R Sep 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-012"
+         data-cycle="2R" data-fleet="A350" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT2</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 2R</span>
+          </div>
+          <div class="card-date-loc">Sep 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"ADLAT 1T: modify TEGUB to 210kt (not FM default 230kt). PRESS ALT: must be tracking 191° AND above 2600ft AGL — both conditions required."</p>
+          <div class="card-tags-row">
+            <span class="tag">3RS EO T/O</span><span class="tag">ALL ZONES</span><span class="tag">ENG FIRE</span><span class="tag">PILOT INCAP</span><span class="tag">UPRT</span><span class="tag">WAKE TURBULENCE</span><span class="tag">TCAS RA</span><span class="tag">SMOKE LOS</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>3RS Scenarios</h4>
+            <ul>
+              <li>Start engines at 07C A1 holding point</li>
+              <li>ADLAT 1T: modify TEGUB from 230kt to 210kt (per SID picture in briefing slides)</li>
+              <li>PRESS ALT: tracking 191° AND above 2600ft AGL — both conditions required</li>
+              <li>Senior: Green zone (ENG fail, ILS 07R, pilot incap on downwind); Red zone (ENG FIRE); Amber (V2 cut)</li>
+              <li>Junior: Amber (DALOL 1X); Red (ENG FIRE); Amber (V2 cut; senior incap at 5000ft)</li>
+              <li>If E/O SID unavailable (failure at HH302): select HDG, activate SEC 1 (pre-programmed)</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Additional Items</h4>
+            <ul>
+              <li>UPRT: preset nose high, 60° left bank at FL350; PUSH first (before ROLL); callouts: ATTITUDE/STALL, I HAVE CONTROL, PUSH, ROLL, THRUST, STABILISED</li>
+              <li>Second UPRT: wake turbulence; follow F/D (giving sensible info)</li>
+              <li>TCAS: 1 exercise per pilot; TCAS BLUE → query traffic → auto RA</li>
+              <li>LOS: blue smoke in economy; moved pax; NITS for WAMM; ILS Z 36; 330kt to 10nm MENOT; full speedbrake to 200kt then configure</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>ADLAT 1T: modify TEGUB to 210kt — not FM default 230kt; check SID picture in briefing slides</li>
+            <li>PRESS ALT criteria: tracking 191° AND above 2600ft AGL — both conditions required</li>
+            <li>If E/O SID unavailable due to failure at HH302: select HDG, activate SEC 1; don't attempt to programme under pressure</li>
+            <li>UPRT: PUSH first (before ROLL); chant the callouts; keep the sequence</li>
+            <li>LOS smoke: keep 330kt until ~10nm MENOT; full speedbrake to 200kt rapidly then configure</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 011 — A330 RT 2R Sep 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-011"
+         data-cycle="2R" data-fleet="A330" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A330</div>
+          <div class="card-cycle-lbl">RT2</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A330</span>
+            <span class="badge-check">RT · 2R</span>
+          </div>
+          <div class="card-date-loc">Sep 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"After securing engine on climb to 5000ft, instructor immediately triggers pilot incap — don't relax after EO clean up. Smoke diversion: verify source before acting (overhead vs air con duct)."</p>
+          <div class="card-tags-row">
+            <span class="tag">3RS EO T/O</span><span class="tag">ALL ZONES</span><span class="tag">ENG FIRE</span><span class="tag">PILOT INCAP</span><span class="tag">AUTOLAND</span><span class="tag">TCAS RA</span><span class="tag">WAKE TURBULENCE</span><span class="tag">SMOKE LOS</span><span class="tag">OVERWEIGHT</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>3RS Scenarios</h4>
+            <ul>
+              <li>07C (ADLAT 1T) and 07R (DALOL 1X); senior pilot PF first</li>
+              <li>Engine failures across all three colour zones on 07C; amber zone only on 07R</li>
+              <li>Each scenario: ENG FAIL (no damage) or ENG FIRE (fire persists after both bottles)</li>
+              <li>After final departure: engine secured; climbing to 5000ft → immediate pilot incapacitation</li>
+              <li>ATC direct LIMES; ILS 07R Autoland; vacate; exercise complete</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>UPRT / LOS Items</h4>
+            <ul>
+              <li>UPRT at FL350 near BONDA; nose high x2 per pilot</li>
+              <li>After second recovery: TCAS RA convergence at BONDA; watch AP fly</li>
+              <li>Just before senior pilot TCAS event: wake turbulence; PF kept AP in; aircraft recovered itself</li>
+              <li>LOS: smoke from overhead compartment; verify source; PACK 2 off resolved it</li>
+              <li>U-turn to WAMM; overweight landing; ILS Z 36; landed; CAT1 manual ILS 18 (one per pilot)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>After securing engine climbing to 5000ft, instructor immediately triggers pilot incap — don't relax after EO clean up</li>
+            <li>Wake turbulence: keep AP engaged; aircraft recovered without PF input</li>
+            <li>Smoke diversion: verify source before acting (overhead compartment vs air con duct); PACK 2 off resolved smoke</li>
+            <li>Overweight landing: do LPA AND overweight landing checklist — both required</li>
+            <li>WAMM ILS Z 36: never flew the STAR (cleared direct PASTU then MENOT); can request early direct routing</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 010 — A320 PC P2 Jul 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-010"
+         data-cycle="P2" data-fleet="A320" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A320</div>
+          <div class="card-cycle-lbl">PC2</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A320</span>
+            <span class="badge-check">PC · P2</span>
+          </div>
+          <div class="card-date-loc">Jul 2024 &nbsp;·&nbsp; YMML (Melbourne) — CPA21 sim</div>
+          <p class="card-tip-preview">"CPA21 sim: very sensitive at pitch above 10° — do not overshoot 12.5° at rotation. CPA21 has no FLS — FINAL APP mode only for RNP approaches."</p>
+          <div class="card-tags-row">
+            <span class="tag">RTO</span><span class="tag">V1 CUT</span><span class="tag">ENGINE STALL</span><span class="tag">MANUAL ILS</span><span class="tag">RNP</span><span class="tag">GPS LOSS</span><span class="tag">FUEL IMBALANCE</span><span class="tag">DIVERSION</span><span class="tag">EVAC</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios (YMML)</h4>
+            <ul>
+              <li>Seat: 2x FO; CAT1 WX used (2xFO combination)</li>
+              <li>RTO: ENG 2 STALL at ~110kt; hot brakes QRH; return to bay</li>
+              <li>V1 cut ENG 2; BELTA hold; ILS Z 16 (EO, manual) → missed approach</li>
+              <li>RNP P16 via EMSEK; GPS Primary Lost both sides at ~1700ft → missed approach</li>
+              <li>GLS not approved; ILS Z 16 (EO); visual ~800ft; neutralise rudder trim early; landed</li>
+              <li>Note: CPA21 has no FLS — FINAL APP mode only for RNP</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>RTO — fire truck blocking runway; no ECAM; disarm spoiler</li>
+              <li>V1 cut ENG 2; EMSEK hold; RNP P16 → missed approach; ILS Z 16 → missed approach x2</li>
+              <li>YMML closed; divert YMAV; RNP 18; hold at AV2NE; FINAL APP mode; landed</li>
+              <li>After landing: ATC reports ENG 1 fire; stop on runway; evacuation checklist</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>CPA21 sim: very sensitive at pitch above 10° — do not overshoot 12.5° at rotation</li>
+            <li>CPA21 has no FLS — FINAL APP mode only for RNP approaches</li>
+            <li>BELTA hold limit: 1min or 17nm at sector MSA 4500ft — tell checker you're aware for terrain clearance</li>
+            <li>GPS Primary Lost: not a go-around item in itself; monitor ANP and FINAL APP mode; go around on specific triggers</li>
+            <li>Fuel imbalance at ~1T: review; can land with imbalance if no time for QRH</li>
+            <li>Neutralise rudder trim early in CPA21 — sim holds odd trim angle that upsets lateral stability</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: 2x FO</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 009 — A350 PC P2 May 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-009"
+         data-cycle="P2" data-fleet="A350" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">PC2</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">PC · P2</span>
+          </div>
+          <div class="card-date-loc">May 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"GLS approach cannot be set up by checker in this sim even if database shows correct channel tuning — be aware going in. SAP is the G/S intercept point for ILS-Z 16, not OKMEL."</p>
+          <div class="card-tags-row">
+            <span class="tag">RTO</span><span class="tag">V1 CUT</span><span class="tag">LVO</span><span class="tag">RNP AR</span><span class="tag">GLS APPROACH</span><span class="tag">LOW ENERGY</span><span class="tag">BRAKE TEMP</span><span class="tag">EVAC</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>RTO: ENG 2 STALL at 100kt; brake temp rising to ~370° → return to bay</li>
+              <li>V1 cut ENG 2; BELTA hold (17nm/1min limit; mention terrain clearance)</li>
+              <li>ILS-Z 16 LVO (EO); SAP is G/S intercept point (not OKMEL); nil visual → missed approach</li>
+              <li>RNP AR P16 via EMSEK (RNP 0.11 → 0.3 downgrade); missed approach</li>
+              <li>GLS 16 (EO); NOTE: GLS cannot be set up by checker even if database shows correct tuning</li>
+              <li>Low energy exercise (S/O in cruise); LVO CAT3A; landed</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>RTO at ~80kt: ATC instruction; brake temp 330° — 15min cooling time; MEL 32-07-01A</li>
+              <li>ATC taxiway via G conflicts with red line on chart → challenge; request alternate routing</li>
+              <li>V1 cut; EMSEK hold; RNP AR P16Z → missed; ILS-Z 16 → missed; GLS 16 → landed</li>
+              <li>At ~90kt: ATC spots smoke/fire from ENG 1; stop on runway; EVAC</li>
+              <li>ISM calls during ENG fire ECAM: tell her "Standby 1 minute"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>GLS cannot be set up by checker in this sim — be aware going in</li>
+            <li>SAP is the G/S intercept point for ILS-Z 16, not OKMEL</li>
+            <li>RNP AR: as long as EPU &lt; RNP, remain in NAV (vs radar vectors)</li>
+            <li>BELTA hold: 1min or 17nm limit; sector MSA 4500ft — mention terrain clearance</li>
+            <li>Brake temp &gt;300° rising: return to bay; timer from peak; MEL 32-07-01A for cool-down time</li>
+            <li>ISM call during ENG fire ECAM: "Standby 1 minute, further instructions coming"</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 008 — B777ER RT 1R Apr 2024 ════════════════════════════ -->
+    <div class="entry-card" id="entry-008"
+         data-cycle="1R" data-fleet="B777ER" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">B777ER</div>
+          <div class="card-cycle-lbl">RT1</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">B777ER</span>
+            <span class="badge-check">RT · 1R</span>
+          </div>
+          <div class="card-date-loc">Apr 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"Airspeed unreliable below 1000ft: DO NOT call memory items — stick to known climb attitude and MAYDAY. At 1000ft: THEN call memory items."</p>
+          <div class="card-tags-row">
+            <span class="tag">FLAP/SLAT FAULT</span><span class="tag">FUEL JETTISON</span><span class="tag">UNRELIABLE AIRSPEED</span><span class="tag">UPRT</span><span class="tag">WINDSHEAR T/O</span><span class="tag">RTO</span><span class="tag">LDA Z APPROACH</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>FLAP/SLAT CONTROL EICAS on climb out; speed intervene to lock IAS; return VHHH</li>
+              <li>RNP Y 25L (Flap ALTN, F20); fuel jettison (vectors given); hold at GUAVA; landed</li>
+              <li>Airspeed unreliable at ~200ft: stick to known climb attitude; MAYDAY; at 1000ft call memory items</li>
+              <li>ALTN Air Data selected → unreliable PFD corrected; F20 approach; speedbrake manual pull on touchdown</li>
+              <li>5 T/O with differing windshear scenarios</li>
+              <li>UPRT at 10,000ft: nose high to 25°; release back pressure then roll to 45°; use FPV to horizon</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>UPRT (same as A); multiple T/Os; one resulted in RTO</li>
+              <li>Airspeed unreliable (same as A) — this time continues to a landing</li>
+              <li>LDA Z 22 RJTT: both pilots; 5000ft F5; arm LOC; at 0.5nm BONDO set FPA -3.1 promptly</li>
+              <li>Settle on 1.1 IKL; 180kt@8nm / 160kt@3nm; disconnect at minima; use noodle for centreline</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Airspeed unreliable below 1000ft: DO NOT call memory items — stick to known climb attitude and MAYDAY</li>
+            <li>At 1000ft: THEN call memory items; PM can accurately set thrust</li>
+            <li>LDA Z 22 RJTT: at 0.5nm BONDO set FPA -3.1 promptly; dynamic arc to settle on 1.1 IKL</li>
+            <li>UPRT: release back pressure FIRST, then roll to 45° (bank angle protection engages)</li>
+            <li>Speedbrake manual pull on touchdown required in ALTN flap mode</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 007 — A350 RT 1R Feb 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-007"
+         data-cycle="1R" data-fleet="A350" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT1</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 1R</span>
+          </div>
+          <div class="card-date-loc">Feb 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"Flaps Locked: Vapp 165kt for config 0 or less than 1+F; very gentle flare as pitch attitude much higher than normal. Direct law: configure early to give PF time to adjust pitch feel."</p>
+          <div class="card-tags-row">
+            <span class="tag">FLAPS LOCKED</span><span class="tag">FUEL JETTISON</span><span class="tag">RNP AR</span><span class="tag">UNRELIABLE AIRSPEED</span><span class="tag">DIRECT LAW</span><span class="tag">MANUAL ILS</span><span class="tag">WINDSHEAR</span><span class="tag">UPRT</span><span class="tag">RTO</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>Flaps Locked ECAM after selecting Flaps 1→0; ECAM complete; status: no autoland</li>
+              <li>WX at VHHH deteriorating to LVP → divert VMMC</li>
+              <li>RNP (AR) 16Z VMMC; max speed 165kt; fuel jettison to reach MLW</li>
+              <li>Vapp 165kt for Flaps 0 or less than 1+F; very gentle flare</li>
+              <li>4 windshear events; UPRT exercises</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios</h4>
+            <ul>
+              <li>After T/O: AP and FD disconnect on both PFDs; ISIS speed; direct law</li>
+              <li>Airspeed unreliable memory items; PAN; request block altitude 5000–7000ft; select VV on FCU</li>
+              <li>ECAM NAV ADR 1+2+3 fault; deferred checklist</li>
+              <li>ILS 25L radar vectors (unable ILS 25R with RNAV transition due direct law)</li>
+              <li>Configure early — PF needs time to adjust pitch feel and manual pitch trim in direct law</li>
+              <li>1 RTO; 4 windshear events; UPRT exercises</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Flaps Locked: Vapp 165kt for config 0 or less than 1+F; very gentle flare (pitch attitude much higher than normal)</li>
+            <li>VMMC RNP (AR) 16Y has no speed restrictions but much higher minima — if flaps jammed, use 16Z</li>
+            <li>Direct law: configure early to give PF time to adjust pitch feel and manual trim</li>
+            <li>Block altitude request: 5000–7000ft appropriate for instruments malfunction over the sea</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 006 — A330 RT 1R Feb 2024 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-006"
+         data-cycle="1R" data-fleet="A330" data-year="2024">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A330</div>
+          <div class="card-cycle-lbl">RT1</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A330</span>
+            <span class="badge-check">RT · 1R</span>
+          </div>
+          <div class="card-date-loc">Feb 2024 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"VMMC RNP Z 16 (AR): A330 FDP is MC808 — arm FINAL APP only when MC808 is TO WPT. Unreliable speed: identify reliable ADR early; Air Data switching recovers the display."</p>
+          <div class="card-tags-row">
+            <span class="tag">FLAPS LOCKED</span><span class="tag">UNRELIABLE AIRSPEED</span><span class="tag">RNP AR</span><span class="tag">MANUAL ILS</span><span class="tag">WINDSHEAR T/O</span><span class="tag">RTO</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — LOFT</h4>
+            <ul>
+              <li>F/CTL FLAPS LOCKED on flap retraction (jammed position 0 &lt; F ≤ 1); no reset available</li>
+              <li>WX at VHHH below all LVO minima; VMMC suitable</li>
+              <li>LW reduced below 187T; vectors to ZUH for VMMC RNP Z 16 (AR)</li>
+              <li>A330 FDP is MC808 — arm FINAL APP only when MC808 is TO WPT</li>
+              <li>Vapp 166kt (Flysmart LDG FLAP LVR 2)</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — LOFT</h4>
+            <ul>
+              <li>Speed tape disappeared on both PFDs on liftoff; unreliable speed memory items</li>
+              <li>QRH pitch/thrust table used to level off; one reliable ADR identified; Air Data switching</li>
+              <li>Hand-flown ILS 25L with manual thrust; landed</li>
+              <li>RTO event; multiple T/O in windshear; no time for RJTT LDA W 22</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>VMMC RNP Z 16 (AR): A330 FDP is MC808 — arm FINAL APP only when MC808 is TO WPT</li>
+            <li>Flaps Jammed: Vapp 166kt per Flysmart for Flap Lever 2 config</li>
+            <li>Unreliable speed: identify reliable ADR early; Air Data switching recovers the display</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 005 — A350 PC P1 Nov 2023 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-005"
+         data-cycle="P1" data-fleet="A350" data-year="2023">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">PC1</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">PC · P1</span>
+          </div>
+          <div class="card-date-loc">Nov 2023 &nbsp;·&nbsp; RJAA / RJTT (Tokyo)</div>
+          <p class="card-tip-preview">"LDA Z RJTT 22: reposition BONDO 5000ft; FPA -3; at D1.1 disconnect AP and turn manually — do not leave it too late."</p>
+          <div class="card-tags-row">
+            <span class="tag">V1 CUT</span><span class="tag">GEAR DOOR FAULT</span><span class="tag">MISSED APPROACH</span><span class="tag">LOC APPROACH</span><span class="tag">LDA Z APPROACH</span><span class="tag">CROSSWIND</span><span class="tag">ENG FAIL CRUISE</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>V1 cut; returned ILS 16R RJAA; MAP nil visual</li>
+              <li>During initial climb: L/G door fault; ECAM applied and cleared</li>
+              <li>RJAA closed → RJTT; LOC 34L; fuel balance procedure en route; landed</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B / Additional</h4>
+            <ul>
+              <li>V1 cut; continued to RJAA; ILS approach nil visual → MAP; LOC approach → landed</li>
+              <li>Engine failure in cruise (standard)</li>
+              <li>LDA Z RJTT runway 22: instructor guided; BONDO 5000ft; FPA -3; at D1.1 disconnect AP and turn manually</li>
+              <li>Crosswind landing practice (multiple)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>LDA Z RJTT 22: reposition BONDO 5000ft; FPA -3; at D1.1 disconnect AP and turn manually — do not leave it too late</li>
+            <li>Brief notes only — less detail than A330 P1 entry (Entry 004)</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 004 — A330 PC P1 Nov 2023 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-004"
+         data-cycle="P1" data-fleet="A330" data-year="2023">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A330</div>
+          <div class="card-cycle-lbl">PC1</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A330</span>
+            <span class="badge-check">PC · P1</span>
+          </div>
+          <div class="card-date-loc">Nov 2023 &nbsp;·&nbsp; RJAA / RJTT (Tokyo)</div>
+          <p class="card-tip-preview">"RJAA/RJTT acceleration height is 3000 AAL; elevation 135ft; press ALT at 1640ft. GEMIN hold details on separate STAR page 20-2P — not in the standard arrival chart."</p>
+          <div class="card-tags-row">
+            <span class="tag">V1 CUT</span><span class="tag">GEAR FAULT</span><span class="tag">EO APPROACH</span><span class="tag">LVO</span><span class="tag">LOC APPROACH</span><span class="tag">FUEL IMBALANCE</span><span class="tag">LANDING RECOVERY</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios (RJAA)</h4>
+            <ul>
+              <li>V1 cut ENG 1; press ALT at 1640ft; GEMIN hold (310° inbound; details on STAR page 20-2P)</li>
+              <li>ILS 16R (EO, manual thrust); nil sighting → go around</li>
+              <li>During MAP gear retraction: L/G NOT UPLOCK; gear cycling (max 250kt); cycled once → cleared</li>
+              <li>RJAA closed → divert RJTT; LOC 34L (all automatics); step descent GIINA→3200ft</li>
+              <li>10.8 IYQ: preselect FPA -3.0; 5.8 IHA: FPA PULL; visual ~2nm; landed</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios (RJTT)</h4>
+            <ul>
+              <li>V1 cut ENG 1; at 4nm HME ring request PM direct HME; TYLER hold (STAR 20-2S)</li>
+              <li>ILS 34L RJAA (EO, manual); nil sighting → go around (press ALT at 1640ft)</li>
+              <li>LOC 34L RJAA (all automatics); GIINA descent; visual ~2nm; landed</li>
+              <li>LVO additional: RVR 100M at 1500ft → go around (3A requires 200M TDZ)</li>
+              <li>Landing recovery (CN only): ILS 07L; 6 scenarios from 3nm; use sidestick takeover button early</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>RJAA/RJTT acceleration height is 3000 AAL; elevation 135ft; therefore press ALT at 1640ft</li>
+            <li>GEMIN hold details on separate STAR page 20-2P — not in the standard arrival chart</li>
+            <li>RJTT E/O SID via LAXAS 3A: at 4nm HME, direct HME — STC confirmed obstacle clearance adequate</li>
+            <li>LVO: if RVR below minima at 1500ft, query again; do not continue below category minima</li>
+            <li>Landing recovery: use sidestick takeover button early; does not always require go-around</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 003 — A350 RT 6R Aug 2023 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-003"
+         data-cycle="6R" data-fleet="A350" data-year="2023">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT6</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 6R</span>
+          </div>
+          <div class="card-date-loc">Aug 2023 &nbsp;·&nbsp; ZSHC (Shanghai Hongqiao)</div>
+          <p class="card-tip-preview">"After TCAS cleared of conflict, shallow the return descent to -500fpm (not the commanded -1000fpm) to avoid nuisance RA. LOS diversion: lock position early on D-EDG at 120nm."</p>
+          <div class="card-tags-row">
+            <span class="tag">TCAS RA</span><span class="tag">PILOT INCAP</span><span class="tag">EGPWS</span><span class="tag">WINDSHEAR</span><span class="tag">UPRT</span><span class="tag">LOS MEDICAL DIVERSION</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios (ZSHC)</h4>
+            <ul>
+              <li>TCAS RA on right downwind; traffic 1 o'clock 200ft below 12nm; climb; cleared of conflict → V/S -500fpm</li>
+              <li>ILS Z 06 (manual, CAT1); land; exit C5</li>
+              <li>Pilot incapacitation: FO conducts autoland ILS Z 06; disconnect AP on runway</li>
+              <li>EGPWS (both pilots): ATC instruction → open descent into terrain; PULL UP TOGA; night repeat</li>
+              <li>Horizontal windshear at FL350; speed decay; PRESS ALT; V/S -1000fpm; speed recovery</li>
+              <li>UPRT (both pilots): nose low high speed; speedbrake required both times</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — LOS (Medical)</h4>
+            <ul>
+              <li>Pax severe chest pain between MEPEP and NUPNI on Y1 airway</li>
+              <li>Medlink contacted; approves ZLXN diversion; lock position on D-EDG at 120nm to NUPNI</li>
+              <li>MAYDAY; request direct XNN high speed + medical services; IOC; PA; LPA; cold weather corrections</li>
+              <li>Direct UPVOP for UPV08A arrival; ILS Z 11 ZLXN; inside valley request direct XN820; landed</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>After TCAS cleared of conflict: shallow return descent to -500fpm (not -1000fpm) to avoid nuisance RA</li>
+            <li>EGPWS night: aim 10° pitch first, allow speed to build, then level off — do not pull abruptly</li>
+            <li>LOS diversion: lock position early on D-EDG (at 120nm) to buy time for FM programming</li>
+            <li>ZLXN valley approach: request shortcut (direct XN820) inside valley to save time — ATC approved</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Both pilots</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 002 — B777 PC P6 Jun 2023 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-002"
+         data-cycle="P6" data-fleet="B777" data-year="2023">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">B777</div>
+          <div class="card-cycle-lbl">PC6</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">B777</span>
+            <span class="badge-check">PC · P6</span>
+          </div>
+          <div class="card-date-loc">Jun 2023 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"Wheel well fire checklist is airborne only — do not apply on the ground. Include EO SID track info in emergency call to ATC — ATC has Jepp charts but may not know company EO SIDs."</p>
+          <div class="card-tags-row">
+            <span class="tag">RTO</span><span class="tag">WHEEL WELL FIRE</span><span class="tag">ENGINE FIRE</span><span class="tag">LVO CAT3B</span><span class="tag">RNP AR</span><span class="tag">GPS FAILURE</span><span class="tag">LVO CAT2 AUTOLAND</span><span class="tag">EVAC</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>RTO: wheel well fire at ~100kt; park brake; MAYDAY; crew at stations; checklist is airborne only</li>
+              <li>ENG FIRE between V1 and VR; fire out after one bottle; PAN; EO07R SID (include track in call)</li>
+              <li>ILS 07L CAT3B; LAND3→LAND2 downgrade at 1500ft → CAT3A 50ft RA; MAP nil sighting</li>
+              <li>RNP Y 25L (AR); GPS failure at ~2000ft; monitor ANP drift; UNABLE RNP → go around</li>
+              <li>VMMC RNP 34 via PAPA; manual landing</li>
+              <li>VMMC ILS Z 34 CAT2 Autoland; A/T INOP; NOTAM: disconnect AP after nosewheel touchdown</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B — Scenarios (MFM)</h4>
+            <ul>
+              <li>ENG FIRE between V1 and VR; radar vectors south; ILS 07R → MAP</li>
+              <li>RNP Z 07R VHHH; manual landing</li>
+              <li>Evacuation: ATC reports flames from shutdown engine on landing roll; slow and thorough; second bottle may still be available; evacuate opposite side to engine fire</li>
+              <li>Post-PC: KJFK RNAV (RNP) RWY 13L — manual landing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>Wheel well fire checklist is airborne only — do not apply on the ground</li>
+            <li>PAN (not MAYDAY) once fire out and aircraft stable</li>
+            <li>Include EO SID track info in emergency call — ATC may not know company EO SIDs</li>
+            <li>VMMC ILS Z 34: NOTAM — disconnect AP after nosewheel touchdown</li>
+            <li>On evacuation: be slow and thorough; may still have second fire bottle available</li>
+            <li>This was fully automatic PC with TAC throughout</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Captain + SO</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 001 — A350 PC P6 May 2023 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-001"
+         data-cycle="P6" data-fleet="A350" data-year="2023">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">PC6</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">PC · P6</span>
+          </div>
+          <div class="card-date-loc">May 2023 &nbsp;·&nbsp; VHHH (HKG)</div>
+          <p class="card-tip-preview">"E/O accel alt is 2520ft — do not miss this. MFM ILS Z 34: turn down HUD and dome light or you won't see anything at minimums."</p>
+          <div class="card-tags-row">
+            <span class="tag">RTO</span><span class="tag">ENGINE FIRE</span><span class="tag">LVO CAT3B</span><span class="tag">LVO CAT2</span><span class="tag">RNP AR</span><span class="tag">GPS FAILURE</span><span class="tag">EVAC</span><span class="tag">EMERGENCY DESCENT</span>
+          </div>
+          <div class="mobile-tap-hint">Tap to expand</div>
+        </div>
+        <div class="card-toggle">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <h4>Profile A — Scenarios</h4>
+            <ul>
+              <li>RTO: tire damage at &gt;100kt; ECAM TIRE PRESS; park brake; crew at stations</li>
+              <li>ENG FIRE in climb at ~500ft; fire out after first bottle; insert E/O SID in 30-second break</li>
+              <li>ILS 07L CAT3B (LVO, EO); hold at LIMES; Dual RA failure → downgrade to CAT2 → go around (E/O accel alt 2520ft)</li>
+              <li>RNP (Y) 25L AR; RNP capability lost on final → go around; inform ATC straight-ahead track, need 200kt</li>
+              <li>Divert MFM; RNP (FLS) 34 via PAPA; no VIA; Config 3; G/A alt 6000ft</li>
+              <li>MFM CAT2 ILS 34(Z) autoland; disconnect after nosewheel touchdown</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <h4>Profile B / Training Items</h4>
+            <ul>
+              <li>ENG FIRE after liftoff from MFM 16; one bottle; ILS 07R → go around nil sighting</li>
+              <li>RNP Z(AR) 07R; manual landing; EVAC on rollout (smoke from shutdown engine)</li>
+              <li>EVAC switch location critical; horn silence inop in sim</li>
+              <li>SO: Automatic Emergency Descent solo at FL370; ~9000fpm; set QNH after level off</li>
+              <li>RNP AR 13L KJFK: configure early; hazy — look for runway not landmarks</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tips-block">
+          <h4>Standout Tips</h4>
+          <ul>
+            <li>E/O accel alt is 2520ft — do not miss this</li>
+            <li>After RNP capability lost at 25L: go straight ahead and tell ATC you need 200kt (managed missed speed stays at 185kt)</li>
+            <li>MFM RNP (FLS) 34: insert no VIA; starts at PAPA; check missed approach climb gradient weight limit</li>
+            <li>MFM ILS Z 34: turn down HUD and dome light or you won't see anything at minimums</li>
+            <li>Don't evacuate with engines running — systematic application is key</li>
+            <li>AED: don't forget to set QNH after level off</li>
+          </ul>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: rtpcvol8.wordpress.com archive · Seat: Captain + SO</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /entry-grid -->
+
+  <div id="noResults">
+    No entries match this filter combination. <a href="archive.html">Clear all filters →</a>
+  </div>
+
+</div><!-- /archive-body -->
+
+<footer>
+  <div class="footer-links">
+    <a href="disclaimer.html">Disclaimer</a>
+    <span class="sep">·</span>
+    <a href="tos.html">Terms of Service</a>
+    <span class="sep">·</span>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="footer-copy">© VOL8HUB 2026</div>
+</footer>
+
+<script>
+  var scrollFired = {25: false, 50: false, 75: false, 90: false};
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY;
+    var total = document.body.scrollHeight - window.innerHeight;
+    if (total <= 0) return;
+    var pct = Math.round((scrolled / total) * 100);
+    [25, 50, 75, 90].forEach(function(mark) {
+      if (pct >= mark && !scrollFired[mark]) {
+        scrollFired[mark] = true;
+        gtag('event', 'archive_scroll_depth', {depth: mark});
+      }
+    });
+  });
+</script>
+<script src="assets/js/main.js"></script>
+<script>
+// ─── CARD EXPAND/COLLAPSE ──────────────────────────────────────────────
+function toggleCard(header) {
+  const card = header.closest('.entry-card');
+  const wasOpen = card.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.entry-card.open').forEach(c => c.classList.remove('open'));
+  // Open this one if it was closed
+  if (!wasOpen) {
+    card.classList.add('open');
+    gtag('event', 'entry_expand', { entry_id: card.id });
+    // Smooth scroll into view if header is above viewport
+    setTimeout(() => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < 70) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+}
+
+// ─── FILTERING ─────────────────────────────────────────────────────────
+const activeFilters = { cycle: 'all', fleet: 'all', year: 'all' };
+
+document.querySelectorAll('.fpill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    const v = btn.dataset.val;
+    activeFilters[f] = v;
+    // Update active state in this group
+    document.querySelectorAll(`.fpill[data-filter="${f}"]`).forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+    gtag('event', 'archive_filter_applied', { filter: f, value: v });
+  });
+});
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.entry-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const cMatch = activeFilters.cycle === 'all' || card.dataset.cycle === activeFilters.cycle;
+    const fMatch = activeFilters.fleet === 'all' || card.dataset.fleet === activeFilters.fleet;
+    const yMatch = activeFilters.year  === 'all' || card.dataset.year  === activeFilters.year;
+    if (cMatch && fMatch && yMatch) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+      card.classList.remove('open');
+    }
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  document.getElementById('resultsCount').textContent =
+    visible === 19 ? 'Showing all 19 entries' : `Showing ${visible} of 19 entries`;
+}
+
+// ─── URL PARAM PRE-FILTER (from fleet cards on homepage) ──────────────
+(function applyUrlFilter() {
+  const params = new URLSearchParams(window.location.search);
+  const fleet = params.get('fleet');
+  if (fleet) {
+    const btn = document.querySelector(`.fpill[data-filter="fleet"][data-val="${fleet}"]`);
+    if (btn) btn.click();
+  }
+  // Jump to anchor if present
+  const hash = window.location.hash;
+  if (hash) {
+    const target = document.querySelector(hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        toggleCard(target.querySelector('.card-header'));
+      }, 300);
+    }
+  }
+})();
+</script>
+<script>
+  gtag('event', 'page_view_named', {
+    page_name: 'archive',
+    page_location: window.location.href
+  });
+</script>
+</body>
+</html>

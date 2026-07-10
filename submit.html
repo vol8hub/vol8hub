@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit — Vol8Hub</title>
+<meta name="description" content="Submit your simulator check session to Vol8Hub. Anonymous by default. Email only at this stage.">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline'
+    https://subscribe-forms.beehiiv.com
+    https://www.googletagmanager.com
+    https://www.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://www.google-analytics.com;
+  connect-src 'self'
+    https://www.google-analytics.com
+    https://analytics.google.com;
+  frame-ancestors 'none';
+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC4GTRMK1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PQC4GTRMK1');</script>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+/* ─── SUBMIT PAGE STYLES ─────────────────────────────────────────────── */
+.submit-hero {
+  background: var(--navy);
+  padding: 4.5rem 2rem 3rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.submit-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(15,76,129,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,76,129,0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-pan 20s linear infinite;
+}
+@keyframes grid-pan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+.submit-hero-inner { position: relative; z-index: 1; }
+.submit-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800; color: #fff;
+  letter-spacing: -0.02em; margin-bottom: 0.6rem;
+}
+.submit-hero p {
+  font-size: 1rem; color: rgba(255,255,255,0.5);
+  max-width: 480px; margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── BODY ───────────────────────────────────────────────────────────── */
+.submit-body {
+  background: var(--off-white);
+  padding: 3rem 2rem 5rem;
+}
+.submit-inner {
+  max-width: 760px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 1.5rem;
+}
+
+/* ─── INFO CARD ──────────────────────────────────────────────────────── */
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+}
+.info-card h2 {
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--text-1); margin-bottom: 0.85rem;
+}
+.info-card p {
+  font-size: 0.92rem; color: var(--text-2);
+  line-height: 1.7; margin-bottom: 0.75rem;
+}
+.info-card p:last-child { margin-bottom: 0; }
+
+/* Privacy promise */
+.privacy-row {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  background: var(--blue-pale);
+  border: 1px solid rgba(15,76,129,0.15);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-top: 1rem;
+}
+.privacy-icon {
+  font-size: 18px; flex-shrink: 0; margin-top: 1px;
+}
+.privacy-text {
+  font-size: 0.88rem; color: var(--blue);
+  line-height: 1.6;
+}
+
+/* ─── SEND OPTIONS ───────────────────────────────────────────────────── */
+.send-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.send-option {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.send-option:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 16px var(--blue-glow);
+}
+.send-option-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-3);
+}
+.send-option h3 {
+  font-size: 1rem; font-weight: 700; color: var(--text-1);
+}
+.send-option p {
+  font-size: 0.88rem; color: var(--text-2);
+  line-height: 1.6; flex: 1;
+}
+
+.email-address {
+  font-family: var(--mono); font-size: 14px;
+  font-weight: 700; color: var(--blue);
+  letter-spacing: 0.04em;
+  display: block; margin: 0.25rem 0 0.75rem;
+}
+
+.copy-btn {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  padding: 0.4rem 0.9rem; border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: inline-block;
+}
+.copy-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* ─── TEMPLATE ───────────────────────────────────────────────────────── */
+.template-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.template-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.template-header h2 {
+  font-size: 1.05rem; font-weight: 700; color: var(--text-1);
+}
+.template-toggle {
+  font-size: 18px; color: var(--text-3);
+  transition: transform 0.25s;
+}
+.template-card.open .template-toggle { transform: rotate(90deg); color: var(--blue); }
+.template-body { display: none; padding: 1.5rem 1.75rem; }
+.template-card.open .template-body { display: block; }
+
+.template-note {
+  font-size: 0.88rem; color: var(--text-2);
+  line-height: 1.65; margin-bottom: 1.25rem;
+}
+.template-note strong { color: var(--text-1); }
+
+.template-block {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+.template-block pre {
+  font-family: var(--mono); font-size: 12px;
+  line-height: 1.75; color: rgba(255,255,255,0.75);
+  white-space: pre-wrap; word-break: break-word;
+}
+.template-block .tpl-comment { color: rgba(255,255,255,0.3); }
+.template-block .tpl-key { color: #7BBCF0; }
+.template-block .tpl-val { color: rgba(255,255,255,0.6); }
+
+.copy-template-btn {
+  margin-top: 1rem;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  background: #0F4C81;
+  border: none;
+  color: #FFFFFF;
+  padding: 12px 24px; border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  display: inline-block;
+}
+.copy-template-btn:hover { background: var(--blue-mid); transform: translateY(-1px); }
+.copy-template-btn.copied { background: var(--green); }
+
+/* ─── WHAT HAPPENS NEXT ──────────────────────────────────────────────── */
+.steps-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+}
+.steps-card h2 {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--text-1); margin-bottom: 1.25rem;
+}
+.steps-list {
+  display: flex; flex-direction: column; gap: 1rem;
+  list-style: none;
+}
+.step-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.step-num {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--blue-pale);
+  border: 1.5px solid var(--blue-light);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px;
+  font-weight: 700; color: var(--blue);
+}
+.step-text {
+  font-size: 0.9rem; color: var(--text-2);
+  line-height: 1.65; padding-top: 3px;
+}
+.step-text strong { color: var(--text-1); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .send-options { grid-template-columns: 1fr; }
+  .submit-body { padding: 2rem 1rem 4rem; }
+  .info-card, .steps-card { padding: 1.25rem; }
+  .template-body { padding: 1.25rem; }
+}
+</style>
+</head>
+<body class="page-body">
+
+<header>
+  <a href="index.html" class="logo">VOL8HUB.COM</a>
+  <button class="hamburger" id="ham" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="nav">
+    <a href="index.html">Home</a>
+    <a href="archive.html">Archive</a>
+    <a href="submit.html" class="active">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="submit-hero">
+  <div class="submit-hero-inner">
+    <h1>Submit your sim</h1>
+    <p>Share what you saw. Help the next pilot who flies the same cycle prepare properly. Anonymous by default.</p>
+  </div>
+</section>
+
+<div class="submit-body">
+<div class="submit-inner">
+
+  <!-- INTRO -->
+  <div class="info-card reveal">
+    <h2>How it works</h2>
+    <p>Submissions are by email only at this stage. Send whatever level of detail you have — scenario sequence, approaches flown, failures injected, standout tips. There is no minimum length.</p>
+    <p>Every submission is reviewed by the Vol8Hub team, edited to the inventory schema, and published to the archive. Your submission will be tagged <strong>Unverified</strong> until a second pilot confirms the same session. Your email address is never published.</p>
+    <div class="privacy-row">
+      <span class="privacy-icon">🔒</span>
+      <span class="privacy-text">Anonymous by default. Your name will not appear on the site unless you explicitly request named credit in your email. Your email address is never published or shared.</span>
+    </div>
+  </div>
+
+  <!-- SEND OPTIONS -->
+  <div class="send-options reveal reveal-d1">
+
+    <div class="send-option">
+      <span class="send-option-label">Option A</span>
+      <h3>Open in your mail app</h3>
+      <p>Tap below to open a pre-addressed email. Paste in your notes and send.</p>
+      <a href="mailto:submit@vol8hub.com?subject=Sim%20Submission&body=Fleet%3A%0ACycle%3A%0ACheck%20type%3A%0ASim%20centre%3A%0ADate%3A%0A%0AScenarios%3A%0A%0ATips%3A"
+         class="btn-primary"
+         style="text-align:center;"
+         onclick="gtag('event','submit_mailto_click')">
+        Open mail app →
+      </a>
+    </div>
+
+    <div class="send-option">
+      <span class="send-option-label">Option B</span>
+      <h3>Copy the address</h3>
+      <p>Copy the address below and paste it into whatever email client you use.</p>
+      <span class="email-address">submit@vol8hub.com</span>
+      <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy address</button>
+    </div>
+
+  </div>
+
+  <!-- SUBMISSION TEMPLATE -->
+  <div class="template-card reveal reveal-d2" id="templateCard">
+    <div class="template-header" onclick="toggleTemplate()">
+      <h2>Submission template</h2>
+      <span class="template-toggle">›</span>
+    </div>
+    <div class="template-body">
+      <p class="template-note">Use this as a starting point. Fill in what you know. Leave blank anything you don't remember — <strong>partial detail is better than nothing.</strong> Scenario sequence is the most valuable part.</p>
+      <div class="template-block">
+        <pre id="templateText"><span class="tpl-comment">--- VOL8HUB SUBMISSION TEMPLATE ---
+Copy and paste into your email body.
+Fill in what you know. Leave anything
+you can't recall blank.
+-----------------------------------</span>
+
+<span class="tpl-key">Fleet:</span>           <span class="tpl-val">[A320 / A330 / A350 / B777 / B777ER]</span>
+<span class="tpl-key">Check type:</span>      <span class="tpl-val">[PC / RT / OPC]</span>
+<span class="tpl-key">Cycle:</span>           <span class="tpl-val">[P1–P6 for PC / 1R–6R for RT]</span>
+<span class="tpl-key">Sim centre:</span>      <span class="tpl-val">[ICAO code + city, e.g. VHHH HKG]</span>
+<span class="tpl-key">Check date:</span>      <span class="tpl-val">[Month + Year, e.g. Apr 2026]</span>
+<span class="tpl-key">Seat:</span>            <span class="tpl-val">[Captain / FO / SO / Both pilots]</span>
+
+<span class="tpl-key">PROFILE A — Departure airport:</span>
+<span class="tpl-key">PROFILE A — Runway / SID:</span>
+<span class="tpl-key">PROFILE A — Weather / conditions:</span>
+
+<span class="tpl-key">PROFILE A — Scenarios (in order):</span>
+<span class="tpl-val">1.
+2.
+3.</span>
+
+<span class="tpl-key">PROFILE A — Approaches flown:</span>
+<span class="tpl-val">-
+-</span>
+
+<span class="tpl-key">PROFILE B — Departure airport:</span>
+<span class="tpl-key">PROFILE B — Runway / SID:</span>
+
+<span class="tpl-key">PROFILE B — Scenarios (in order):</span>
+<span class="tpl-val">1.
+2.
+3.</span>
+
+<span class="tpl-key">PROFILE B — Approaches flown:</span>
+<span class="tpl-val">-
+-</span>
+
+<span class="tpl-key">Key manoeuvres (tags):</span>
+<span class="tpl-val">[e.g. V1 cut, RNP AR, LVO CAT3B, EVAC]</span>
+
+<span class="tpl-key">Standout tips (what to know going in):</span>
+<span class="tpl-val">-
+-
+-</span>
+
+<span class="tpl-comment">--- Optional ---</span>
+<span class="tpl-key">Named credit?</span>     <span class="tpl-val">[No / Yes — name or handle to use]</span>
+<span class="tpl-key">Anything else:</span></pre>
+      </div>
+      <button class="copy-template-btn" id="copyTplBtn" onclick="copyTemplate()">Copy Submission Template</button>
+    </div>
+  </div>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <div class="steps-card reveal reveal-d3">
+    <h2>What happens after you send</h2>
+    <ol class="steps-list">
+      <li class="step-item">
+        <span class="step-num">1</span>
+        <span class="step-text"><strong>Reviewed personally.</strong> Every submission is read by the Vol8Hub team. Usually within a few days.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">2</span>
+        <span class="step-text"><strong>Edited to inventory schema.</strong> Formatted consistently with existing entries. Your content is not changed — only structured.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">3</span>
+        <span class="step-text"><strong>Published to the archive</strong> tagged <strong>Unverified</strong>. Subscribers are notified via the newsletter. Your email address is never included.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">4</span>
+        <span class="step-text"><strong>Verification over time.</strong> When a second pilot confirms the same session, the Unverified tag is removed.</span>
+      </li>
+    </ol>
+  </div>
+
+</div><!-- /submit-inner -->
+</div><!-- /submit-body -->
+
+<footer>
+  <div class="footer-links">
+    <a href="disclaimer.html">Disclaimer</a>
+    <span class="sep">·</span>
+    <a href="tos.html">Terms of Service</a>
+    <span class="sep">·</span>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="footer-copy">© VOL8HUB 2026</div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+function copyEmail() {
+  navigator.clipboard.writeText('submit@vol8hub.com').then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy address'; btn.classList.remove('copied'); }, 2500);
+  });
+  gtag('event', 'submit_copy_email');
+}
+
+function toggleTemplate() {
+  document.getElementById('templateCard').classList.toggle('open');
+}
+
+function copyTemplate() {
+  // Extract plain text from template (strip HTML spans)
+  const raw = document.getElementById('templateText').innerText;
+  navigator.clipboard.writeText(raw).then(() => {
+    const btn = document.getElementById('copyTplBtn');
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Submission Template'; btn.classList.remove('copied'); }, 2000);
+  });
+  gtag('event', 'submit_copy_template');
+}
+
+// Open template by default on desktop
+if (window.innerWidth > 640) {
+  document.getElementById('templateCard').classList.add('open');
+}
+</script>
+<script>
+  gtag('event', 'page_view_named', {
+    page_name: 'submit',
+    page_location: window.location.href
+  });
+</script>
+</body>
+</html>

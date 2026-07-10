@@ -1,5 +1,1185 @@
 <!DOCTYPE html>
-<html>
-<head><title>Vol8Hub — Coming Soon</title></head>
-<body><h1>Vol8Hub</h1><p>Coming soon.</p></body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vol8Hub — Simulator Check Intel</title>
+<meta name="description" content="Peer-submitted simulator check intel for professional airline pilots. Searchable. Current. Anonymous.">
+<meta property="og:title" content="Vol8Hub — Simulator Check Intel">
+<meta property="og:description" content="Peer-submitted simulator check intel. Searchable. Current. Anonymous.">
+<meta property="og:url" content="https://vol8hub.com">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline'
+    https://subscribe-forms.beehiiv.com
+    https://www.googletagmanager.com
+    https://www.google-analytics.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://www.google-analytics.com;
+  connect-src 'self'
+    https://www.google-analytics.com
+    https://analytics.google.com;
+  frame-ancestors 'none';
+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC4GTRMK1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PQC4GTRMK1');</script>
+<style>
+/* ─── RESET & ROOT ─────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --white:#FFFFFF;
+  --off-white:#F7F8FA;
+  --page:#F2F4F7;
+  --navy:#0A1628;
+  --navy2:#112040;
+  --blue:#0F4C81;
+  --blue-mid:#1765A8;
+  --blue-light:#4A90D9;
+  --blue-pale:#E8F0FA;
+  --blue-glow:rgba(15,76,129,0.15);
+  --amber:#B45309;
+  --amber-bg:#FEF3C7;
+  --green:#059669;
+  --border:#DDE4ED;
+  --border-strong:#B8C8DC;
+  --text-1:#0A1628;
+  --text-2:#3A5070;
+  --text-3:#7A95B0;
+  --mono:'Courier New',Courier,monospace;
+  --sans:system-ui,-apple-system,sans-serif;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--white);
+  color:var(--text-1);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ─── HEADER ────────────────────────────────────────────────────────── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;
+  display:flex;align-items:center;
+  padding:0 2rem;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(221,228,237,0.6);
+  transition:background 0.3s;
+}
+.logo{
+  font-family:var(--mono);
+  font-size:15px;font-weight:700;
+  color:var(--blue);letter-spacing:0.14em;
+  text-decoration:none;margin-right:auto;
+}
+nav{display:flex;align-items:center;gap:0.15rem;}
+nav a{
+  font-size:14px;color:var(--text-2);
+  text-decoration:none;padding:0.35rem 0.9rem;
+  border-radius:6px;
+  transition:color 0.15s,background 0.15s;
+}
+nav a:hover{color:var(--blue);background:var(--blue-pale);}
+.nav-login{
+  border:1.5px solid var(--border-strong);
+  color:var(--text-1)!important;
+  font-size:13px!important;
+  padding:0.3rem 1rem!important;
+  margin-left:0.5rem;
+  border-radius:20px!important;
+}
+.nav-login:hover{border-color:var(--blue)!important;color:var(--blue)!important;}
+.hamburger{
+  display:none;background:none;border:none;
+  cursor:pointer;padding:4px;flex-direction:column;
+  gap:5px;margin-left:auto;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--text-3);border-radius:1px;
+  transition:background 0.15s;
+}
+
+/* ─── HERO ──────────────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;
+  background:var(--navy);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:7rem 2rem 5rem;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Animated grid background */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(15,76,129,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,76,129,0.12) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:grid-pan 20s linear infinite;
+}
+@keyframes grid-pan{
+  0%{background-position:0 0;}
+  100%{background-position:60px 60px;}
+}
+
+/* Radial glow */
+.hero-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-60%);
+  width:900px;height:700px;
+  background:radial-gradient(ellipse, rgba(23,101,168,0.35) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;
+  max-width:800px;
+}
+
+/* Eyebrow pill */
+.hero-pill{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:20px;
+  padding:0.35rem 1rem;
+  font-family:var(--mono);
+  font-size:11px;letter-spacing:0.16em;
+  color:rgba(255,255,255,0.55);
+  text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.hero-pill-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ADE80;
+  box-shadow:0 0 8px #4ADE80;
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.5;transform:scale(0.8);}
+}
+
+/* Main headline */
+.hero-headline{
+  font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:800;line-height:1.08;
+  letter-spacing:-0.025em;
+  color:#FFFFFF;
+  margin-bottom:1.5rem;
+}
+.hero-headline .line2{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,0.35);
+}
+.hero-headline .accent{
+  background:linear-gradient(135deg,#4A90D9 0%,#60CFFF 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.hero-sub{
+  font-size:1.1rem;
+  color:rgba(255,255,255,0.5);
+  max-width:500px;
+  margin:0 auto 2.5rem;
+  line-height:1.7;
+}
+
+.hero-cta-row{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+}
+
+.btn-hero-primary{
+  font-size:15px;font-weight:600;
+  background:#FFFFFF;color:var(--navy);
+  border:none;padding:0.85rem 2rem;
+  border-radius:8px;cursor:pointer;
+  text-decoration:none;
+  transition:transform 0.2s var(--ease-out),box-shadow 0.2s;
+  display:inline-block;
+}
+.btn-hero-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+.btn-hero-secondary{
+  font-size:15px;font-weight:600;
+  background:transparent;
+  color:rgba(255,255,255,0.8);
+  border:1.5px solid rgba(255,255,255,0.25);
+  padding:0.85rem 2rem;border-radius:8px;
+  cursor:pointer;text-decoration:none;
+  transition:border-color 0.2s,background 0.2s,color 0.2s;
+  display:inline-block;
+}
+.btn-hero-secondary:hover{
+  border-color:rgba(255,255,255,0.6);
+  color:#FFFFFF;
+  background:rgba(255,255,255,0.07);
+}
+
+/* ─── ROTATING SIM CARDS (Fanvue-style) ───────────────────────────── */
+.cards-stage{
+  width:100%;
+  padding:5rem 2rem 4rem;
+  background:var(--navy);
+  position:relative;
+  overflow:hidden;
+}
+
+.cards-stage::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+}
+
+.cards-label{
+  text-align:center;
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:0.22em;
+  color:rgba(255,255,255,0.3);
+  text-transform:uppercase;
+  margin-bottom:3.5rem;
+}
+
+/* The rotating card fan */
+.card-fan{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:0;
+  position:relative;
+  height:380px;
+  perspective:1400px;
+}
+
+.sim-card{
+  position:absolute;
+  width:260px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:16px;
+  padding:1.5rem;
+  cursor:pointer;
+  transform-origin:bottom center;
+  transition:transform 0.5s var(--ease-out), box-shadow 0.4s, background 0.3s, z-index 0s;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  will-change:transform;
+}
+.sim-card:hover{
+  background:rgba(255,255,255,0.1);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  z-index:20!important;
+}
+
+/* Card positions — fanned out like Fanvue */
+.sim-card:nth-child(1){
+  transform:rotate(-18deg) translateX(-240px) translateY(20px);
+  z-index:1;opacity:0.65;
+}
+.sim-card:nth-child(2){
+  transform:rotate(-9deg) translateX(-130px) translateY(8px);
+  z-index:2;opacity:0.8;
+}
+.sim-card:nth-child(3){
+  transform:rotate(0deg) translateX(0px) translateY(0px);
+  z-index:3;opacity:1;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+}
+.sim-card:nth-child(4){
+  transform:rotate(9deg) translateX(130px) translateY(8px);
+  z-index:2;opacity:0.8;
+}
+.sim-card:nth-child(5){
+  transform:rotate(18deg) translateX(240px) translateY(20px);
+  z-index:1;opacity:0.65;
+}
+
+.sim-card:nth-child(1):hover{transform:rotate(-12deg) translateX(-200px) translateY(-15px) scale(1.04);}
+.sim-card:nth-child(2):hover{transform:rotate(-4deg) translateX(-110px) translateY(-15px) scale(1.05);}
+.sim-card:nth-child(3):hover{transform:rotate(0deg) translateX(0) translateY(-18px) scale(1.06);}
+.sim-card:nth-child(4):hover{transform:rotate(4deg) translateX(110px) translateY(-15px) scale(1.05);}
+.sim-card:nth-child(5):hover{transform:rotate(12deg) translateX(200px) translateY(-15px) scale(1.04);}
+
+/* Card interior */
+.card-top{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;
+  margin-bottom:1rem;
+}
+.card-fleet{
+  font-family:var(--mono);
+  font-size:11px;font-weight:700;
+  letter-spacing:0.12em;
+  background:rgba(74,144,217,0.25);
+  color:#7BBCF0;
+  border:1px solid rgba(74,144,217,0.35);
+  padding:3px 10px;border-radius:4px;
+}
+.card-cycle{
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.35);
+}
+.card-check-type{
+  font-family:var(--mono);
+  font-size:22px;font-weight:700;
+  color:#FFFFFF;letter-spacing:0.04em;
+  margin-bottom:0.25rem;
+}
+.card-check-label{
+  font-size:12px;color:rgba(255,255,255,0.4);
+  margin-bottom:1rem;
+}
+.card-divider{
+  height:1px;
+  background:rgba(255,255,255,0.08);
+  margin:0.75rem 0;
+}
+.card-tags{
+  display:flex;flex-wrap:wrap;gap:5px;
+  margin-bottom:0.85rem;
+}
+.card-tag{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.07em;
+  color:rgba(255,255,255,0.4);
+  border:1px solid rgba(255,255,255,0.12);
+  padding:2px 6px;border-radius:3px;
+}
+.card-tip{
+  font-size:12px;line-height:1.6;
+  color:rgba(255,255,255,0.55);
+  font-style:italic;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.card-footer{
+  margin-top:1rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card-date{
+  font-family:var(--mono);font-size:10px;
+  color:rgba(255,255,255,0.3);letter-spacing:0.08em;
+}
+.card-arrow{
+  font-size:14px;color:rgba(74,144,217,0.7);
+  transition:transform 0.2s,color 0.2s;
+}
+.sim-card:hover .card-arrow{
+  transform:translateX(4px);
+  color:#7BBCF0;
+}
+.card-unverified{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.08em;
+  color:#F59E0B;
+  border:1px solid rgba(245,158,11,0.3);
+  background:rgba(245,158,11,0.08);
+  padding:2px 6px;border-radius:3px;
+}
+
+/* Stage bottom CTA */
+.cards-stage-footer{
+  text-align:center;
+  margin-top:3rem;
+  padding-bottom:1rem;
+}
+.cards-stage-footer p{
+  font-size:13px;
+  color:rgba(255,255,255,0.3);
+  margin-bottom:1rem;
+  font-family:var(--mono);
+  letter-spacing:0.08em;
+}
+
+/* ─── TRANSITION SECTION ─────────────────────────────────────────────── */
+.section-transition{
+  height:80px;
+  background:linear-gradient(to bottom, var(--navy), var(--white));
+}
+
+/* ─── FLEET NAV ──────────────────────────────────────────────────────── */
+.fleet-section{
+  padding:4rem 2rem;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.fleet-inner{max-width:1060px;margin:0 auto;text-align:center;}
+
+.section-eyebrow{
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:0.22em;
+  color:var(--text-3);text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.section-heading{
+  font-size:clamp(1.5rem,3.5vw,2.2rem);
+  font-weight:700;color:var(--text-1);
+  margin-bottom:0.6rem;
+  letter-spacing:-0.01em;
+}
+.section-sub{
+  font-size:0.95rem;color:var(--text-2);
+  max-width:460px;margin:0 auto 2.5rem;
+}
+
+.fleet-grid{
+  display:flex;gap:0.75rem;
+  justify-content:center;flex-wrap:wrap;
+}
+.fleet-card{
+  background:var(--white);
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:1rem 1.5rem;
+  text-decoration:none;
+  transition:transform 0.25s var(--ease-out),
+             border-color 0.2s,
+             box-shadow 0.25s;
+  display:flex;flex-direction:column;
+  align-items:center;gap:0.35rem;
+  min-width:110px;
+}
+.fleet-card:hover{
+  border-color:var(--blue);
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px var(--blue-glow);
+}
+.fleet-card-code{
+  font-family:var(--mono);
+  font-size:16px;font-weight:700;
+  letter-spacing:0.08em;color:var(--blue);
+}
+.fleet-card-count{
+  font-size:11px;color:var(--text-3);
+}
+
+/* ─── SUBSCRIBE ──────────────────────────────────────────────────────── */
+.subscribe-section{
+  padding:5rem 2rem;
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.subscribe-section::before{
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:700px;height:400px;
+  background:radial-gradient(ellipse,rgba(23,101,168,0.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+.subscribe-inner{position:relative;z-index:1;max-width:520px;margin:0 auto;}
+.subscribe-section h2{
+  font-size:clamp(1.6rem,4vw,2.6rem);
+  font-weight:700;color:#FFFFFF;
+  margin-bottom:0.75rem;
+  letter-spacing:-0.01em;
+}
+.subscribe-section p{
+  font-size:1rem;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:2.5rem;
+}
+.beehiiv-wrap{max-width:460px;margin:0 auto;}
+
+/* ─── RECENT ENTRIES ─────────────────────────────────────────────────── */
+.recent-section{
+  padding:5rem 2rem;
+  background:var(--off-white);
+}
+.recent-inner{max-width:1060px;margin:0 auto;}
+.recent-header{
+  display:flex;align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;
+}
+.view-all{
+  font-size:14px;font-weight:500;
+  color:var(--blue);text-decoration:none;
+  border:1.5px solid var(--blue);
+  padding:0.45rem 1.1rem;border-radius:6px;
+  transition:background 0.15s,color 0.15s;
+}
+.view-all:hover{background:var(--blue);color:#fff;}
+
+/* Entry cards — modern wide format */
+.entry-list{display:flex;flex-direction:column;gap:1rem;}
+
+.entry-row{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.5rem;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:1.5rem;
+  align-items:start;
+  transition:transform 0.2s var(--ease-out),
+             box-shadow 0.2s,
+             border-color 0.2s;
+  text-decoration:none;
+  color:inherit;
+}
+.entry-row:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(15,76,129,0.08);
+  border-color:var(--blue-light);
+}
+
+/* Left column — fleet badge */
+.entry-fleet-col{
+  display:flex;flex-direction:column;
+  align-items:center;gap:0.5rem;
+  min-width:64px;
+}
+.entry-fleet-badge{
+  width:60px;height:60px;
+  background:var(--blue);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);
+  font-size:13px;font-weight:700;
+  letter-spacing:0.08em;color:#FFFFFF;
+}
+.entry-cycle-badge{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.08em;color:var(--text-3);
+  text-align:center;
+}
+
+/* Middle column — content */
+.entry-content{}
+.entry-meta-row{
+  display:flex;align-items:center;gap:0.5rem;
+  flex-wrap:wrap;margin-bottom:0.6rem;
+}
+.entry-check-tag{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.08em;color:var(--text-2);
+  border:1px solid var(--border);
+  padding:2px 7px;border-radius:4px;
+  background:var(--off-white);
+}
+.entry-unverified-tag{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.08em;color:var(--amber);
+  background:var(--amber-bg);
+  border:1px solid rgba(180,83,9,0.2);
+  padding:2px 7px;border-radius:4px;
+}
+.entry-date-text{
+  font-size:12px;color:var(--text-3);
+  margin-left:auto;
+}
+.entry-tip{
+  font-size:0.9rem;color:var(--text-2);
+  line-height:1.65;margin-bottom:0.85rem;
+  font-style:italic;
+}
+.entry-tags{
+  display:flex;flex-wrap:wrap;gap:0.35rem;
+}
+.entry-tag{
+  font-family:var(--mono);font-size:9px;
+  letter-spacing:0.06em;color:var(--text-3);
+  border:1px solid var(--border);
+  padding:2px 6px;border-radius:3px;
+  background:var(--off-white);
+}
+
+/* Right column — arrow */
+.entry-arrow{
+  font-size:20px;color:var(--border-strong);
+  align-self:center;
+  transition:color 0.15s,transform 0.15s;
+}
+.entry-row:hover .entry-arrow{
+  color:var(--blue);
+  transform:translateX(4px);
+}
+
+/* ─── FOOTER ────────────────────────────────────────────────────────── */
+footer{
+  border-top:1px solid var(--border);
+  padding:1.75rem 2rem;
+  background:var(--white);
+  display:flex;
+  align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-links{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:12px;color:var(--text-3);
+}
+.footer-links a{
+  color:var(--text-3);text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-links a:hover{color:var(--blue);}
+.footer-links .sep{color:var(--border);}
+.footer-copy{
+  font-family:var(--mono);font-size:11px;
+  letter-spacing:0.08em;color:var(--text-3);
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────────────────────────── */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.7s var(--ease-out),
+             transform 0.7s var(--ease-out);
+}
+.reveal.visible{
+  opacity:1;transform:translateY(0);
+}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+
+/* ─── MOBILE ─────────────────────────────────────────────────────────── */
+@media(max-width:860px){
+  .card-fan{height:auto;flex-wrap:wrap;perspective:none;}
+  .sim-card{
+    position:relative!important;
+    transform:none!important;
+    opacity:1!important;
+    width:100%;max-width:300px;
+    margin:0 auto;
+  }
+  .card-fan{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+  .sim-card:nth-child(1),.sim-card:nth-child(5){display:none;}
+  .entry-row{grid-template-columns:auto 1fr;gap:1rem;}
+  .entry-arrow{display:none;}
+  .hamburger{display:flex;}
+  nav{
+    display:none;
+    position:fixed;top:56px;left:0;right:0;
+    background:rgba(255,255,255,0.97);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    padding:1rem 2rem;gap:0.25rem;
+    z-index:199;
+  }
+  nav.open{display:flex;}
+  nav a{font-size:16px;padding:0.6rem 0;border-radius:0;}
+  .nav-login{margin-left:0;margin-top:0.5rem;}
+  footer{flex-direction:column;align-items:center;text-align:center;}
+}
+
+@media(max-width:640px){
+  .hero-headline{font-size:2.4rem;}
+  .fleet-grid{gap:0.5rem;}
+  .fleet-card{min-width:90px;padding:0.75rem 1rem;}
+}
+
+/* ─── FILTER BAR ─────────────────────────────────────────────────────── */
+.filter-bar{
+  display:flex;flex-direction:column;gap:0.75rem;
+  margin-bottom:1.75rem;
+  padding:1.25rem 1.5rem;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.filter-group{
+  display:flex;align-items:center;gap:0.75rem;
+  flex-wrap:wrap;
+}
+.filter-group-label{
+  font-family:var(--mono);font-size:10px;
+  letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--text-3);
+  min-width:36px;flex-shrink:0;
+}
+.filter-pills{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.fpill{
+  font-family:var(--mono);font-size:11px;
+  letter-spacing:0.08em;
+  background:var(--off-white);
+  color:var(--text-2);
+  border:1px solid var(--border);
+  padding:0.3rem 0.75rem;
+  border-radius:20px;
+  cursor:pointer;
+  transition:background 0.15s,color 0.15s,border-color 0.15s;
+  white-space:nowrap;
+}
+.fpill:hover{border-color:var(--blue);color:var(--blue);}
+.fpill.active{
+  background:var(--blue);
+  color:#FFFFFF;
+  border-color:var(--blue);
+}
+.entry-row.hidden{display:none;}
+
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.hero-pill{animation:fade-up 0.7s var(--ease-out) 0.1s both;}
+.hero-headline{animation:fade-up 0.7s var(--ease-out) 0.25s both;}
+.hero-sub{animation:fade-up 0.7s var(--ease-out) 0.4s both;}
+.hero-cta-row{animation:fade-up 0.7s var(--ease-out) 0.55s both;}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
+<header>
+  <a href="index.html" class="logo">VOL8HUB.COM</a>
+  <button class="hamburger" id="ham" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="nav">
+    <a href="archive.html">Archive</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-pill">
+      <span class="hero-pill-dot"></span>
+      Latest entry · A350 PC P6 · Apr 2026
+    </div>
+    <h1 class="hero-headline">
+      Know your sim<br>
+      <span class="line2">before you <span class="accent">fly it.</span></span>
+    </h1>
+    <p class="hero-sub">Peer-submitted check intel, searchable by fleet, cycle, and base. Written by pilots who just walked out of the sim.</p>
+    <div class="hero-cta-row">
+      <a href="archive.html" class="btn-hero-primary" onclick="gtag('event','archive_cta_click',{location:'hero'})">Browse the archive</a>
+      <a href="submit.html" class="btn-hero-secondary" onclick="gtag('event','submit_cta_click',{location:'hero'})">Submit your sim →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ROTATING SIM CARDS ═══════════════════════════════════════════════ -->
+<section class="cards-stage">
+  <div class="cards-label">Recent sim entries — hover to read</div>
+  <div class="card-fan" id="cardFan">
+
+    <!-- Card 1 -->
+    <div class="sim-card" onclick="window.location='archive.html#entry-015'">
+      <div class="card-top">
+        <span class="card-fleet">A330</span>
+        <span class="card-cycle">2025</span>
+      </div>
+      <div class="card-check-type">RT3</div>
+      <div class="card-check-label">Recurrent Training</div>
+      <div class="card-divider"></div>
+      <div class="card-tags">
+        <span class="card-tag">HYDRAULIC LOSS</span>
+        <span class="card-tag">GEAR FAULT</span>
+        <span class="card-tag">RNP</span>
+      </div>
+      <p class="card-tip">"Dual hydraulic loss (G+B): slats jam at 0. Work through QRH methodically — not a dual failure of single systems."</p>
+      <div class="card-footer">
+        <span class="card-date">FEB 2025 · RKSI</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="sim-card" onclick="window.location='archive.html#entry-017'">
+      <div class="card-top">
+        <span class="card-fleet">A350</span>
+        <span class="card-cycle">2025</span>
+      </div>
+      <div class="card-check-type">PC4</div>
+      <div class="card-check-label">Proficiency Check</div>
+      <div class="card-divider"></div>
+      <div class="card-tags">
+        <span class="card-tag">LVO CAT3B</span>
+        <span class="card-tag">RNP AR</span>
+        <span class="card-tag">EVAC</span>
+        <span class="card-tag">V1 CUT</span>
+      </div>
+      <p class="card-tip">"TUGVA hold: 306° inbound, RH pattern — brief early so ready when cleared; hold can be cancelled before reaching fix."</p>
+      <div class="card-footer">
+        <span class="card-date">JUN 2025 · OMDW</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Card 3 — CENTRE (featured) -->
+    <div class="sim-card" onclick="window.location='archive.html#entry-019'">
+      <div class="card-top">
+        <span class="card-fleet">A350</span>
+        <span class="card-cycle">2026</span>
+      </div>
+      <div class="card-check-type">PC6</div>
+      <div class="card-check-label">Proficiency Check &nbsp;<span class="card-unverified">UNVERIFIED</span></div>
+      <div class="card-divider"></div>
+      <div class="card-tags">
+        <span class="card-tag">PUCKY ARRIVAL</span>
+        <span class="card-tag">RNP AR</span>
+        <span class="card-tag">HOLD</span>
+        <span class="card-tag">ENGINE FIRE</span>
+        <span class="card-tag">EVAC</span>
+      </div>
+      <p class="card-tip">"RNP AR 13L: if it doesn't sequence from COVIR automatically, enter manually and direct COVIR — don't wait."</p>
+      <div class="card-footer">
+        <span class="card-date">APR 2026 · VHHH</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="sim-card" onclick="window.location='archive.html#entry-018'">
+      <div class="card-top">
+        <span class="card-fleet">A350</span>
+        <span class="card-cycle">2026</span>
+      </div>
+      <div class="card-check-type">RT5</div>
+      <div class="card-check-label">Recurrent Training &nbsp;<span class="card-unverified">UNVERIFIED</span></div>
+      <div class="card-divider"></div>
+      <div class="card-tags">
+        <span class="card-tag">RUNWAY CHANGE</span>
+        <span class="card-tag">TCAS</span>
+        <span class="card-tag">WINDSHEAR</span>
+        <span class="card-tag">UPRT</span>
+        <span class="card-tag">3RS</span>
+      </div>
+      <p class="card-tip">"Decision making under fuel/weather/runway pressure: structure the options clearly before committing."</p>
+      <div class="card-footer">
+        <span class="card-date">JAN 2026 · VHHH</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="sim-card" onclick="window.location='archive.html#entry-012'">
+      <div class="card-top">
+        <span class="card-fleet">A350</span>
+        <span class="card-cycle">2024</span>
+      </div>
+      <div class="card-check-type">RT2</div>
+      <div class="card-check-label">Recurrent Training</div>
+      <div class="card-divider"></div>
+      <div class="card-tags">
+        <span class="card-tag">3RS EO T/O</span>
+        <span class="card-tag">UPRT</span>
+        <span class="card-tag">TCAS RA</span>
+        <span class="card-tag">LOS SMOKE</span>
+      </div>
+      <p class="card-tip">"ADLAT 1T: modify TEGUB to 210kt (not FM default 230kt). PRESS ALT: must be tracking 191° AND above 2600ft AGL — both conditions required."</p>
+      <div class="card-footer">
+        <span class="card-date">SEP 2024 · VHHH</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cards-stage-footer">
+    <p>19 entries across A320 · A330 · A350 · B777</p>
+    <a href="archive.html" class="btn-hero-secondary" style="font-size:14px;padding:0.65rem 1.5rem;" onclick="gtag('event','archive_cta_click')">View full archive →</a>
+  </div>
+</section>
+
+<!-- ═══ TRANSITION ════════════════════════════════════════════════════════ -->
+<div class="section-transition"></div>
+
+<!-- ═══ FLEET NAV ═════════════════════════════════════════════════════════ -->
+<section class="fleet-section">
+  <div class="fleet-inner">
+    <div class="section-eyebrow reveal">Browse by fleet</div>
+    <h2 class="section-heading reveal reveal-delay-1">Your type. Your cycle.</h2>
+    <p class="section-sub reveal reveal-delay-2">Filter the archive by fleet to see only what's relevant to your check.</p>
+    <div class="fleet-grid reveal reveal-delay-3">
+      <a href="archive.html?fleet=A320" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'A320'})">
+        <span class="fleet-card-code">A320</span>
+        <span class="fleet-card-count">1 entry</span>
+      </a>
+      <a href="archive.html?fleet=A330" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'A330'})">
+        <span class="fleet-card-code">A330</span>
+        <span class="fleet-card-count">6 entries</span>
+      </a>
+      <a href="archive.html?fleet=A350" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'A350'})">
+        <span class="fleet-card-code">A350</span>
+        <span class="fleet-card-count">10 entries · incl. -1000</span>
+      </a>
+      <a href="archive.html?fleet=B777" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'B777'})">
+        <span class="fleet-card-code">B777</span>
+        <span class="fleet-card-count">2 entries</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUBSCRIBE ══════════════════════════════════════════════════════════ -->
+<section class="subscribe-section">
+  <div class="subscribe-inner">
+    <div class="section-eyebrow reveal" style="color:rgba(255,255,255,0.35);">Stay current</div>
+    <h2 class="reveal reveal-delay-1">New sim entry?<br>You'll hear about it.</h2>
+    <p class="reveal reveal-delay-2">Subscribe for a notification when a new entry is published. No marketing. Unsubscribe any time.</p>
+    <div class="beehiiv-wrap reveal reveal-delay-3">
+      <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="9401607f-44d4-4ab6-a6eb-4f3bfe001f83"></script>
+      <script>
+        window.addEventListener('message', function(e) {
+          if (e.data && e.data.type === 'beehiiv:subscribe') {
+            gtag('event', 'subscribe_click', { location: 'homepage_embed' });
+          }
+        });
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RECENT ENTRIES ════════════════════════════════════════════════════ -->
+<section class="recent-section">
+  <div class="recent-inner">
+    <div class="recent-header">
+      <div>
+        <div class="section-eyebrow">Recent intel</div>
+        <h2 class="section-heading" style="margin-bottom:0;">Latest entries</h2>
+      </div>
+      <a href="archive.html" class="view-all" onclick="gtag('event','archive_cta_click',{location:'recent_entries'})">View all 19 →</a>
+    </div>
+
+    <!-- FILTER PILLS -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-group-label">Cycle</span>
+        <div class="filter-pills" id="filterCycle">
+          <button class="fpill active" data-filter="cycle" data-val="all">All</button>
+          <button class="fpill" data-filter="cycle" data-val="P6">PC6</button>
+          <button class="fpill" data-filter="cycle" data-val="P5">PC5</button>
+          <button class="fpill" data-filter="cycle" data-val="P4">PC4</button>
+          <button class="fpill" data-filter="cycle" data-val="P3">PC3</button>
+          <button class="fpill" data-filter="cycle" data-val="P2">PC2</button>
+          <button class="fpill" data-filter="cycle" data-val="P1">PC1</button>
+          <button class="fpill" data-filter="cycle" data-val="6R">RT6</button>
+          <button class="fpill" data-filter="cycle" data-val="5R">RT5</button>
+          <button class="fpill" data-filter="cycle" data-val="3R">RT3</button>
+          <button class="fpill" data-filter="cycle" data-val="2R">RT2</button>
+          <button class="fpill" data-filter="cycle" data-val="1R">RT1</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">Fleet</span>
+        <div class="filter-pills" id="filterFleet">
+          <button class="fpill active" data-filter="fleet" data-val="all">All</button>
+          <button class="fpill" data-filter="fleet" data-val="A320">A320</button>
+          <button class="fpill" data-filter="fleet" data-val="A330">A330</button>
+          <button class="fpill" data-filter="fleet" data-val="A350">A350</button>
+          <button class="fpill" data-filter="fleet" data-val="B777">B777</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group-label">Year</span>
+        <div class="filter-pills" id="filterYear">
+          <button class="fpill active" data-filter="year" data-val="all">All</button>
+          <button class="fpill" data-filter="year" data-val="2026">2026</button>
+          <button class="fpill" data-filter="year" data-val="2025">2025</button>
+          <button class="fpill" data-filter="year" data-val="2024">2024</button>
+          <button class="fpill" data-filter="year" data-val="2023">2023</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry-list" id="entryList">
+
+      <a href="archive.html#entry-019" class="entry-row reveal"
+         data-cycle="P6" data-fleet="A350" data-year="2026">
+        <div class="entry-fleet-col">
+          <div class="entry-fleet-badge">A350</div>
+          <div class="entry-cycle-badge">PC6</div>
+        </div>
+        <div class="entry-content">
+          <div class="entry-meta-row">
+            <span class="entry-check-tag">Proficiency Check</span>
+            <span class="entry-unverified-tag">Unverified</span>
+            <span class="entry-date-text">Apr 2026 · VHHH</span>
+          </div>
+          <p class="entry-tip">"RNP AR 13L: if it doesn't sequence from COVIR automatically, enter manually and direct COVIR — don't wait. DTO to MCT: must pull back to CLB first before selecting MCT."</p>
+          <div class="entry-tags">
+            <span class="entry-tag">PUCKY ARRIVAL</span>
+            <span class="entry-tag">RNP AR</span>
+            <span class="entry-tag">HOLD</span>
+            <span class="entry-tag">ENGINE FIRE AIRBORNE</span>
+            <span class="entry-tag">EOSID</span>
+            <span class="entry-tag">MLG FIRE</span>
+            <span class="entry-tag">EVAC</span>
+          </div>
+        </div>
+        <div class="entry-arrow">›</div>
+      </a>
+
+      <a href="archive.html#entry-018" class="entry-row reveal reveal-delay-1"
+         data-cycle="5R" data-fleet="A350" data-year="2026">
+        <div class="entry-fleet-col">
+          <div class="entry-fleet-badge">A350</div>
+          <div class="entry-cycle-badge">RT5</div>
+        </div>
+        <div class="entry-content">
+          <div class="entry-meta-row">
+            <span class="entry-check-tag">Recurrent Training</span>
+            <span class="entry-unverified-tag">Unverified</span>
+            <span class="entry-date-text">Jan 2026 · VHHH</span>
+          </div>
+          <p class="entry-tip">"Low energy UPRT: use V/S, acknowledge being off-track, talk to ATC early. Set a mental fuel limit before entering the hold — don't wait until you're committed."</p>
+          <div class="entry-tags">
+            <span class="entry-tag">RUNWAY CHANGE</span>
+            <span class="entry-tag">TCAS</span>
+            <span class="entry-tag">GO AROUND</span>
+            <span class="entry-tag">WINDSHEAR</span>
+            <span class="entry-tag">UPRT LOW ENERGY</span>
+            <span class="entry-tag">3RS MAX TOW</span>
+          </div>
+        </div>
+        <div class="entry-arrow">›</div>
+      </a>
+
+      <a href="archive.html#entry-017" class="entry-row reveal reveal-delay-2"
+         data-cycle="P4" data-fleet="A350" data-year="2025">
+        <div class="entry-fleet-col">
+          <div class="entry-fleet-badge">A350</div>
+          <div class="entry-cycle-badge">PC4</div>
+        </div>
+        <div class="entry-content">
+          <div class="entry-meta-row">
+            <span class="entry-check-tag">Proficiency Check</span>
+            <span class="entry-date-text">Jun 2025 · OMDW/OMAA</span>
+          </div>
+          <p class="entry-tip">"G/S failure at 1700ft during CAT3B: missed approach — don't attempt to continue. Green dot 197kt throughout — SID speed restrictions not a factor."</p>
+          <div class="entry-tags">
+            <span class="entry-tag">RTO</span>
+            <span class="entry-tag">V1 CUT SEVERE</span>
+            <span class="entry-tag">LVO CAT3B</span>
+            <span class="entry-tag">RNP AR</span>
+            <span class="entry-tag">HOLD</span>
+            <span class="entry-tag">LOC/DME</span>
+            <span class="entry-tag">EVAC</span>
+          </div>
+        </div>
+        <div class="entry-arrow">›</div>
+      </a>
+
+    </div>
+
+    <div id="noResults" style="display:none;text-align:center;padding:2rem;font-size:0.9rem;color:var(--text-3);">
+      No entries match this filter on the homepage. <a href="archive.html" style="color:var(--blue);">Search the full archive →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-links">
+    <a href="disclaimer.html">Disclaimer</a>
+    <span class="sep">·</span>
+    <a href="tos.html">Terms of Service</a>
+    <span class="sep">·</span>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <div class="footer-copy">© VOL8HUB 2026</div>
+</footer>
+
+<script>
+// Mobile nav
+const ham=document.getElementById('ham');
+const nav=document.getElementById('nav');
+ham.addEventListener('click',()=>nav.classList.toggle('open'));
+
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+
+// Subtle 3D tilt on sim cards (mouse follow)
+const cards=document.querySelectorAll('.sim-card');
+cards.forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-0.5)*12;
+    const y=((e.clientY-r.top)/r.height-0.5)*-10;
+    card.style.setProperty('--tilt-x',y+'deg');
+    card.style.setProperty('--tilt-y',x+'deg');
+    card.style.transform=card.style.transform.replace(/rotateX\([^)]*\)\s*rotateY\([^)]*\)/g,'')+
+      ` rotateX(${y}deg) rotateY(${x}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+  });
+});
+
+// Auto-rotate cards every 4s to draw attention on load
+let autoRotate;
+const fan=document.getElementById('cardFan');
+function startAutoHint(){
+  let i=0;
+  const allCards=[...fan.querySelectorAll('.sim-card')];
+  autoRotate=setInterval(()=>{
+    allCards.forEach(c=>c.style.boxShadow='');
+    const target=allCards[i%allCards.length];
+    target.style.boxShadow='0 0 0 1.5px rgba(74,144,217,0.5), 0 20px 50px rgba(0,0,0,0.4)';
+    i++;
+  },3500);
+}
+startAutoHint();
+// Filter logic
+const activeFilters={cycle:'all',fleet:'all',year:'all'};
+document.querySelectorAll('.fpill').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const f=btn.dataset.filter;
+    const v=btn.dataset.val;
+    activeFilters[f]=v;
+    // Update active pill in this group
+    document.querySelectorAll(`.fpill[data-filter="${f}"]`).forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    // Filter entries
+    const rows=document.querySelectorAll('#entryList .entry-row');
+    let visible=0;
+    rows.forEach(row=>{
+      const cMatch=activeFilters.cycle==='all'||row.dataset.cycle===activeFilters.cycle;
+      const fMatch=activeFilters.fleet==='all'||row.dataset.fleet===activeFilters.fleet;
+      const yMatch=activeFilters.year==='all'||row.dataset.year===activeFilters.year;
+      if(cMatch&&fMatch&&yMatch){row.classList.remove('hidden');visible++;}
+      else{row.classList.add('hidden');}
+    });
+    document.getElementById('noResults').style.display=visible===0?'block':'none';
+  });
+});
+</script>
+<script>
+gtag('event', 'page_view_named', {
+  page_name: 'homepage',
+  page_location: window.location.href
+});
+</script>
+</body>
 </html>

@@ -1034,27 +1034,54 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios (YMML)</h4>
-            <ul>
-              <li>Seat: 2x FO; CAT1 WX used (2xFO combination)</li>
-              <li>RTO: ENG 2 STALL at ~110kt; hot brakes QRH; return to bay</li>
-              <li>V1 cut ENG 2; BELTA hold; ILS Z 16 (EO, manual) → missed approach</li>
-              <li>RNP P16 via EMSEK; GPS Primary Lost both sides at ~1700ft → missed approach</li>
-              <li>GLS not approved; ILS Z 16 (EO); visual ~800ft; neutralise rudder trim early; landed</li>
-              <li>Note: CPA21 has no FLS — FINAL APP mode only for RNP</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>RTO — fire truck blocking runway; no ECAM; disarm spoiler</li>
-              <li>V1 cut ENG 2; EMSEK hold; RNP P16 → missed approach; ILS Z 16 → missed approach x2</li>
-              <li>YMML closed; divert YMAV; RNP 18; hold at AV2NE; FINAL APP mode; landed</li>
-              <li>After landing: ATC reports ENG 1 fire; stop on runway; evacuation checklist</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: YMML</li>
+            <li>Runway: 16</li>
+            <li>SID: CRENA 2, FPR, 5000ft, SQ 3002</li>
+            <li>Weather: ATIS J — 250/10kt RVR600 FG 05/04 Q1024 WET; CAT1 Wx used (2xFO combination)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — Left seat FO initiates; ENG 2 STALL at ~110kt; park brakes; PA "cabin crew at station"; ECAM; brakes rising above 400°C; QRH hot brakes (still green zone); taxi off via G; call SCCM re hot brakes; return to bay; PA to cabin; exercise complete</li>
+            <li>Reposition — V1 cut ENG 2; rotate normally at VR, aim 12.5°; CPA21 sim very sensitive at pitch above 10° — be careful not to overshoot 12.5°; SRS pitch bar commands just above 10°; speed drops below V2 — raise gear promptly; TOGA thrust strongly recommended; above 400ft RA read ECAM; ENG no damage (N1 rotating, no vibration, no bang) → stop ECAM; ATC call when able; press V/S=0 at or above 1930ft; clean up; ATC vectors north; complete ECAM; weather YMML CAT1; direct BELTA hold; hand over control; LDA; NITS; PA; ATC clear descend 4000ft</li>
+            <li>BELTA hold: 1min or 17nm IMS limit at 4500ft sector MSA — mention to checker for terrain clearance; exit hold for approach; nil sighting at minima → go around (level off 1930ft); weather update; RNP P16 via EMSEK; fuel imbalance ~1T at this stage (review if go around needed); FINAL APP at AREXO; GPS Primary Lost both sides at ~1700ft → go around; level off at EO ACC ALT; GLS not approved — final approach ILS Z 16; visual ~800ft; neutralise rudder trim early (sim holds odd trim angle); stop on runway</li>
+            <li>Note: CPA21 has no FLS (FINAL APP mode only for RNP)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS Z 16 YMML (EO, manual), Missed approach</li>
+            <li>RNP P16 via EMSEK, GPS lost → Missed approach</li>
+            <li>ILS Z 16 YMML (EO), Landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: YMML</li>
+            <li>Runway: 16</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — fire truck blocking runway; no ECAM so taxi off; disarm spoiler; SCCM call; PA; hot brakes QRH; reposition</li>
+            <li>V1 cut ENG 2; radar vectors to EMSEK hold (345/RH/1min — no published hold); clear descend 3000ft; RNP P16 nil sighting → go around; ILS Z 16 nil sighting → go around; radar vectors BELTA for ILS Z 16 nil sighting → MAP; YMML closed; divert YMAV; AV2NE cruise; RNP 18 approach; hold at AV2NE (176/LH/1min); CPA21 no FLS → FINAL APP mode; cleared descend 3000ft; land off approach (QDM 177); fuel imbalance advisory pulsing — can land with imbalance</li>
+            <li>After landing: ATC reports ENG 1 fire; CM1 takes control; stop on runway; "cabin crew at stations"; ECAM (CM2 can execute without confirmation while CM1 talks to fire chief); ISM reports fire on left side; ECAM → EVAC checklist; session finished</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>RNP P16 YMML (EO), Missed approach</li>
+            <li>ILS Z 16 YMML (EO), Missed approach x2</li>
+            <li>RNP 18 YMAV (diversion, EO), Landed</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">CPA21 pitch sensitivity at rotation — the sim is unusually responsive above 10 degrees. GPS Primary Lost on RNP final is not automatically a go-around trigger — knowing the specific triggers is assessed. Both FOs are assessed equally.</p>
@@ -1064,6 +1091,18 @@
         <div class="tip-line"><span class="tip-arrow">→</span>GPS Primary Lost on RNP final: not a go-around trigger by itself. Monitor ANP. Go around only on specific triggers.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Rudder trim in CPA21: neutralise early on approach. The sim holds an odd angle that creates lateral instability.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>EVAC with engine fire: CM2 can run ECAM without confirmation from CM1 while CM1 manages the fire chief comms.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>CPA21 sim: very sensitive at pitch above 10° — do not overshoot 12.5° at rotation; aim carefully</li>
+            <li>CPA21 has no FLS — FINAL APP mode only for RNP approaches</li>
+            <li>BELTA hold limit: 1min or 17nm at sector MSA 4500ft — tell checker you're aware for terrain clearance</li>
+            <li>GPS Primary Lost: not a go-around item in itself; monitor ANP and FINAL APP mode; go around on specific triggers</li>
+            <li>Fuel imbalance at ~1T: review; can land with imbalance if no time for QRH</li>
+            <li>Neutralise rudder trim early in CPA21 — sim holds odd trim angle that upsets lateral stability</li>
+            <li>EVAC with engine fire: CM2 can run ECAM without confirmation while CM1 manages communications with fire chief</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="010">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1105,28 +1144,53 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>RTO: ENG 2 STALL at 100kt; brake temp rising to ~370° → return to bay</li>
-              <li>V1 cut ENG 2; BELTA hold (17nm/1min limit; mention terrain clearance)</li>
-              <li>ILS-Z 16 LVO (EO); SAP is G/S intercept point (not OKMEL); nil visual → missed approach</li>
-              <li>RNP AR P16 via EMSEK (RNP 0.11 → 0.3 downgrade); missed approach</li>
-              <li>GLS 16 (EO); NOTE: GLS cannot be set up by checker even if database shows correct tuning</li>
-              <li>Low energy exercise (S/O in cruise); LVO CAT3A; landed</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>RTO at ~80kt: ATC instruction; brake temp 330° — 15min cooling time; MEL 32-07-01A</li>
-              <li>ATC taxiway via G conflicts with red line on chart → challenge; request alternate routing</li>
-              <li>V1 cut; EMSEK hold; RNP AR P16Z → missed; ILS-Z 16 → missed; GLS 16 → landed</li>
-              <li>At ~90kt: ATC spots smoke/fire from ENG 1; stop on runway; EVAC</li>
-              <li>ISM calls during ENG fire ECAM: tell her "Standby 1 minute"</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: (not specified, inferred HKG ops)</li>
+            <li>Weather: (not specified)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — ENG 2 STALL at 100kt; after memory item taxi off (no checklist item; brakes &lt;300deg initially); start brake temp timer; vacate via G right turn V; brake temp rises rapidly to ~370deg and still rising → decision to return to bay; PA; exercise complete</li>
+            <li>Reposition — V1 cut ENG 2; climb to 4000ft; radar vector hold at BELTA (mindful 17nm radius and altitude limit — mention terrain clearance to checker); ILS-Z 16 LVO; nil visual; SAP is G/S intercept point (not OKMEL); RNP AR P16 via EMSEK (RNP 0.11); failure forced change to higher minima (RNP 0.3); go around nav capability lost + SURV ROW/ROP; GLS 16 approach (radar vector, 4500ft direct BELTA)</li>
+            <li>Low energy exercise (S/O in cruise)</li>
+            <li>LVO CAT3A; 200M/150M; land</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS-Z 16 VHHH (LVO, EO), Missed approach</li>
+            <li>RNP AR P16 EMSEK (RNP 0.11 → 0.3 downgrade), Missed approach</li>
+            <li>GLS 16 VHHH (EO)</li>
+            <li>CAT3A LVO landing</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO at ~80kt — ATC instruction due cross traffic; check brake temp; ATC taxiway instruction conflicts with red line on chart → unable; request alternate routing; hold at A; brakes now 330deg — 15min cooling time; PA to pax; subsequent departure guidance in FCTM; recycle FD; MEL 32-07-01A table for cooling time estimate</li>
+            <li>V1 cut; hold at EMSEK (request hold instruction from ATC); RNP AR P16Z; go around nil sighting; ILS-Z 16; go around nil sighting; GLS 16; landed</li>
+            <li>At ~90kt: ATC spots smoke/fire from ENG 1; stop on runway; "Attention crew at stations"; ECAM to secure engine; fire persists → EVAC on runway; wording for specific door evacuation from QRH; ISM calls during ENG fire ECAM — tell her standby 1min</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>RNP AR P16Z VHHH, Missed approach (nil sighting)</li>
+            <li>ILS-Z 16 VHHH, Missed approach (nil sighting)</li>
+            <li>GLS 16 VHHH (landed)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Brake temperature management and ground decision-making under delay pressure. RNP AR capability downgrade procedure. The ATC taxiway conflict is a deliberate CRM test. Evacuation discipline at the end of a high-workload session.</p>
@@ -1137,6 +1201,19 @@
         <div class="tip-line"><span class="tip-arrow">→</span>ATC taxiway via G on the red line: challenge it. Request alternate routing.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>ISM calls during the engine fire ECAM: tell her "Standby 1 minute, further instructions coming." Do not brief her mid-checklist.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>EVAC wording: use specific door references from the QRH.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>GLS approach cannot be set up by checker in this sim even if database shows correct tuning — be aware going in</li>
+            <li>SAP is the G/S intercept point for ILS-Z 16, not OKMEL</li>
+            <li>RNP AR: as long as EPU &lt; RNP, remain in NAV (vs radar vectors)</li>
+            <li>BELTA hold: 1min or 17nm limit due sector MSA 4500ft — mention terrain clearance under radar vectors</li>
+            <li>Brake temp &gt;300deg rising: return to bay; timer from peak; MEL 32-07-01A for cool-down time</li>
+            <li>ATC taxiway via G red line: challenge the instruction; request alternate routing</li>
+            <li>ISM call during ENG fire ECAM: "Standby 1 minute, further instructions coming"</li>
+            <li>EVAC wording: use specific door references as per QRH</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="009">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1178,27 +1255,55 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>FLAP/SLAT CONTROL EICAS on climb out; speed intervene to lock IAS; return VHHH</li>
-              <li>RNP Y 25L (Flap ALTN, F20); fuel jettison (vectors given); hold at GUAVA; landed</li>
-              <li>Airspeed unreliable at ~200ft: stick to known climb attitude; MAYDAY; at 1000ft call memory items</li>
-              <li>ALTN Air Data selected → unreliable PFD corrected; F20 approach; speedbrake manual pull on touchdown</li>
-              <li>5 T/O with differing windshear scenarios</li>
-              <li>UPRT at 10,000ft: nose high to 25°; release back pressure then roll to 45°; use FPV to horizon</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>UPRT (same as A); multiple T/Os; one resulted in RTO</li>
-              <li>Airspeed unreliable (same as A) — this time continues to a landing</li>
-              <li>LDA Z 22 RJTT: both pilots; 5000ft F5; arm LOC; at 0.5nm BONDO set FPA -3.1 promptly</li>
-              <li>Settle on 1.1 IKL; 180kt@8nm / 160kt@3nm; disconnect at minima; use noodle for centreline</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: 25L</li>
+            <li>SID: OCEAN 2B</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>FLAP/SLAT CONTROL EICAS (FLAPS DRIVE possible also) on climb out; speed intervene to lock current IAS; advise ATC; climb above MSA; IOC; decide return to VHHH; single runway ops; RNPY 25L; fuel jettison (vectors given); hold at GUAVA; extend flaps in ALTN mode; F20 approach; landed</li>
+            <li>Reposition; airspeed unreliable at low altitude ~200ft; below 1000ft/accel ht: stick to known climb attitude; MAYDAY; at 1000ft: call memory items, PM sets thrust accurately; continue climb above MSA 5000ft; maintain runway heading initially; PM: ascertain pitch/thrust for level flight in current flap config; use QRH airspeed unreliable link to table; ask ATC for altitude readout; leveloff; airspeed unreliable checklist; ALTN Air Data/Attitude source selected → unreliable PFD corrected; F20 approach; ALTN flaps (more time); speedbrake manual pull on touchdown; PF consider handing control temporarily to PM to review approach setup</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>RNP Y 25L VHHH (Flap ALTN, F20)</li>
+            <li>(Airspeed unreliable: exercise ended after EICAS review — no landing in this profile)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional</h4>
+          <ul>
+            <li>5 T/O with differing windshear scenarios</li>
+            <li>Repos 10,000ft UPRT: 2 exercises; high nose up to 25deg; release back pressure then roll promptly to 45deg; bank angle protection; nose -10deg below horizon; roll to wings level; smooth pull to horizon using FPV; careful — red army sensitive near horizon</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: VHHH (same start)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>UPRT (same)</li>
+            <li>Multiple T/O (slightly different from A); one resulted in RTO — check QRH for RTO criteria</li>
+            <li>Airspeed unreliable (same as A) — this time continues to a landing</li>
+            <li>Repos direct BEAST for LDA Z 22 RJTT; both pilots had a go (30 mins remaining); 5000ft F5; arm and capture LOC; approaching BONDO: preselect 1300ft ALT, open FPA; at 0.5nm BONDO set FPA -3.1 (prompt, dynamic arc); settle on 1.1IKL; 180@8 / 160@3; approaching 1.1IKL set missed approach alt and sight runway; disconnect; shallow ROD ~500fpm then fly PAPIs; use noodle onto extended centreline; FDs off then PM back on</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>LDA Z 22 RJTT (manual, both pilots)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Unreliable airspeed below 1000ft is the primary trap. The instinct is to call memory items immediately — that is wrong below 1000ft. The LDA Z 22 at RJTT is the technical highlight of this session: FPA timing and the disconnect point are precise.</p>
@@ -1207,6 +1312,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>LDA Z 22 RJTT: at exactly 0.5nm BONDO, set FPA -3.1. Dynamic arc to settle on 1.1 IKL. Speed: 180kt at 8nm, 160kt at 3nm.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>UPRT: release back pressure first, then roll to 45 degrees. Bank angle protection engages. Do not rush the roll.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Speedbrake: manual pull required on touchdown in ALTN flap mode.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Airspeed unreliable below 1000ft: DO NOT call memory items; stick to known climb attitude and MAYDAY</li>
+            <li>At 1000ft: THEN call memory items; PM can accurately set thrust</li>
+            <li>LDA Z 22 RJTT: at 0.5nm BONDO, set FPA -3.1 promptly; dynamic arc to settle on 1.1 IKL; 180kt@8nm / 160kt@3nm</li>
+            <li>UPRT: release back pressure FIRST, then roll to 45deg (bank angle protection engages) — do not rush the roll</li>
+            <li>Speedbrake manual pull on touchdown required in ALTN flap mode</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="008">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1248,28 +1363,53 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>Flaps Locked ECAM after selecting Flaps 1→0; ECAM complete; status: no autoland</li>
-              <li>WX at VHHH deteriorating to LVP → divert VMMC</li>
-              <li>RNP (AR) 16Z VMMC; max speed 165kt; fuel jettison to reach MLW</li>
-              <li>Vapp 165kt for Flaps 0 or less than 1+F; very gentle flare</li>
-              <li>4 windshear events; UPRT exercises</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>After T/O: AP and FD disconnect on both PFDs; ISIS speed; direct law</li>
-              <li>Airspeed unreliable memory items; PAN; request block altitude 5000–7000ft; select VV on FCU</li>
-              <li>ECAM NAV ADR 1+2+3 fault; deferred checklist</li>
-              <li>ILS 25L radar vectors (unable ILS 25R with RNAV transition due direct law)</li>
-              <li>Configure early — PF needs time to adjust pitch feel and manual pitch trim in direct law</li>
-              <li>1 RTO; 4 windshear events; UPRT exercises</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: (OCEAN 2B departure referenced)</li>
+            <li>SID: OCEAN 2B</li>
+            <li>Weather: 600m vis; LVP</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>Flaps Locked ECAM just after selecting Flaps 1→0 (Flaps 1+F T/O config); select speed; ECAM complete; status: no autoland</li>
+            <li>WX at VHHH deteriorating to LVP → divert to Macao (VMMC)</li>
+            <li>RNP (AR) 16Z VMMC; max speed 165kt; fuel jettison to reach MLW; NITS to ISM; PA; initiate alert phase; FM setup; LPA with Flaps Locked (Vapp 165kt for 0 or less than 1+F); very gentle flare (pitch with Flaps 1 much higher than normal)</li>
+            <li>4 windshear events; UPRT exercises</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>VMMC RNP (AR) 16Z (Flaps locked, Vapp 165kt, manual)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: (OCEAN 2B departure)</li>
+            <li>SID: OCEAN 2B</li>
+            <li>Weather: 5000m vis</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>After T/O: AP and FD disconnect on both PFDs; ISIS speed (sim went into direct law); airspeed unreliable memory items; PAN to ATC; flight instruments malfunction; request block altitude 5000–7000ft; select VV on FCU</li>
+            <li>ECAM NAV ADR 1+2+3 fault; deferred checklist (cabin alt set target alt)</li>
+            <li>ILS 25L radar vectors (unable ILS 25R with RNAV transition due direct law); NITS to ISM; PA; initiate alert phase; FM setup; LPA; configure early — PF needs time to adjust pitch and manual pitch trim in direct law; landed</li>
+            <li>1 RTO; 4 windshear events; UPRT exercises</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 25L VHHH (direct law, manual)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Two distinct failure types in the same session. The flaps-locked diversion tests QRH application and abnormal approach management. The direct law approach tests raw handling — is the PF configuring early enough to have time to adapt to the different pitch feel?</p>
@@ -1278,6 +1418,15 @@
         <div class="tip-line"><span class="tip-arrow">→</span>VMMC RNP AR 16Y has no speed restrictions but much higher minima. If jammed, 16Z is the right choice.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Direct law ILS: configure early. The PF needs time to adapt to pitch feel and manual trim before the approach.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Block altitude: 5000-7000ft is the right call for instruments malfunction while over the sea.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Flaps Locked: Vapp 165kt for config 0 or less than 1+F; very gentle flare as pitch attitude much higher than normal</li>
+            <li>VMMC RNP (AR) 16Y has no speed restrictions but much higher minima — if jammed, use 16Z</li>
+            <li>Direct law: configure early to give PF time to adjust pitch feel and manual trim</li>
+            <li>Block altitude request: 5000–7000ft is appropriate for instruments malfunction while over sea</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="007">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1319,26 +1468,45 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — LOFT</h4>
-            <ul>
-              <li>F/CTL FLAPS LOCKED on flap retraction (jammed position 0 &lt; F ≤ 1); no reset available</li>
-              <li>WX at VHHH below all LVO minima; VMMC suitable</li>
-              <li>LW reduced below 187T; vectors to ZUH for VMMC RNP Z 16 (AR)</li>
-              <li>A330 FDP is MC808 — arm FINAL APP only when MC808 is TO WPT</li>
-              <li>Vapp 166kt (Flysmart LDG FLAP LVR 2)</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — LOFT</h4>
-            <ul>
-              <li>Speed tape disappeared on both PFDs on liftoff; unreliable speed memory items</li>
-              <li>QRH pitch/thrust table used to level off; one reliable ADR identified; Air Data switching</li>
-              <li>Hand-flown ILS 25L with manual thrust; landed</li>
-              <li>RTO event; multiple T/O in windshear; no time for RJTT LDA W 22</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — LOFT</h4>
+          <ul>
+            <li>Scenario: F/CTL FLAPS LOCKED ECAM on flap retraction (jammed position 0 &lt; F ≤ 1); no reset available in air</li>
+            <li>QRH: LANDING WITH SLATS OR FLAPS JAMMED procedure; OVERWEIGHT LANDING procedure reviewed</li>
+            <li>WX at VHHH deteriorated below all LVO minima; VMMC weather suitable</li>
+            <li>IOC; ATC; ISM; PA</li>
+            <li>LW reduced below 187T (magic tap simulating fuel burn/holding)</li>
+            <li>Vectors to ZUH for VMMC RNP Z 16 (AR) — note: A330 FDP is MC808; arm FINAL APP only when MC808 is TO WPT</li>
+            <li>Vapp 166kt (Flysmart LDG FLAP LVR 2)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>VMMC RNP Z 16 (AR) — Flaps jammed, Flap Lever 2, Vapp 166kt</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — LOFT</h4>
+          <ul>
+            <li>Scenario: Speed tape disappeared on both PFDs on liftoff; unreliable speed memory items</li>
+            <li>QRH pitch/thrust table used to level off; identified one reliable ADR; Air Data switching</li>
+            <li>Hand-flown ILS 25L with manual thrust; landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional items</h4>
+          <ul>
+            <li>RTO event</li>
+            <li>Multiple T/O in windshear</li>
+            <li>No time for RJTT LDA W 22</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 25L VHHH (manual thrust, manual flying)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Degraded systems management under LOFT conditions. Methodical QRH application when the aircraft is abnormal and the weather is simultaneously against you. The Vapp figure for flaps jammed must be known from Flysmart — not estimated.</p>
@@ -1346,6 +1514,15 @@
         <div class="tip-line"><span class="tip-arrow">→</span>VMMC RNP Z 16 AR on A330: the FDP is MC808. Arm FINAL APP only when MC808 is the TO WPT. Not before.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Flaps jammed Vapp: 166kt for Flap Lever 2 configuration per Flysmart. Know this before the brief.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Unreliable speed: identify the reliable ADR early. Air Data switching recovers the display.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>VMMC RNP Z 16 (AR): A330 FDP is MC808 — arm FINAL APP only when MC808 is TO WPT</li>
+            <li>Flaps Jammed: Vapp 166kt per Flysmart for Flap Lever 2 config</li>
+            <li>Unreliable speed: identify reliable ADR early; Air Data switching recovers the display</li>
+            <li>No time for RJTT LDA W 22 — profile ran long due LOFT scenarios</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="006">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1387,30 +1564,69 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>V1 cut; returned ILS 16R RJAA; MAP nil visual</li>
-              <li>During initial climb: L/G door fault; ECAM applied and cleared</li>
-              <li>RJAA closed → RJTT; LOC 34L; fuel balance procedure en route; landed</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B / Additional</h4>
-            <ul>
-              <li>V1 cut; continued to RJAA; ILS approach nil visual → MAP; LOC approach → landed</li>
-              <li>Engine failure in cruise (standard)</li>
-              <li>LDA Z RJTT runway 22: instructor guided; BONDO 5000ft; FPA -3; at D1.1 disconnect AP and turn manually</li>
-              <li>Crosswind landing practice (multiple)</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: RJAA</li>
+            <li>Runway: 16R</li>
+            <li>SID: (positioned at hold point A1)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>V1 cut; returned for ILS 16R RJAA; MAP nil visual</li>
+            <li>During initial climb: L/G door fault; ECAM applied and cleared</li>
+            <li>RJAA closed — proceeded to RJTT; LOC 34L; landed; fuel balance procedure completed en route</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 16R RJAA (EO), Missed approach</li>
+            <li>LOC 34L RJTT</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional items</h4>
+          <ul>
+            <li>Engine failure in cruise (standard)</li>
+            <li>LDA Z RJTT runway 22: instructor guided; reposition to BONDO 5000ft; descend FPA -3; cross-check profile; at D1.1 disconnect AP, turn manually and land</li>
+            <li>Crosswind landing practice (multiple)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: RJTT</li>
+            <li>Runway: (not specified)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>V1 cut; continued to RJAA; ILS approach; nil visual → MAP; LOC approach → landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS RJAA (EO), Missed approach</li>
+            <li>LOC RJAA</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Same core competencies as the A330 P1 at the same airports. The LDA Z RJTT runway 22 is the standout additional item — disconnect timing is specific and late is penalised.</p>
         <div class="intel-label">DON'T WALK IN WITHOUT KNOWING</div>
         <div class="tip-line"><span class="tip-arrow">→</span>LDA Z RJTT 22: reposition to BONDO at 5000ft, FPA -3. At D1.1 — disconnect AP and turn manually. Do not leave it too late.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Notes from this session are brief — refer to ENTRY-004 (A330 P1 same period) for more detailed procedure notes on the same airports.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>LDA Z RJTT 22: reposition BONDO 5000ft; FPA -3; at D1.1 disconnect AP and turn manually — do not leave it too late</li>
+            <li>Brief notes only — less detail than A330 P1 entry (ENTRY-004)</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="005">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1452,27 +1668,58 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios (RJAA)</h4>
-            <ul>
-              <li>V1 cut ENG 1; press ALT at 1640ft; GEMIN hold (310° inbound; details on STAR page 20-2P)</li>
-              <li>ILS 16R (EO, manual thrust); nil sighting → go around</li>
-              <li>During MAP gear retraction: L/G NOT UPLOCK; gear cycling (max 250kt); cycled once → cleared</li>
-              <li>RJAA closed → divert RJTT; LOC 34L (all automatics); step descent GIINA→3200ft</li>
-              <li>10.8 IYQ: preselect FPA -3.0; 5.8 IHA: FPA PULL; visual ~2nm; landed</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios (RJTT)</h4>
-            <ul>
-              <li>V1 cut ENG 1; at 4nm HME ring request PM direct HME; TYLER hold (STAR 20-2S)</li>
-              <li>ILS 34L RJAA (EO, manual); nil sighting → go around (press ALT at 1640ft)</li>
-              <li>LOC 34L RJAA (all automatics); GIINA descent; visual ~2nm; landed</li>
-              <li>LVO additional: RVR 100M at 1500ft → go around (3A requires 200M TDZ)</li>
-              <li>Landing recovery (CN only): ILS 07L; 6 scenarios from 3nm; use sidestick takeover button early</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: RJAA</li>
+            <li>Runway: 16R</li>
+            <li>SID: (not specified — positioned at hold point A1)</li>
+            <li>Weather: Low visibility</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>V1 cut ENG 1 — no damage; press ALT at 1640ft (RJAA elevation 135ft; acceleration height 3000 AAL); radar vector direct GEMIN; hold at GEMIN (310deg inbound; hold details on separate STAR page 20-2P); mini-brief at hold entry (entry type, turn direction, max speed, 1-min leg); IOC alert; NITS+repeat to ISM; PA; FM setup + LPA; brief; approach checklist; report ready; direct KOALA then ILS 16R; manual thrust manual flying; nil sighting → go around (follow published MAP)</li>
+            <li>During MAP gear retraction: L/G GEAR NOT UPLOCK (nose gear door stuck open); carry ECAM → gear cycling required (max 250kt); cycled once → door closed → ECAM cleared</li>
+            <li>RJAA closed — divert RJTT; ILS then LOC 34L; radar vector to ARLON; ISM NITS+R; PA; FM; LPA; fuel imbalance QRH on the way; direct ARLON → approach (all automatics); step descent GIINA→3200ft; 10.8 IYQ: preselect FPA -3.0; 5.8 IHA: FPA PULL; visual ~2nm; landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 16R RJAA (EO, manual thrust/flying), Missed approach</li>
+            <li>LOC 34L RJTT (all automatics, step descent via ARLON–GIINA)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional items</h4>
+          <ul>
+            <li>LVO: RJAA ILS 16R still EO; RVR 100M at 1500ft (3A requires 200M TDZ, 150M MID) → go around at 1500ft</li>
+            <li>Landing recovery (CN only): ILS 07L; 6 scenarios from 3nm; FO flare issues, overcorrect, over-pitch; key points: (1) use sidestick takeover button, (2) don't wait too long, (3) not always a go-around</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: RJTT</li>
+            <li>Runway: 34L</li>
+            <li>SID: LAXAS 3A to 5000</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>V1 cut ENG 1 — no damage; at 4nm HME ring request PM direct HME; turning left ATC gave heading 195; after clean up A/P on; ECAM complete; continue to RJAA; weather good ILS 34L; radar vector to TYLER hold (STAR 20-2S); IOC; ISM NITS+R; PA; FM; LPA; if MAYDAY earlier — downgrade to PAN; after 1 lap cleared ILS approach; manual thrust manual flying; nil sighting → go around (press ALT at 1640ft)</li>
+            <li>Weather improved; radar vector downwind for LOC 34L; ISM NITS+R; PA; FM; fuel imbalance QRH; from GIINA cleared LOC (all automatics); step descent to 3200ft; 10.8 IYQ: FPA -3.0; 5.8 FPA PULL; visual ~2nm; landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 34L RJAA (EO, manual), Missed approach</li>
+            <li>LOC 34L RJAA</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Procedure knowledge specific to RJAA/RJTT — acceleration heights, hold chart location, LOC step descent profile, and GEMIN hold entry details. If the charts are not known before the session, the workload will be overwhelming.</p>
@@ -1482,6 +1729,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>RJTT EO SID via LAXAS 3A: at 4nm HME, request direct HME. STC confirmed obstacle clearance is adequate.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>LVO at RJAA: if RVR drops below minima at 1500ft, query it. Do not continue below category minima.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Landing recovery: use the sidestick takeover button early. Does not always require a go-around.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>RJAA and RJTT acceleration height is 3000 AAL; elevation 135ft; therefore press ALT at 1640ft</li>
+            <li>GEMIN hold details on separate STAR page 20-2P (not in the standard arrival chart)</li>
+            <li>RJTT E/O SID via LAXAS 3A: at 4nm HME, direct HME — STC confirmed obstacle clearance is adequate despite flying over built-up area</li>
+            <li>LVO: if RVR below minima at 1500ft, query again; do not continue below category minima</li>
+            <li>Landing recovery: use sidestick takeover button early; does not always require go-around</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="004">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1523,27 +1780,51 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios (ZSHC)</h4>
-            <ul>
-              <li>TCAS RA on right downwind; traffic 1 o'clock 200ft below 12nm; climb; cleared of conflict → V/S -500fpm</li>
-              <li>ILS Z 06 (manual, CAT1); land; exit C5</li>
-              <li>Pilot incapacitation: FO conducts autoland ILS Z 06; disconnect AP on runway</li>
-              <li>EGPWS (both pilots): ATC instruction → open descent into terrain; PULL UP TOGA; night repeat</li>
-              <li>Horizontal windshear at FL350; speed decay; PRESS ALT; V/S -1000fpm; speed recovery</li>
-              <li>UPRT (both pilots): nose low high speed; speedbrake required both times</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — LOS (Medical)</h4>
-            <ul>
-              <li>Pax severe chest pain between MEPEP and NUPNI on Y1 airway</li>
-              <li>Medlink contacted; approves ZLXN diversion; lock position on D-EDG at 120nm to NUPNI</li>
-              <li>MAYDAY; request direct XNN high speed + medical services; IOC; PA; LPA; cold weather corrections</li>
-              <li>Direct UPVOP for UPV08A arrival; ILS Z 11 ZLXN; inside valley request direct XN820; landed</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: ZSHC</li>
+            <li>Runway: 07</li>
+            <li>SID: OTK01D</li>
+            <li>Weather: Local training (1500M cleared, as per briefing)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>Radar vectors for right downwind; TCAS RA during downwind (traffic at 1 o'clock, 200ft below, 12nm); TCAS RA call "TCAS, I have control"; aircraft climbs; ATC call; cleared of conflict → V/S -500fpm (shallow) to resume level; "Cleared of Conflict, resuming 1500M"</li>
+            <li>ILS Z 06; cleared to 1200M; intercept heading; manual flying; land; exit C5; reset</li>
+            <li>Pilot incapacitation (both pilots): pre-set intercept heading 1200M; FO conducts autoland ILS Z 06; disconnect AP on runway</li>
+            <li>EGPWS (both pilots): ATC instruction to descend 3000ft → open descent into terrain; PULL UP TOGA on warning; night repeat — caution first, then warning; aim 10deg pitch, allow speed to accelerate, level off; contact ATC</li>
+            <li>Horizontal windshear (both pilots): speed decay FL350→FL370; PRESS ALT; V/S -1000fpm; speed recovery; MANAGE CLIMB; tell ATC</li>
+            <li>UPRT (both pilots): nose low high speed; speedbrake required both times</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS Z 06 ZSHC (manual, CAT1)</li>
+            <li>ILS Z 06 Autoland (pilot incapacitation)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure (LOS)</h4>
+          <ul>
+            <li>Route: Between MEPEP and NUPNI on Y1 airway</li>
+            <li>Scenario: Pax severe chest pain; Medlink contacted; divert to ZLXN</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>Pax medical: contact Medlink; Medlink approves ZLXN; nominate on D-EDG; lock position at 120nm to NUPNI for FM programming; activate secondary; fix pages with distance rings for step descent; Terrain on both sides; MAYDAY call; request direct XNN high speed + medical services; IOC alert; PA; LPA; cold weather corrections; brief; direct UPVOP for UPV08A arrival; ILS Z 11; inside valley request direct XN820 to save time; landed; stop on runway</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS Z 11 ZLXN (LOS diversion, medical emergency)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Ability to compress a complex medical diversion workload — FM programming, step descent planning, terrain awareness, Medlink communications — without losing control of the flight path. EGPWS recovery technique is also examined: aim 10 degrees pitch first, let speed build, level off. No abrupt inputs.</p>
@@ -1553,6 +1834,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>ZLXN diversion: lock your position on D-EDG at 120nm out. Buys time to programme the FM without pressure.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Inside the valley on approach: request direct XN820. ATC approved it in this session.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Briefing included TCAS, EGPWS, and pilot incapacitation questions — operational questions were asked.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>After TCAS cleared of conflict, shallow the return descent to -500fpm (not the commanded -1000fpm) to avoid nuisance RA</li>
+            <li>EGPWS night: aim 10deg pitch first, allow speed to build, then level off — do not pull abruptly</li>
+            <li>LOS diversion: lock position early on D-EDG (at 120nm) to buy time for FM programming</li>
+            <li>ZLXN valley approach: request shortcut (direct XN820) inside valley to save time — ATC approved</li>
+            <li>Briefing contained TCAS, EGPWS and pilot incap questions — several operational questions asked</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="003">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -1594,27 +1885,56 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>RTO: wheel well fire at ~100kt; park brake; MAYDAY; crew at stations; checklist is airborne only</li>
-              <li>ENG FIRE between V1 and VR; fire out after one bottle; PAN; EO07R SID (include track in call)</li>
-              <li>ILS 07L CAT3B; LAND3→LAND2 downgrade at 1500ft → CAT3A 50ft RA; MAP nil sighting</li>
-              <li>RNP Y 25L (AR); GPS failure at ~2000ft; monitor ANP drift; UNABLE RNP → go around</li>
-              <li>VMMC RNP 34 via PAPA; manual landing</li>
-              <li>VMMC ILS Z 34 CAT2 Autoland; A/T INOP; NOTAM: disconnect AP after nosewheel touchdown</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios (MFM)</h4>
-            <ul>
-              <li>ENG FIRE between V1 and VR; radar vectors south; ILS 07R → MAP</li>
-              <li>RNP Z 07R VHHH; manual landing</li>
-              <li>Evacuation: ATC reports flames from shutdown engine on landing roll; slow and thorough; second bottle may still be available; evacuate opposite side to engine fire</li>
-              <li>Post-PC: KJFK RNAV (RNP) RWY 13L — manual landing</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: 07R</li>
+            <li>SID: OCEAN 2A</li>
+            <li>Weather: LVO</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — Wheel well fire at approx 100kt; park brake set; MAYDAY to ATC; crew at stations; no wheel well fire checklist on ground (airborne only); exercise complete once items stated</li>
+            <li>Reposition — Engine FIRE between V1 and VR; standard calls; fly to 400ft; confirm failure; memory items; PM bring thrust lever back slowly; fire out after one bottle; PAN call; execute EO07R SID (ATC unaware — include track in emergency call)</li>
+            <li>ILS 07L CAT3B; LAND3→LAND2 downgrade at 1500ft → revert to CAT3A 50ft RA; MAP nil sighting; EO accel alt 2500ft on MAP (07L); max speed 200kt to VH727; fuel imbalance checklist during MAP; planned slight overbalance strategy</li>
+            <li>RNP Y 25L (AR); GPS failure on final (~2000ft); monitor ANP drift (slow drift = feature to allow visual); TERR POS (not go-around item); UNABLE RNP → go around; MAP on runway track then radar vectors</li>
+            <li>VMMC RNP 34 via PAPA; nothing abnormal; runway waypoint so F/Ds stay on; manual landing</li>
+            <li>Reposition 6nm final — VMMC ILS Z 34 CAT2 Autoland; A/T INOP; note NOTAM: disconnect AP after nosewheel touchdown</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 07L CAT3B (LVO), Missed approach</li>
+            <li>RNP Y 25L (AR), GPS failure → Missed approach</li>
+            <li>VMMC RNP 34 Manual landing</li>
+            <li>VMMC ILS Z 34 CAT2 Autoland (A/T INOP)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Training items (post-PC)</h4>
+          <ul>
+            <li>KJFK RNAV (RNP) RWY 13L — manual landing</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: VMMC (MFM)</li>
+            <li>Runway: 16</li>
+            <li>SID: SOUSA 2P</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>Engine FIRE between V1 and VR (same as Profile A); radar vectors south before approach</li>
+            <li>ILS 07R VHHH; MAP (EO accel alt 1400ft; no extra thrust needed but available)</li>
+            <li>RNP Z 07R VHHH; manual landing; evacuation — ATC reports flames from previously shutdown engine on landing roll; stop on runway; CAPT takes control; evacuation checklist (slow and thorough); consider second fire bottle if only one used; evacuate opposite side to engine fire</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">CRM under sustained pressure across two profiles. Correct emergency call content — include the EO SID track, ATC won't know your company procedures. Correct downgrade management during LVO approach. Evacuation discipline at the end.</p>
@@ -1624,6 +1944,17 @@
         <div class="tip-line"><span class="tip-arrow">→</span>Include the EO SID track when you call ATC. They have Jeppesen charts but not your company EO SIDs.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>VMMC ILS Z 34: NOTAM in effect — disconnect AP after nosewheel touchdown.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Evacuation: slow and thorough. Second fire bottle may still be available. Evacuate on the opposite side to the fire.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Wheel well fire checklist is airborne only — do not apply on the ground</li>
+            <li>PAN (not MAYDAY) once fire out and aircraft stable</li>
+            <li>Include EO SID track info in emergency call to ATC — ATC has Jepp charts but may not know company EO SIDs</li>
+            <li>VMMC ILS Z 34: NOTAM — disconnect AP after nosewheel touchdown</li>
+            <li>On evacuation: be slow and thorough; may still have second fire bottle available</li>
+            <li>This was fully automatic PC with TAC throughout</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="002">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">

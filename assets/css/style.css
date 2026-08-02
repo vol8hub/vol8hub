@@ -356,6 +356,23 @@ footer {
   flex-shrink: 0;
 }
 
+/* Standout tips */
+.standout-block {
+  margin-top: 1rem;
+}
+.standout-list {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  padding-left: 1.2rem;
+}
+
+/* Spacing for stacked Layer 2 sections (Profile A/B departure, scenarios, approaches) */
+.profile-block {
+  margin-bottom: 1.25rem;
+}
+
 /* Pilot notes placeholder */
 .pilot-notes-placeholder {
   border-top: 1px solid var(--border);

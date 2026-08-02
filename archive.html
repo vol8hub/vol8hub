@@ -1665,28 +1665,58 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>RTO: tire damage at &gt;100kt; ECAM TIRE PRESS; park brake; crew at stations</li>
-              <li>ENG FIRE in climb at ~500ft; fire out after first bottle; insert E/O SID in 30-second break</li>
-              <li>ILS 07L CAT3B (LVO, EO); hold at LIMES; Dual RA failure → downgrade to CAT2 → go around (E/O accel alt 2520ft)</li>
-              <li>RNP (Y) 25L AR; RNP capability lost on final → go around; inform ATC straight-ahead track, need 200kt</li>
-              <li>Divert MFM; RNP (FLS) 34 via PAPA; no VIA; Config 3; G/A alt 6000ft</li>
-              <li>MFM CAT2 ILS 34(Z) autoland; disconnect after nosewheel touchdown</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B / Training Items</h4>
-            <ul>
-              <li>ENG FIRE after liftoff from MFM 16; one bottle; ILS 07R → go around nil sighting</li>
-              <li>RNP Z(AR) 07R; manual landing; EVAC on rollout (smoke from shutdown engine)</li>
-              <li>EVAC switch location critical; horn silence inop in sim</li>
-              <li>SO: Automatic Emergency Descent solo at FL370; ~9000fpm; set QNH after level off</li>
-              <li>RNP AR 13L KJFK: configure early; hazy — look for runway not landmarks</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runway: 07R</li>
+            <li>SID: OCEAN 2A RNAV (GNSS)</li>
+            <li>Weather: LVO conditions</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — Tire damage at &gt;100kt, vibration and directional control issues; ECAM TIRE PRESS; exercise complete after parking brake set, crew at stations, ATC advised</li>
+            <li>Reposition — Engine FIRE in climb at approx 500ft; fire out after first bottle; insert E/O SID in 30-second break</li>
+            <li>ATC vectors back; LVO ILS CAT3B 07L; hold at LIMES; Dual RA failure on final → downgrade to CAT2 → go around (E/O accel alt 2520ft)</li>
+            <li>Hold at GUAVA; RNP (Y) 25L AR; RNP capability lost on final → go around → inform ATC of straight-ahead track, need 200kt</li>
+            <li>Divert to MFM; RNP (FLS) 34 — insert no VIA, starts at PAPA; missed approach climb gradient restriction, Config 3; G/A altitude 6000ft</li>
+            <li>Reposition — MFM CAT2 ILS 34(Z) autoland; disconnect after nosewheel touchdown</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 07L CAT3B (LVO), Missed approach</li>
+            <li>RNP (Y) 25L (AR), GPS failure → Missed approach</li>
+            <li>RNP (FLS) 34 MFM</li>
+            <li>ILS Z 34 MFM CAT2 Autoland</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Training items (post-PC)</h4>
+          <ul>
+            <li>SO: Automatic Emergency Descent (solo) at FL370; AED gives ~9000fpm; fly to level off, cabin calls, set QNH</li>
+            <li>Reposition to COVIR 3000ft: RNP AR 13L KJFK; SO PF; configure early; hazy conditions, look for runway not landmarks; disconnect wings level (below minima), benign winds</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: MFM</li>
+            <li>Runway: 16</li>
+            <li>SID: SOUSA 2P RNAV (GNSS)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Scenarios (in sequence)</h4>
+          <ul>
+            <li>Engine FIRE after liftoff; extinguished after one bottle; E/O procedure (overridden by vectors)</li>
+            <li>ILS 07R via LIMES hold; go around nil sighting</li>
+            <li>RNP Z(AR) 07R; manual landing</li>
+            <li>On rollout — ATC reports smoke from shutdown engine; stop on runway; EVAC checklist; clarify smoke persisting before EVAC order; EVAC switch location important (horn silence inop in sim)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Managing a degrading LVO situation — downgrading autoland categories in real time — while also handling an EO missed approach. Evacuation discipline at the end of a high-workload session when crew fatigue is a factor.</p>
@@ -1696,6 +1726,19 @@
         <div class="tip-line"><span class="tip-arrow">→</span>MFM RNP (FLS) 34: insert no VIA. It starts at PAPA. Check missed approach climb gradient weight limit before the approach.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>MFM ILS Z 34: turn down HUD and dome light before minimums or you won't see the runway.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Evacuation: don't rush it. Clarify smoke is persisting before ordering EVAC. Systematic application under stress is the assessment.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>E/O accel alt is 2520ft — do not miss this</li>
+            <li>After RNP cap lost at 25L, go straight ahead and tell ATC you need 200kt (managed missed speed stays at 185kt)</li>
+            <li>MFM RNP (FLS) 34: insert no VIA; starts at PAPA; check missed approach climb gradient weight limit</li>
+            <li>MFM ILS Z 34: turn down HUD and dome light or you won't see anything at minimums</li>
+            <li>Don't evacuate with engines running — systematic application and stress management is the key</li>
+            <li>EVAC switch location discussed in briefing becomes critical</li>
+            <li>AED: don't forget to set QNH after level off</li>
+            <li>KJFK RNP AR 13L: configure early; hazy conditions — look for runway, not landmarks</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="001">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">

@@ -295,7 +295,7 @@
 <!-- HERO -->
 <section class="archive-hero">
   <div class="archive-hero-inner">
-    <div class="archive-count">19 entries · A320 · A330 · A350 · B777 · B777ER</div>
+    <div class="archive-count">20 entries · A320 · A330 · A350 · B777 · B777ER</div>
     <h1>Sim Archive</h1>
     <p>Peer-submitted check sessions. Filter by cycle, fleet, or year. Expand any entry to read in full.</p>
   </div>
@@ -346,7 +346,7 @@
         </div>
       </div>
     </div>
-    <div class="results-count" id="resultsCount">Showing all 19 entries</div>
+    <div class="results-count" id="resultsCount">Showing all 20 entries</div>
   </div>
 
   <!-- ENTRY LIST -->
@@ -376,27 +376,36 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>Turbulence during descent; high in profile during PUCKY arrival</li>
-              <li>RNP AR 13L did not sequence from COVIR — had to enter manually; direct COVIR; one hold</li>
-              <li>After FAF: braking action POOR → go around; sidestep to 13R discussed in debrief</li>
-              <li>After PF swap: further hold; ATC uncertain on duration; only 7 minutes of fuel; hold max 210kt</li>
-              <li>RNP AR CAPABILITY DOWNGRADED on final; missed approach</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>Engine fire after airborne (NOT typical V1 fire — aircraft will NOT remain in SRS mode)</li>
-              <li>Both pilots elected NOT to pull HDG at 400ft for EOSID; continued 520° as per SID</li>
-              <li>TOGA not available below F speed with derated T/O</li>
-              <li>DTO to MCT: pull back to CLB first, then to MCT — cannot go direct</li>
-              <li>Profile B ends with RTO due MLG fire; evacuation checklist built in</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH (as recorded by contributor — likely KJFK based on procedures flown)</li>
+            <li>Arrival scenario: PUCKY arrival (descent phase)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>Turbulence during descent; being high in profile during PUCKY arrival</li>
+            <li>RNP AR 13L did not sequence from COVIR → had to enter manually; direct COVIR; one hold</li>
+            <li>After FAF: braking action reported POOR → go around; note: sidestep to 13R was discussed in debrief as an option (WX not ideal); inform ISM and pax</li>
+            <li>After PF swap: further hold; ATC uncertainty about hold duration; only 7 minutes of fuel; hold maximum 210kt; additional approach</li>
+            <li>RNP AR CAPABILITY DOWNGRADED on final; missed approach</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Manoeuvres</h4>
+          <ul>
+            <li>Engine fire after airborne (NOT typical V1 fire — be aware aircraft will not remain in SRS mode after airborne fire initiation)</li>
+            <li>Both pilots elected NOT to pull HDG at 400ft for EOSID; continued 520° (as per SID)</li>
+            <li>Note: TOGA not available below F speed with derated T/O (which is really low, lower than V1); for MCT after clean up — if still in DTO, pull levers back to CLB first, then back to MCT</li>
+            <li>Good practice: advise ATC cannot maintain 2500ft altitude restriction due to engine failure</li>
+            <li>Profile B ends with RTO due MLG fire; checklist includes emergency evacuation</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <p class="examiner-text">(Not specified — manoeuvres focus; RTO and evacuation on runway)</p>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Fuel management discipline in the hold — 7 minutes is stated explicitly. RNP AR capability awareness under pressure — when to go-around, when to continue. The airborne engine fire (not V1) catches crews because SRS drops out unexpectedly. The DTO to MCT thrust sequence is procedural and specific.</p>
@@ -410,6 +419,20 @@
         <div class="tip-line"><span class="tip-arrow">→</span>Advise ATC immediately that you cannot maintain the 2500ft altitude restriction after engine failure. Do not wait until levelled.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Braking action POOR: consider sidestep to 13R as an option. Brief it in the approach plan.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>MLG fire RTO: the evacuation checklist is built into the RTO checklist. Do not skip it.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>RNP AR 13L: if it doesn't sequence from COVIR automatically, enter manually and direct COVIR — don't wait</li>
+            <li>Hold maximum speed: 210kt — note this and brief it before entering</li>
+            <li>After PF swap in hold: brief the new PF on fuel state and time limit before they take control</li>
+            <li>Engine fire after airborne (not V1): aircraft will NOT stay in SRS mode — be ready to manage manually</li>
+            <li>TOGA not available below F speed with derated T/O (F speed is very low, potentially below V1 in some configs)</li>
+            <li>DTO to MCT sequence: if still in DTO thrust setting, must pull back to CLB first before selecting MCT — cannot go direct DTO to MCT</li>
+            <li>Advise ATC immediately of inability to maintain altitude restrictions after engine failure — don't wait until levelled off</li>
+            <li>Braking action POOR go-around: consider sidestep to alternate runway as option; brief this in the approach plan</li>
+            <li>MLG fire RTO: checklist includes evacuation — it is built in, don't skip it</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="019">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -423,6 +446,150 @@
         </div>
         <div class="card-body-footer">
           <span class="source-tag">Source: Direct email submission · Seat: Captain + FO</span>
+          <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ENTRY 020 — A350 RT 6R Jul 2026 ══════════════════════════════ -->
+    <div class="entry-card" id="entry-020" data-entry-id="020" data-slug="a350-rt-6r-2026-07-zlxy"
+         data-cycle="6R" data-fleet="A350" data-year="2026">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-fleet-col">
+          <div class="card-fleet-box">A350</div>
+          <div class="card-cycle-lbl">RT6</div>
+        </div>
+        <div class="card-meta">
+          <div class="card-badges">
+            <span class="badge-fleet">A350</span>
+            <span class="badge-check">RT · 6R</span>
+            <span class="badge-unverified">Unverified</span>
+          </div>
+          <div class="entry-city">Jul 2026 &nbsp;&middot;&nbsp; Xi'an / Cebu</div>
+          <p class="entry-summary">A350 6R (PC Day 2) operating across two cities. Profile A is based entirely at Xi'an Xianyang (ZLXY) — cold weather operations, contaminated runway, LOC Z 05L at -10°C with cold weather altimetry corrections. Manoeuvres Validation covers crew incapacitation, UPRT, TCAS, and EGPWS events on the NSH1Z arrival. Profile B shifts to Cebu Mactan (RPVM) for the Scenario-Based Training phase — a line-oriented scenario inbound on the BATAY 3P arrival with multiple possible commencement points. Two SBT scenarios covered: the first involves being held high throughout the arrival, radar vectors to RNP 04R, and a go-around due being high on approach with all-whites PAPI at 500ft. The second involves a runway change from 04R to 04L at 7,000ft on descent due to a disabled aircraft. Final manoeuvres training covers an RNP approach converted to visual at 3nm for both pilots with differing crosswind components.</p>
+          <div class="card-tags-row">
+            <span class="tag">COLD WX T/O</span><span class="tag">COLD WX ALTIMETRY</span><span class="tag">LOC APPROACH</span><span class="tag">CONTAMINATED RUNWAY</span><span class="tag">CREW INCAPACITATION</span><span class="tag">UPRT</span><span class="tag">TCAS</span><span class="tag">EGPWS</span><span class="tag">SBT LOFT</span><span class="tag">HOLD</span><span class="tag">GO-AROUND</span><span class="tag">RUNWAY CHANGE</span><span class="tag">CROSSWIND LANDING</span><span class="tag">VISUAL APPROACH</span>
+          </div>
+          <div class="entry-expand-hint">Tap to read full session</div>
+        </div>
+        <div class="card-toggle entry-chevron">›</div>
+      </div>
+      <div class="card-body">
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: ZLXY (Xi'an Xianyang)</li>
+            <li>Runway: 05L</li>
+            <li>SID: (not stated — cold WX departure flown to clean configuration)</li>
+            <li>Weather: -10°C, 5mm snow, contaminated runway, derate T/O</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>Briefing room: T/O performance and cold weather altimetry calculation for ZLXY at -10°C; 5mm snow; derate selected; F-speed vs V2+10 noted (no issue on A350)</li>
+            <li>Setup at hold point with engines running; Profile A = Junior Pilot PF, Profile B = Senior Pilot PF</li>
+            <li>Junior pilot single pilot: crew incapacitation, UPRT (horizontal windshear and nose-low upset recovery x2), TCAS event. Senior pilot in back seat.</li>
+            <li>Senior pilot rejoins: EGPWS events on ZLXY NSH1Z arrival after XY908; 2 events per pilot — 1 with terrain deselected (GPWS caution and warning only), 1 normal EGPWS; vectors given with descent clearance to 2400m expedite; recover to above MSA after each event</li>
+            <li>Junior pilot to back seat; senior pilot takes their turn at incapacitation, UPRT and TCAS; junior pilot rejoins for remainder of Profile A</li>
+            <li>Cold temperature altimetry departure ZLXY 05L — flown to clean configuration; repositioned for LOC Z 05L approach; at 12nm already at 4100ft (corrected FAF altitude at -10°C); vertical intercept of profile at FAF</li>
+            <li>A350: deselect G/S on Nav Aid page; A330: LOC/FPA per FCTM; A330 consider cold weather corrections to DME altitude checks on chart</li>
+            <li>Exercise complete after landing</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>LOC Z 05L ZLXY (cold weather, contaminated runway, -10°C corrections)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — SBT Departure</h4>
+          <ul>
+            <li>Airport: RPVM (Cebu Mactan)</li>
+            <li>Runway: 04R (initial), 04L (second scenario)</li>
+            <li>SID: (not stated)</li>
+            <li>Weather: Low cloud base; METAR RPVM 13010KT 110V200 2000 -RA OVC012 35/33 Q1003 (from official briefing flight folder)</li>
+            <li>Setup: Standard repos en route, set RPVM 04R, night. SBT A = Senior Pilot PF, SBT B = Junior Pilot PF.</li>
+            <li>NOTE: SBT scenario is instructor-selected based on crew TPMS data. The two scenarios below are what occurred in this specific session — other crews may receive different scenarios.</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — SBT Scenario 1 (in sequence)</h4>
+          <ul>
+            <li>RPVM BATAY 3P arrival at FL200 from overhead BATAY — commencement point confirmed by instructor in briefing</li>
+            <li>Held high throughout the arrival; consistently had to request descent and approach clearance from ATC</li>
+            <li>Eventually given radar vectors to intercept RNP 04R</li>
+            <li>Low cloud base; visual with runway at 500ft; 4 whites on PAPI — too high on approach</li>
+            <li>Go-around at minima; flown to clean; exercise complete</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — SBT Scenario 2 (in sequence)</h4>
+          <ul>
+            <li>Same RPVM BATAY 3P arrival; en route to TONYO at 10,000ft</li>
+            <li>On descent passing 7,000ft: ATC advises 04R no longer available — disabled aircraft on runway; runway change to 04L</li>
+            <li>Quick brief to capture runway change; approach checklist re-done for 04L</li>
+            <li>Weather checked — VMC required for 04L per NOTAM but ceiling low; attempted approach regardless and managed to get visual</li>
+            <li>Landed 04L</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Manoeuvres Training (in sequence)</h4>
+          <ul>
+            <li>Takeoff manually flown to clean configuration</li>
+            <li>Reposition for RNP approach converted to visual at 3nm final — both pilots</li>
+            <li>FO: 15kt crosswind; CN: 30kt crosswind</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>RNP 04R RPVM (SBT Scenario 1), Go-around (4 whites PAPI, too high)</li>
+            <li>RNP 04L RPVM (SBT Scenario 2), Landed (low ceiling, VMC borderline)</li>
+            <li>RNP converted to visual 3nm RPVM 04R (Manoeuvres Training, both pilots)</li>
+          </ul>
+        </div>
+        <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
+        <p class="examiner-text">Cold weather altimetry discipline on the LOC Z 05L — specifically whether crews apply corrections correctly and whether they know the limitation regarding China ATC. In the SBT phase, the instructor is watching for structured decision-making in a degrading arrival environment: being held high, managing fuel, making runway change decisions under time pressure. The SBT scenario is selected based on each crew's TPMS competency data — it will not be the same for every crew.</p>
+        <div class="intel-label">DON'T WALK IN WITHOUT KNOWING</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>ZLXY cold weather LOC Z 05L: Ops 8.1.1.4 states China ATC does not apply cold weather corrections. Ask for higher altitudes (e.g. FAF 1200m → request 1500m). May not always be given in China. But be aware of this for enhances Situational Awareness.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>A350: deselect G/S on the Nav Aid page for the LOC Z 05L. A330: flown in LOC/FPA per FCTM.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>Cold WX departure ZLXY 05L: beware F-speed vs V2+10. No issue on the A350 but worth checking for the A330.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>5mm of snow → derate T/O. Know your limitations for derate takeoff, limitation for Flex take off on contaminated runways and awareness should the QNH change.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>EGPWS: two events each — one with terrain. EGWPS memory Items. Both on the NSH1Z arrival after XY908. Recover to above MSA after each event.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>Cold temperature altimetry correction. Expect At 12nm on the LOC Z 05L, expect to already be at 4100ft — this is the corrected FAF altitude at -10°C. Vertical intercept of the profile occurs at the FAF. Will you modify the FM profile?</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>A330 LOC/FPA: consider applying cold weather corrections to the DME altitude checks on the chart as a cross-reference.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>RPVM RNP 04L/22R: per NOTAM, these approaches require VMC conditions with runway sighted at the FAF. RNP approaches as per FCTM.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>SBT profile B is not fixed — over 60 possible scenarios exist. The instructor selects based on your TPMS data. Do not expect the same profile as a colleague.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>RPVM terrain awareness: beware terrain surrounding the airport, especially if weather avoidance becomes a factor during the SBT.</div>
+        <div class="tip-line"><span class="tip-arrow">→</span>Final manoeuvres training: RNP approach converted to visual at 3nm. FO gets 15kt crosswind, CN gets 30kt crosswind.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <p>This session is designed around one competency above all else: terrain awareness. ZLXN and RPVM isn't selected by accident — ZLXY especially sits in a valley ringed by terrain on three sides, and cold weather altimetry corrections compound the exposure. The EGPWS events at ZLXY, the LOC approach with corrected altitudes, and the SBT scenario at RPVM are all expressions of the same training intent. Once you see that intent, the rest is just procedural and task management. Other pointers for this sim:</p>
+          <ul class="standout-list">
+            <li><strong>Incapacitation — Consider if Autoland is available, request protection.</strong></li>
+            <li><strong>EGPWS: Verbalising above MSA during the recovery, show Situational Awareness.</strong></li>
+            <li><strong>UPRT is training. Don't forget mouth music for UPRT.</strong></li>
+            <li><strong>RPVM terrain: treat all weather deviations with terrain awareness.</strong></li>
+            <li><strong>Manoeuvres training crosswind: FO gets 15kt, CN gets 30kt.</strong></li>
+            <li><strong>Anticipate De-Icing.</strong> "Anticipate de-icing at ZLXY — 5mm snow means contaminated runway performance applies. Derate T/O is the call, consider the threats and limitations associate with it.</li>
+          </ul>
+        </div>
+        <p class="source-tag">Contributor: The Kiwi</p>
+        <div class="pilot-notes-placeholder" data-entry-id="020">
+          <p class="pilot-notes-label">PILOT NOTES</p>
+          <p class="pilot-notes-body">
+            Something to add to this session?
+            <a href="submit.html">Submit a note →</a>
+          </p>
+        </div>
+        <div class="difficulty-placeholder" data-entry-id="020">
+          <span class="difficulty-label">DIFFICULTY</span>
+          <span class="difficulty-value">Not yet rated</span>
+        </div>
+        <div class="card-body-footer">
+          <span class="source-tag">Source: Direct WhatsApp submission · Seat: Both pilots</span>
           <a href="submit.html" class="add-entry-btn">+ Add to this entry</a>
         </div>
       </div>
@@ -452,35 +619,33 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>Arrives in STAR for 25R; runway change to 07L</li>
-              <li>TCAS event on approach</li>
-              <li>ATC advises previous aircraft made hard landing → runway inspection → go around</li>
-              <li>WX assessment: VHHH 07L only; Shenzhen one runway; Kaohsiung OK but 2T extra fuel; Macau OK</li>
-              <li>Hold to wait for runway inspection; planned one more approach then divert to Macau; decision made</li>
-              <li>Predictive and reactive windshear exercises</li>
-              <li>Approach to stall in landing config</li>
-              <li>UPRT: low energy scenario; stall in cruise</li>
-              <li>Max TOW on 07C with engine failure in the red zone</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Key Manoeuvres</h4>
-            <ul>
-              <li>Runway change mid-arrival</li>
-              <li>TCAS resolution advisory</li>
-              <li>Go around — runway inspection in progress</li>
-              <li>Multi-option diversion decision under fuel pressure</li>
-              <li>Hold fuel planning with hard limit</li>
-              <li>Predictive and reactive windshear</li>
-              <li>Low energy UPRT</li>
-              <li>Stall in cruise configuration</li>
-              <li>3RS — max TOW 07C red zone engine failure</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Scenario: Arrives in STAR for 25R</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>Runway change from 25R to 07L</li>
+            <li>TCAS event</li>
+            <li>On approach: ATC advises previous aircraft made hard landing → runway inspection → go around</li>
+            <li>WX assessment: VHHH shitty with only 07L available; Shenzhen bad WX with one runway only available; Kaohsiung OK but would arrive with 2 tonnes extra (fuel); Macau OK</li>
+            <li>Entered hold to wait for runway inspection; planned one more approach then divert to Macau; decision made; exercise complete</li>
+            <li>Predictive and reactive windshear exercises</li>
+            <li>Approach to stall in landing config</li>
+            <li>UPRT: low energy scenario (use V/S, off-track and talk to ATC); stall in cruise</li>
+            <li>Max TOW on 07C with engine failure in the red zone</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>Approach to 07L VHHH (disrupted by runway inspection go-around)</li>
+            <li>Diversion decision to Macau (hold and reassess)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Structured decision-making under time and fuel pressure. Can the crew lay out options clearly — available runways, fuel state, alternates — and commit at the right moment? The low energy UPRT tests whether the crew acknowledges being off-track and talks to ATC, rather than trying to fix it silently.</p>
@@ -488,6 +653,15 @@
         <div class="tip-line"><span class="tip-arrow">→</span>In the hold waiting for runway inspection: set a mental fuel limit before you enter. Know the number at which you divert regardless.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Low energy UPRT: use V/S, acknowledge being off-track out loud, call ATC early. Do not try to fix it silently.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Max TOW at 07C red zone: know your fuel and weight state before departure. It changes the EO trajectory and timeline significantly.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Decision making under fuel/weather/runway pressure: structure the options clearly (available runways, fuel state, alternates) before committing</li>
+            <li>When in hold waiting for runway inspection: set a mental fuel limit for divert decision</li>
+            <li>Low energy UPRT: use V/S, acknowledge being off-track, talk to ATC early — don't try to fix it silently</li>
+            <li>Max TOW 07C red zone: know the fuel/weight state before departure — being max TOW changes the EO trajectory and timeline significantly</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="018">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -529,31 +703,63 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios (OMDW)</h4>
-            <ul>
-              <li>RTO — reverser unlocked just after 100kt call; discuss post-RTO actions</li>
-              <li>V1 cut; severe damage; levelled at 4000ft; VIP restrictions at other fields → back to OMDW</li>
-              <li>ILS 30 LVO CAT3B (EO); G/S failure at ~1700ft → missed approach</li>
-              <li>RAVEC to OMAA; direct TUGVA hold (306° inbound, RH pattern); hold cancelled</li>
-              <li>RNP Y(AR) 31R OMAA (EO); nil sighting → missed approach</li>
-              <li>LOC/DME 31R OMAA (EO); visibility improves; landed</li>
-              <li>Reposition: all-engines LVO CAT3B 31R OMAA; landed; check LVO exits on FD Pro</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios (OMAA)</h4>
-            <ul>
-              <li>RTO by Pilot B</li>
-              <li>V1 cut with likely severe damage</li>
-              <li>ILS 31R OMAA (EO); missed approach</li>
-              <li>Hold at TUGVA — cancelled before arriving at fix</li>
-              <li>RNP Y(AR) 31R OMAA; missed approach (nav failure/downgrade)</li>
-              <li>LOC/DME 31R OMAA; landed</li>
-              <li>Fuselage fire on landing roll → evacuation</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: OMDW</li>
+            <li>Runway: 30</li>
+            <li>SID: DAMVO 4L</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO — reverser unlocked (or engine failure) just after 100kt call; stop; actions; discuss post-RTO actions (taxi?, brakes, NITS); reposition</li>
+            <li>Reposition — V1 cut; severe damage; levelled at 4000ft; WX and VIP restrictions at other fields → back to OMDW; RAVEC ILS 30 LVO CAT3B; missed approach G/S failure at ~1700ft</li>
+            <li>RAVEC for OMAA at 4000ft; direct TUGVA; hold (306° inbound, RH pattern); program and enter hold; cancel hold; clear RNP Y(AR) OMAA 31R; missed approach nil sighting; RAVEC LOC/DME 31R OMAA; visibility improves; land 31R</li>
+            <li>Reposition for all-engines LVO CAT3B 31R OMAA; land and taxi off to first taxiway; check LVO exits on FD Pro</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 30 OMDW (LVO CAT3B, EO), Missed approach (G/S failure 1700ft)</li>
+            <li>RNP Y(AR) 31R OMAA (EO), Missed approach (nil sighting)</li>
+            <li>LOC/DME 31R OMAA (EO), Landed</li>
+            <li>ILS CAT3B 31R OMAA (all engines), Landed</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: OMAA</li>
+            <li>Runway: 31L</li>
+            <li>SID: TULAN 2K</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>RTO by Pilot B</li>
+            <li>Reposition — V1 cut with likely severe damage</li>
+            <li>RAVEC for ILS 31R OMAA; missed approach</li>
+            <li>Program hold at TUGVA — hold cancelled before arriving at TUGVA</li>
+            <li>Clear RNP Y(AR) OMAA 31R; missed approach (nav failure or downgrade)</li>
+            <li>RAVEC for LOC/DME 31R OMAA; landed</li>
+            <li>Fuselage fire on landing roll → evacuation</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Note</h4>
+          <p class="examiner-text">Profile B possibly changed to LOC/DME OMAA 31R (not OMDB). If extra time: RJFF RNP 34R — note 4th floor sim has original 34 only; it is now 34R; sim on 1/F status unclear.</p>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 31R OMAA (EO), Missed approach</li>
+            <li>RNP Y(AR) 31R OMAA, Missed approach (nav failure)</li>
+            <li>LOC/DME 31R OMAA, Landed</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">G/S failure during a CAT3B is an immediate missed approach — no hesitation. TUGVA hold entry must be briefed early; the hold can be cancelled before arrival. LOC/DME at OMAA — confirm it is OMAA not OMDB if the profile changes.</p>
@@ -563,6 +769,17 @@
         <div class="tip-line"><span class="tip-arrow">→</span>G/S failure at 1700ft during CAT3B: missed approach immediately. Do not attempt to continue.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>LVO exits at OMAA: check on FD Pro before arrival.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>LOC/DME approach: confirm OMAA 31R, not OMDB, if profile changes at briefing.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Green dot 197kt — SID speed restrictions not a factor at this green dot speed; no need to manage speed actively</li>
+            <li>TUGVA hold: 306° inbound, RH pattern — brief early so ready when cleared; hold can be cancelled before reaching fix</li>
+            <li>G/S failure at 1700ft during CAT3B: missed approach — don't attempt to continue</li>
+            <li>LVO exits at OMAA: check on FD Pro before arrival</li>
+            <li>Profile B note: be aware LOC/DME OMAA 31R (not OMDB) if profile changes; verify when briefed</li>
+            <li>RJFF RNP 34R: confirm sim floor before briefing (original sim may show 34 not 34R)</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="017">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -604,27 +821,58 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>Runway change from 34L during taxi at M5; departure checklist completed; LVO 150m vis</li>
-              <li>Green HYD overheat ECAM at acceleration alt; followed by Low LVL Y HYD</li>
-              <li>Level off at 5000ft; vectors to PAMBI hold; ILS 34L; landed; stopped on runway</li>
-              <li>UPRT at FL350; high altitude stall</li>
-              <li>RNP 34L with wrong QNH; sim frozen at MDA — instructional freeze to show wrong QNH appearance</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>T/O 34L; passing 8000ft: HYD ENG 2 Y PMP Fault; then F/CTL Stabiliser fault</li>
-              <li>Elected to return RKSI; hold at PAMBI; fuel penalty tables in FCOM (up to 65%)</li>
-              <li>ILS 34L; UPRT; more stalls</li>
-              <li>RNP 34L wrong QNH — this time to a go-around</li>
-              <li>RJFF 34 visual: Captains at night 15kt crosswind; S/O daytime nil wind</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: RKSI</li>
+            <li>Runway: 34R (change from 34L during taxi at M5; departure checklist completed)</li>
+            <li>Taxi routing: Bay 121 → AS → R3 → R8 (hold R4) → R4 → R6 → M5 (hold 34L) → runway change to 34R</li>
+            <li>Weather: LVO taxi out; 150m vis</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>At acceleration altitude: Green HYD overheat ECAM; followed by Low LVL Y HYD; level off at 5000ft; vectors to PAMBI hold; WX + NITS + PA + IOC + LPA + brief for ILS 34L; landed; stopped on runway</li>
+            <li>Reset for UPRT at FL350; followed by high altitude stall</li>
+            <li>Reset for RNP 34L with wrong QNH; sim frozen at MDA to show wrong QNH appearance</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 34L RKSI (Green HYD overheat + Y HYD low)</li>
+            <li>RNP 34L RKSI (wrong QNH, instructional freeze at MDA)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: RKSI</li>
+            <li>Runway: 34L</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>T/O 34L; passing 8000ft: HYD ENG 2 Y PMP Fault; followed by F/CTL Stabiliser fault; elected to return RKSI; ILS 34L; hold at PAMBI to set up; fuel penalty tables in FCOM indicate up to 65% fuel penalty (note in planning)</li>
+            <li>More UPRT at high altitude; additional stalls</li>
+            <li>RNP 34L wrong QNH; this time to a go-around</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional</h4>
+          <ul>
+            <li>RJFF 34 visual: Captains at night with 15kt crosswind; S/O daytime nil wind</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 34L RKSI (HYD Y PMP + stabiliser fault)</li>
+            <li>RNP 34L RKSI (wrong QNH, go-around)</li>
+            <li>Visual 34 RJFF (CN night 15kt xwind; S/O day nil wind)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">LVO taxi discipline and runway change management. Multiple hydraulic faults with flight control implications — methodical QRH. Fuel penalty awareness during the hold. The erroneous QNH go-around is a crew decision, not prompted by the instructor.</p>
@@ -633,6 +881,15 @@
         <div class="tip-line"><span class="tip-arrow">→</span>FCOM hydraulic abnormal fuel penalty tables: up to 65% penalty. Check these in the hold early. Don't wait until fuel-critical.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Stabiliser fault plus hydraulic: elected return is the right call when multiple flight control faults are present.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Erroneous QNH on RNP: if you cannot reconcile the visual picture with the approach path at MDA — go-around. Don't try to fix it on final.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>LVO taxi: know taxi routing and be ready for runway change close to threshold (M5 in this case); have departure change checklist ready</li>
+            <li>FCOM fuel penalty tables: HYD abnormal can impose up to 65% fuel penalty — check these early in the hold for planning</li>
+            <li>Stabiliser fault + HYD: work methodically; elected return is sensible when multiple F/CTL faults present</li>
+            <li>RNP wrong QNH: go-around if unable to reconcile visual picture with approach path — don't try to salvage</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="016">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -674,30 +931,60 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios</h4>
-            <ul>
-              <li>T/O 34L (runway change during taxi); RVR 150M; LVP; CAT3B available</li>
-              <li>After T/O: all gear cannot retract; gear doors remain open; lose G HYD</li>
-              <li>After flap retraction: lose B HYD; G+B HYD with slats jammed at 0</li>
-              <li>Flight freeze at RKSI; ECAM and QRH summary; delayed vector for long final</li>
-              <li>ILS 34L; landed and stopped on runway</li>
-              <li>RNP 34L with wrong QNH: instructional freeze — discuss appearance when visual with wrong QNH</li>
-              <li>UPRT and approach to stall at FL350</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>T/O 34R; vis increased to 5km; wet runway</li>
-              <li>Normal T/O; lose B HYD then Y HYD; stop climb; delayed vector; ECAM/QRH</li>
-              <li>ILS 34L; landed</li>
-              <li>RNP 34L wrong QNH (crew on own); react when visual — land or go-around</li>
-              <li>UPRT (same as Profile A)</li>
-              <li>Visual RWY 34R RJFF (CN only; sim charts show 34 only — it is now 34R)</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: RKSI</li>
+            <li>Runway: 34L (change of runway during taxi from 34 to 34L)</li>
+            <li>SID: (not specified)</li>
+            <li>Weather: RVR 150M RWY 34; LVP; CTOW brief includes icing + QRH LVO; T/O alternate not required (CAT3B available); standard pushback; engine start; runway change during taxi</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>After T/O: all gear cannot retract; gear doors remain open; lose G HYD; request level off; after flap retraction: lose B HYD; now G+B HYD with slats jammed at 0; level off at (not specified); flight freeze at RKSI; ECAM and QRH summary; request delayed vector for long final ILS 34L; landed (stopped on runway)</li>
+            <li>Reposition for RNP 34L: erroneous QRH demonstration; STC instructs wrong QNH intentionally; flight freeze when visual → discuss what it looks like with wrong QNH under hazy conditions</li>
+            <li>Repos FL350 for UPRT and approach to stall</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 34L RKSI (G+B HYD loss, gear down, slats jammed)</li>
+            <li>RNP 34L RKSI (erroneous QNH demonstration — instructional)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: RKSI</li>
+            <li>Runway: 34R</li>
+            <li>Weather: Vis increased to 5km; OAT 10°C; wet runway</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>Normal T/O and flap retraction; lose B HYD then Y HYD; stop climb; request delayed vector; ECAM and QRH; ILS RWY 34L</li>
+            <li>Reposition for erroneous QRH RNP 34L: this time crew on their own; react when visual (land or go-around)</li>
+            <li>UPRT: same as Profile A</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional</h4>
+          <ul>
+            <li>Repos west of RJFF for visual RWY 34 (now 34R — sim on 1/F original charts show 34 only, not 34R)</li>
+            <li>One visual approach per CN; now CN only (was previously CN and FO)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 34L RKSI (B+Y HYD loss)</li>
+            <li>RNP 34L RKSI (erroneous QNH, crew decision)</li>
+            <li>Visual 34R RJFF (CN only)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Dual hydraulic loss — this is not a single system failure. Work through QRH methodically. The erroneous QNH exercise is about recognition: can you identify at MDA that the visual picture doesn't match your expectations and act decisively?</p>
@@ -705,6 +992,14 @@
         <div class="tip-line"><span class="tip-arrow">→</span>G+B hydraulic loss with slats jammed: work through the QRH step by step. This is not a memory items situation.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Erroneous QNH: know what you expect the approach to look like at MDA. If the picture doesn't match — go-around. Don't try to salvage.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>RJFF visual 34: the sim may only show runway 34 on original charts. It is now 34R. Confirm the sim's designation before briefing.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Dual hydraulic loss (G+B): slats jam at 0; this is not a dual failure of single systems — work through QRH methodically</li>
+            <li>Erroneous QNH demonstration: know what you expect to see on final when QNH is wrong; discuss during freeze; be ready for go-around or landing decision when visual</li>
+            <li>RJFF visual 34: sim has only the original 34 charts; it is now 34R; note the discrepancy — confirm sim designation before briefing</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="015">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -746,29 +1041,62 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>Profile A — Scenarios (WSSS)</h4>
-            <ul>
-              <li>Contaminated runway; FlySmart D24; RTOW in classroom</li>
-              <li>ENG 1 fail with severe damage; ILS 20C (EO, manual) → missed approach</li>
-              <li>VOR 20C (EO, manual); at 800ft visual but left of centreline → FD off; TRK/FPA; landed</li>
-              <li>CAT2 ILS 20C (EO, A/P); nil sighting → missed approach</li>
-              <li>LOS: explosive decompression at FL350; divert WSSS; WSSS closed → divert WIDD; RNP 22; landed</li>
-              <li>CAB PRESS SYS 1+2 fault at FL350; memory item; high speed; ECAM; exercise done</li>
-              <li>EGPWS: two exercises — caution then warning; ALPHA FLOOR on second exercise</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Profile B — Scenarios</h4>
-            <ul>
-              <li>ENG 1 fail; ILS 04 (EO, manual) → missed approach; VOR 20C; landed</li>
-              <li>3RS training: multiple T/Os different colour zones</li>
-              <li>GD 221kt; EO GD 211kt</li>
-              <li>Red zone: set V2+10, climb to 2600ft, secure ENG, PRESS ALT, clean up</li>
-              <li>Green zone: don't intervene speed; let aircraft climb to 2600ft naturally</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Departure</h4>
+          <ul>
+            <li>Airport: WSSS</li>
+            <li>Runway: 20C</li>
+            <li>SID: (not specified)</li>
+            <li>Weather: VRB 9kt, 20°C; 4mm standing water (selected 6mm — closest conservative option); T/O alternate nominated (current WX below ILS 20C required vis); FlySmart generated D24 for contamination; RTOW done in classroom</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>A/P on at 1500 AAL; set CLB thrust; modes change to THR DCLB CLB A/THR; ENG 1 fail; A/P remains; MCT on both levers; speed pre-selected 230kt (above F speed 145kt) → advance to TOGA; vertical mode becomes SRS with 150kt managed; ENG 1 vibration → severe damage; Bottle 1 → PRESS ALT → clean up; ECAM complete; three options discussed post-failure for thrust selection</li>
+            <li>ATC: ATIS WX; ILS 20C above CAT1; return WSSS; vectors to NYLON hold; IOC alert; NITS (precautionary landing and disembarkation with bridges); PA; handover to FO; FM setup (Flap 3); LPA; brief; cabin crew seated; approach checklist; from NYLON cleared approach; manual flying manual thrust; nil sighting → go around; 1520 PRESS ALT; clean up; ALTPULL; MCT; AP engaged</li>
+            <li>Weather improved; VOR 20C approach; handover to FO; IOC alert; PA; hard tune VOR1 VTK 203; LPA not required (same runway); set up on downwind; balance fuel; direct Final Fix then cleared VOR 20C; at 800ft visual but lined up left of centreline; FD off; TRK/FPA; inbound QDM 203; landed exit T8</li>
+            <li>LVO reposition 6nm final: CAT2 ILS 20C; ENG 1 still failed; A/P; ATIS 350M all zones; AUTOLAND light flashed at minima; nil sighting → go around; exercise complete</li>
+            <li>LOFT FL350 abeam OLSAM: explosive decompression BANG; memory item; 10000ft in window (over ocean); heading 210 initially; maintain speed (suspected structural damage); ECAM on descent; mask off after 10000ft cabin altitude; FOB below MinDev at Jakarta; divert WSSS; ILS 20C; handover to FO; shallow 500fpm descent (pax comfort); IOC alert; ATC: WSSS closed (reason not given); request WIDD WX + approach; Batam WIDD fine; RNP 22; NITS; PA; reprogram; direct RIVIG then cleared approach; landed exit D</li>
+            <li>Repos FL350 abeam OLSAM: CAB PRESS SYS 1 fault → SYS 2 fault → cabin altitude rapidly rising; memory item: select high speed (internal CAB PRESS problem only); ECAM complete; exercise done</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional</h4>
+          <ul>
+            <li>EGPWS: pilot B first; 6nm final ILS 07R; 5000ft on MCP; STC: HDG 105, V/S -500fpm; GPWS CAUTION → PULL OP CLB and right turn to avoid terrain; eventually WARNING → PULL UP TOGA; after MSA, "Go around Flap" to resequence; report HDG and ALT to ATC</li>
+            <li>Second EGPWS exercise: ignored caution, reacted to warning; ALPHA FLOOR came on; be aware speed after levelling may still be below VLS</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 20C WSSS (EO, manual), Missed approach</li>
+            <li>VOR 20C WSSS (EO, manual), Landed</li>
+            <li>ILS 20C WSSS CAT2 (EO, A/P), Missed approach</li>
+            <li>WIDD RNP 22 (LOS explosive decomp)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Departure</h4>
+          <ul>
+            <li>Airport: WSSS</li>
+            <li>Runway: (DODSO 1J)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>ENG 1 fail at same altitude; selected TOGA (above F speed); secure ENG; clean up; ECAM; get WX; ILS 04 CAT1; handover; IOC; NITS; PA; FM (F3); LPA; brief; seated cabin crew; approach checklist; radar vectors between BUTGI and LEBET; manual flying manual thrust; nil sighting → go around; PRESS ALT 1620ft; clean up; climb 2000ft; ATC further climb 3500ft; ask for WIDD WX; WIDD closed VIP movement; VOR 20C WSSS; landed</li>
+            <li>3RS training: multiple T/Os different colour zones; note GD 221kt and EO GD 211kt; aircraft can clean up to F0 in this profile after passing 2600ft before turning 191 from C1 or D7ARP; Red and Green zones: above 1500ft thrust reduction alt when engine fails → increase thrust; in Red zone: set V2+10, climb to 2600, secure engine, PRESS ALT, clean up; in Green zone: don't intervene speed, let aircraft climb to 2600, secure engine, PRESS ALT, clean up</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS 04 WSSS (EO, manual), Missed approach</li>
+            <li>VOR 20C WSSS (EO, manual), Landed</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">Speed selection discipline after engine failure — is pre-selected speed above F speed before selecting TOGA? VOR approach with a displaced centreline — recover smoothly using TRK/FPA without FD. Explosive decompression requires immediate structured response under genuine urgency.</p>
@@ -779,6 +1107,17 @@
         <div class="tip-line"><span class="tip-arrow">→</span>3RS Red zone: set V2+10kt. Maintain climb rate to 2600ft.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>VOR approach: at 800ft if visual but left of centreline — FD off, TRK/FPA, QDM 203. Do not try to correct with FD on.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>EGPWS: after ALPHA FLOOR activation from pulling through the warning, check speed after levelling — may still be below VLS.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>Speed pre-selection matters: confirm above F speed before selecting TOGA after ENG fail; below F speed → use MCT only</li>
+            <li>Three post-failure thrust options: CLB (leave), V2+10 select, or TOGA — all acceptable depending on terrain; Option 1 acceptable at WSSS</li>
+            <li>3RS Green zone: don't intervene with speed; let aircraft climb naturally to 2600ft; PRESS ALT then clean up</li>
+            <li>3RS Red zone: set V2+10 kt; maintain good climb rate to 2600ft</li>
+            <li>VOR approach: at 800ft visual but displaced left — FD off; TRK/FPA; QDM 203; don't try to line up with FD on</li>
+            <li>EGPWS: after ALPHA FLOOR from pulling through warning — watch speed after leveloff, may still be below VLS</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="014">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -820,28 +1159,42 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>3RS Scenarios</h4>
-            <ul>
-              <li>AMBER 07C: ENG fail before HH302; E/O SID; LNAV+AP</li>
-              <li>RED 07C: failure just before D7ARP; TRK SEL right turn 191; delay ENG FIRE items if terrain threat</li>
-              <li>GREEN 07C: continue SID; confirm failure; TOGA; erase E/O SID from PM; re-engage LNAV</li>
-              <li>AMBER 07R (DALOL 1X): after HH301 — left turn to R1 before right turn 191; E/O SID + LNAV</li>
-              <li>GREEN 07R: same as 07C green</li>
-              <li>FO incapacitated after healthy climb; pilot incap checklist; ILS 07R Autoland</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>LOS / Additional Items</h4>
-            <ul>
-              <li>UPRT: wake turbulence vortex; aircraft flipped mid-manoeuvre; 2 exercises per pilot</li>
-              <li>TCAS: sandwiched between two military aircraft (+600ft / -500ft); disconnect AP and AT; hands off</li>
-              <li>LOS: ~100nm north of WAMM; smoke in forward J class; oxygen masks on; Smoke/Fire/Fumes checklist</li>
-              <li>MAYDAY; ILS 36 WAMM; MSA 8600ft → initial 9000ft; overweight; landed; evacuation checklist</li>
-              <li>Manual landing ILS 18 WAMM from 6nm; slightly high ROD ~950fpm</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — 3RS Exercises</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runways: 07C (ADLAT 1T) and 07R (DALOL 1X)</li>
+            <li>Captain PF first; FO after (abbreviated)</li>
+            <li>Primary focus: lateral flight path management</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios</h4>
+          <ul>
+            <li>AMBER zone (07C): ENG fail before HH302; standard E/O SID; LNAV+Autopilot after executing</li>
+            <li>RED zone (07C): failure just before D7ARP; decision point is location of failure (not action point); at D7ARP go TRK SEL to start right turn to 191; delay ENG FIRE memory items if tracking/terrain is bigger threat</li>
+            <li>GREEN zone (07C): passed D7ARP; continue SID; confirm failure; TOGA for max thrust; erase E/O SID from PM; re-engage LNAV</li>
+            <li>AMBER zone (07R DALOL 1X): similar to 07C amber; after HH301 — left turn to R1 before right turn to track 191; E/O SID + LNAV handles it</li>
+            <li>GREEN zone (07R): same as 07C green</li>
+            <li>Final T/O: FO incapacitated after healthy climb (not right after failure); "Attention, ISM to flight deck"; ISM to care for incapacitated FO + call Medlink; NITS for VHHH return; normal landing disembarkation; PAN to ATC; direct LIMES ILS 07R; pilot incap checklist when able; IOC alert; PA; LPA; Autoland ILS 07R</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional items</h4>
+          <ul>
+            <li>UPRT: repos FL350; wake turbulence vortex simulation; abrupt significant force needed; aircraft flipped mid-manoeuvre to other side (be prepared); correct with stall/altitude mouth music; 2 exercises per pilot</li>
+            <li>TCAS: 2 exercises per pilot; on one exercise sandwiched between two military aircraft (+600ft/-500ft); disconnect AP and AT on RA; hands off situation; fly between the aircraft</li>
+            <li>LOS: ~100nm north of WAMM; ISM reports smoke/smell in forward business class; give NITS brief for diversion (~15min); head to WAMM; instructor announces smoke in flight deck → oxygen masks on; Smoke/Fire/Fumes checklist (PM runs); Smoke Removal checklist referred to during; both pilots must land with oxygen masks on (or exercise repositioned); purge mask if fogged (button at chin); MAYDAY to ATC; ILS 36 (possibly better ILS 18 if north of aerodrome); SQK 7700; IOC; PA; MSA WAMM 8600ft → initial 9000ft; LPA when time; PM finishes troubleshooting; ISM: smoke continuing cannot locate source → land ASAP; no time for fuel jettison (overweight option); land and stop; parking brake; evacuation checklist</li>
+            <li>Additional training: manual landing ILS 18 WAMM from 6nm; slightly high ROD ~950fpm</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile — Approaches</h4>
+          <ul>
+            <li>ILS 07R VHHH Autoland (pilot incapacitation)</li>
+            <li>ILS 36 WAMM (LOS smoke, overweight diversion)</li>
+            <li>ILS 18 WAMM (additional training, manual)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">RED zone decision — based on location of failure, not the action point. If lateral tracking or terrain is the bigger immediate threat, delay engine fire memory items. The WAMM diversion with flight deck smoke and masks on for the full landing is the most demanding scenario in this session.</p>
@@ -851,6 +1204,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>Both pilots land with oxygen masks on. Not just for the approach — through the full landing. Purge button is at the chin if the mask fogs.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>WAMM MSA is 8600ft. Initial altitude should be 9000ft. Not 8500ft as commonly assumed.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Session completed 40 minutes early — the EOSID scenarios are less complex in execution than they appear in preparation.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>RED zone: decision is based on location of failure, not action point; delay ENG FIRE memory items if tracking/terrain threat is greater</li>
+            <li>TCAS sandwiched: disconnect AP and AT; hands off; trust the system to fly between aircraft</li>
+            <li>Both pilots must land with oxygen masks ON (not just for approach — full landing); purge if fogged</li>
+            <li>WAMM MSA 8600ft — don't descend below 9000ft initially (not 8500ft as commonly assumed)</li>
+            <li>Session completed 40min early — EOSID scenarios less complex in execution than they appear in prep</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="013">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -892,27 +1255,46 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>3RS Scenarios</h4>
-            <ul>
-              <li>Start engines at 07C A1 holding point</li>
-              <li>ADLAT 1T: modify TEGUB from 230kt to 210kt (per SID picture in briefing slides)</li>
-              <li>PRESS ALT: tracking 191° AND above 2600ft AGL — both conditions required</li>
-              <li>Senior: Green zone (ENG fail, ILS 07R, pilot incap on downwind); Red zone (ENG FIRE); Amber (V2 cut)</li>
-              <li>Junior: Amber (DALOL 1X); Red (ENG FIRE); Amber (V2 cut; senior incap at 5000ft)</li>
-              <li>If E/O SID unavailable (failure at HH302): select HDG, activate SEC 1 (pre-programmed)</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>Additional Items</h4>
-            <ul>
-              <li>UPRT: preset nose high, 60° left bank at FL350; PUSH first (before ROLL); callouts: ATTITUDE/STALL, I HAVE CONTROL, PUSH, ROLL, THRUST, STABILISED</li>
-              <li>Second UPRT: wake turbulence; follow F/D (giving sensible info)</li>
-              <li>TCAS: 1 exercise per pilot; TCAS BLUE → query traffic → auto RA</li>
-              <li>LOS: blue smoke in economy; moved pax; NITS for WAMM; ILS Z 36; 330kt to 10nm MENOT; full speedbrake to 200kt then configure</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — 3RS Exercises</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runways: 07C (ADLAT 1T) and 07R (DALOL 1X)</li>
+            <li>Aircraft stationed at 07C A1 holding point; start engines at holding point</li>
+            <li>ADLAT 1T: modify TEGUB speed from 230kt to 210kt per SID picture in 2R slides</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (Senior Pilot)</h4>
+          <ul>
+            <li>ADLAT 1T Green Zone — ENG 2 fail; return ILS 07R; junior pilot incapacitated on downwind</li>
+            <li>ADLAT 1T Red Zone — ENG 2 FIRE</li>
+            <li>ADLAT 1T Amber Zone — V2 cut ENG 2 fail; E/O SID activated; GPWS warnings (possible late gear retraction)</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Scenarios (Junior Pilot)</h4>
+          <ul>
+            <li>DALOL 1X Amber Zone — ENG 2 fail</li>
+            <li>ADLAT 1T Red Zone — ENG 2 FIRE</li>
+            <li>ADLAT 1T Amber Zone — V2 cut; return ILS 07R; senior pilot incapacitated on climb to 5000ft</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional notes</h4>
+          <ul>
+            <li>For one amber zone failure: SI activated failure too close to HH302 → E/O SID not available; select HDG, ask PM to activate SEC 1 (had E/O SID pre-programmed)</li>
+            <li>Acceleration criteria (PRESS ALT): after tracking 191deg AND above 2600ft AGL</li>
+            <li>UPRT: 2 exercises per pilot; preset nose high, 60deg left bank at FL350; callouts: ATTITUDE/STALL, I HAVE CONTROL, PUSH, ROLL, THRUST, STABILISED; re-engage AP; FD; Autothrust; second exercise: wake turbulence; aircraft thrown around; no significant speed/altitude lost; F/D giving sensible info → follow it</li>
+            <li>TCAS: 1 exercise per pilot; TCAS BLUE → query traffic → auto TCAS RA; standard calls to ATC; recovery</li>
+            <li>LOS: ISM reports blue smoke in economy; moved pax to PEY and J class; NITS brief for WAMM diversion; requested ILS Z 36 (not RNP 18); CAVOK 270/10; oxygen masks on; ABN FIRE SMOKE/FUME checklist; CN became PF (FO becomes PM for checklist); high speed descent; non-std E/O accel alt; 330kt to ~10nm MENOT; full speedbrake to 200kt then configure; FO set up approach; LPA; CN: WAMM diversion NITS to ISM (precautionary landing + possible evacuation on runway); PA; IOC alert; request fire services near W1/W2; after landing: no fire/smoke → taxi to gate; stop on WP; exercise complete</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile B — Approaches</h4>
+          <ul>
+            <li>ILS Z 36 WAMM (LOS smoke diversion)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">PRESS ALT accuracy — both conditions must be met, not just altitude. E/O SID availability near HH302 and what to do if unavailable. UPRT callout sequence is specifically tested: PUSH before ROLL.</p>
@@ -922,6 +1304,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>If E/O SID unavailable (failure too close to HH302): select HDG, activate SEC 1. The E/O SID was pre-programmed. Do not programme under pressure.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>UPRT callout sequence: ATTITUDE/STALL, I HAVE CONTROL, PUSH, ROLL, THRUST, STABILISED. PUSH before ROLL.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>LOS smoke: maintain 330kt until 10nm MENOT. Then full speedbrake rapidly to 200kt, then configure.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>ADLAT 1T: modify TEGUB to 210kt (not the FM default 230kt) — check SID picture in briefing slides</li>
+            <li>PRESS ALT criteria: must be tracking 191deg AND above 2600ft AGL — both conditions required</li>
+            <li>If E/O SID unavailable due to failure at HH302: select HDG, activate SEC 1 (E/O SID pre-programmed); do not attempt to programme under pressure</li>
+            <li>UPRT: chant the callouts; PUSH first (before ROLL); keep the sequence</li>
+            <li>LOS smoke: keep 330kt until ~10nm MENOT; full speedbrake to 200kt rapidly then configure</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="012">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -963,27 +1355,37 @@
         <div class="card-toggle entry-chevron">›</div>
       </div>
       <div class="card-body">
-        <div class="body-grid">
-          <div class="body-col">
-            <h4>3RS Scenarios</h4>
-            <ul>
-              <li>07C (ADLAT 1T) and 07R (DALOL 1X); senior pilot PF first</li>
-              <li>Engine failures across all three colour zones on 07C; amber zone only on 07R</li>
-              <li>Each scenario: ENG FAIL (no damage) or ENG FIRE (fire persists after both bottles)</li>
-              <li>After final departure: engine secured; climbing to 5000ft → immediate pilot incapacitation</li>
-              <li>ATC direct LIMES; ILS 07R Autoland; vacate; exercise complete</li>
-            </ul>
-          </div>
-          <div class="body-col">
-            <h4>UPRT / LOS Items</h4>
-            <ul>
-              <li>UPRT at FL350 near BONDA; nose high x2 per pilot</li>
-              <li>After second recovery: TCAS RA convergence at BONDA; watch AP fly</li>
-              <li>Just before senior pilot TCAS event: wake turbulence; PF kept AP in; aircraft recovered itself</li>
-              <li>LOS: smoke from overhead compartment; verify source; PACK 2 off resolved it</li>
-              <li>U-turn to WAMM; overweight landing; ILS Z 36; landed; CAT1 manual ILS 18 (one per pilot)</li>
-            </ul>
-          </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — 3RS Exercises</h4>
+          <ul>
+            <li>Airport: VHHH</li>
+            <li>Runways: 07C (ADLAT 1T) and 07R (DALOL 1X)</li>
+            <li>Senior pilot PF first; junior pilot after</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Failures & Scenarios (in sequence)</h4>
+          <ul>
+            <li>Engine failures across all three colour zones on 07C; amber zone only on 07R; each either ENG FAIL (no damage) or ENG FIRE (fire persists after both bottles)</li>
+            <li>After final departure — engine secured; while climbing to 5000ft instructor restarts second engine → immediately into Pilot Incapacitation; ATC cleared direct LIMES for ILS 07R; Autoland performed; vacate; exercise complete</li>
+            <li>Break</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Additional items (same session)</h4>
+          <ul>
+            <li>UPRT: repos FL350 near BONDA; junior pilot first; nose high UPRT x2 per pilot; after second recovery and stabilised: ATC direct BONDA → TCAS RA convergence; TCAS mode engaged; watch AP fly; just before senior pilot TCAS event: wake turbulence scenario; PF kept AP in; aircraft recovered itself</li>
+            <li>LOS: repos FL350 on A461 tracking towards AMN; ETP WAMM/WAPP; ISM reports smoke from overhead compartment; verify smoke source (overhead vs air con duct); don oxygen masks; U-turn to WAMM; direct RUMBO descend 10000ft; max speed; WX: rwy 18 initially (requested 36, granted); suspected air con → PAX 2 off; checklist paused to focus on flying; overweight landing → LPA + overweight checklist; FM set RUMBO 1L → ILS Z 36; vectored direct PASTU then MENOT; landed; stop on runway; exercise complete</li>
+            <li>CAT1 manual landing: repositioned 3nm final WAMM rwy 18; one per pilot</li>
+          </ul>
+        </div>
+        <div class="body-col profile-block">
+          <h4>Profile A — Approaches</h4>
+          <ul>
+            <li>ILS 07R VHHH Autoland (pilot incapacitation)</li>
+            <li>ILS Z 36 WAMM (LOS smoke diversion, overweight)</li>
+            <li>ILS 18 WAMM (CAT1 manual)</li>
+          </ul>
         </div>
         <div class="intel-label">WHAT THE EXAMINER IS WATCHING FOR</div>
         <p class="examiner-text">3RS zone management — the correct action depends on location of failure in the departure corridor, not timing. The immediate pilot incapacitation after EO clean-up is a deliberate trap. Smoke diversion requires source verification before acting.</p>
@@ -993,6 +1395,16 @@
         <div class="tip-line"><span class="tip-arrow">→</span>Smoke diversion: verify source first — overhead compartment versus air conditioning duct. In this session, PACK 2 off resolved it.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>Overweight landing: LPA AND the overweight landing checklist. Both required.</div>
         <div class="tip-line"><span class="tip-arrow">→</span>WAMM ILS Z 36: request direct PASTU then MENOT early. The full STAR was not flown — direct routing was available and used.</div>
+        <div class="standout-block">
+          <div class="intel-label">STANDOUT TIPS</div>
+          <ul class="standout-list">
+            <li>After securing engine on climb to 5000ft, instructor immediately triggers pilot incap — don't relax after EO clean up</li>
+            <li>Wake turbulence: keep AP engaged; aircraft recovered without PF input</li>
+            <li>Smoke diversion: verify source before acting (overhead compartment vs air con duct); PACK 2 off resolved the smoke</li>
+            <li>Overweight landing: do LPA AND overweight landing checklist — both required</li>
+            <li>WAMM ILS Z 36: never actually flew the STAR (cleared direct PASTU then MENOT via shortcuts) — can request early direct routing</li>
+          </ul>
+        </div>
         <div class="pilot-notes-placeholder" data-entry-id="011">
           <p class="pilot-notes-label">PILOT NOTES</p>
           <p class="pilot-notes-body">
@@ -2175,7 +2587,7 @@ function applyFilters() {
   });
   document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
   document.getElementById('resultsCount').textContent =
-    visible === 19 ? 'Showing all 19 entries' : `Showing ${visible} of 19 entries`;
+    visible === 20 ? 'Showing all 20 entries' : `Showing ${visible} of 20 entries`;
 }
 
 // ─── URL PARAM PRE-FILTER (from fleet cards on homepage) ──────────────

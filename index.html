@@ -699,6 +699,7 @@ footer{
   }
   .card-fan{display:flex;flex-direction:column;align-items:center;gap:1rem;}
   .sim-card:nth-child(1),.sim-card:nth-child(5){display:none;}
+  .sim-card:nth-child(3){order:-1;} /* newest (centre) card shows first on phones */
   .entry-row{grid-template-columns:auto 1fr;gap:1rem;}
   .entry-arrow{display:none;}
   .hamburger{display:flex;}
@@ -812,7 +813,7 @@ footer{
   <div class="hero-content">
     <div class="hero-pill">
       <span class="hero-pill-dot"></span>
-      Latest entry · A350 RT6 · Jul 2026
+      Latest entry · A330 PC1 · Oct 2026
     </div>
     <h1 class="hero-headline">
       Know your sim<br>
@@ -967,11 +968,11 @@ footer{
       </a>
       <a href="archive.html?fleet=A330" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'A330'})">
         <span class="fleet-card-code">A330</span>
-        <span class="fleet-card-count">7 entries</span>
+        <span class="fleet-card-count">6 entries</span>
       </a>
       <a href="archive.html?fleet=A350" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'A350'})">
         <span class="fleet-card-code">A350</span>
-        <span class="fleet-card-count">10 entries · incl. -1000</span>
+        <span class="fleet-card-count">11 entries · incl. -1000</span>
       </a>
       <a href="archive.html?fleet=B777" class="fleet-card" onclick="gtag('event','fleet_quicknav_click',{fleet:'B777'})">
         <span class="fleet-card-code">B777</span>

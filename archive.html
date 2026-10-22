@@ -2791,22 +2791,21 @@ function applyFilters() {
 })();
 </script>
 <script>
-/* entry_read = KEY EVENT (2026-10-22): an entry card open and on screen for 30s of visible time. Fires once per entry per page view. */
+/* entry_read = KEY EVENT (2026-10-22): an entry card open with at least 150px on screen for 30s of visible time.
+   Uses on-screen pixels, not a % of the card, because expanded cards can be several screens tall. Fires once per entry per page view. */
 (function(){
-  var READ_SECONDS = 30, seen = {}, onScreen = {};
-  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
-    es.forEach(function(e){ onScreen[e.target.id] = e.isIntersecting; });
-  }, { threshold: 0.25 }) : null;
-  document.querySelectorAll('.entry-card').forEach(function(c){ if (io) io.observe(c); else onScreen[c.id] = true; });
+  var READ_SECONDS = 30, MIN_PX = 150, seen = {};
   setInterval(function(){
     if (document.visibilityState !== 'visible') return;
     document.querySelectorAll('.entry-card.open').forEach(function(c){
-      if (!onScreen[c.id]) return;
-      var r = seen[c.id] = seen[c.id] || { t: 0, sent: false };
-      if (r.sent) return;
-      r.t += 1;
-      if (r.t >= READ_SECONDS) {
-        r.sent = true;
+      var r = c.getBoundingClientRect();
+      var onScreenPx = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+      if (onScreenPx < Math.min(MIN_PX, r.height)) return;
+      var t = seen[c.id] = seen[c.id] || { t: 0, sent: false };
+      if (t.sent) return;
+      t.t += 1;
+      if (t.t >= READ_SECONDS) {
+        t.sent = true;
         gtag('event', 'entry_read', { entry_id: c.id, fleet: c.dataset.fleet, cycle: c.dataset.cycle, read_seconds: READ_SECONDS });
       }
     });

@@ -55,7 +55,11 @@
   frame-ancestors 'none';
 ">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC4GTRMK1"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PQC4GTRMK1');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
+/* Vol8Hub tracking v2 (2026-10-22): internal-traffic flag (visit ?internal=1 once per device, ?internal=0 to clear) + page_name on page_view */
+(function(){try{var q=new URLSearchParams(location.search).get('internal');if(q==='1')localStorage.setItem('v8_internal','1');if(q==='0')localStorage.removeItem('v8_internal');window.v8Internal=localStorage.getItem('v8_internal')==='1';}catch(e){window.v8Internal=false;}})();
+if(window.v8Internal){gtag('set',{traffic_type:'internal'});}
+gtag('config','G-PQC4GTRMK1',{page_name:'homepage'});</script>
 <style>
 /* ─── RESET & ROOT ─────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -1264,10 +1268,19 @@ document.querySelectorAll('.fpill').forEach(btn=>{
 });
 </script>
 <script>
-gtag('event', 'page_view_named', {
-  page_name: 'homepage',
-  page_location: window.location.href
-});
+/* homepage_entry_click (2026-10-22): which homepage teaser sends readers to an entry */
+(function(){
+  function track(el, module, pos){
+    var m = (el.getAttribute('href') || el.getAttribute('onclick') || '').match(/entry-\d+/);
+    gtag('event', 'homepage_entry_click', { entry_id: m ? m[0] : 'unknown', module: module, position: pos, transport_type: 'beacon' });
+  }
+  document.querySelectorAll('#cardFan .sim-card').forEach(function(c, i){
+    c.addEventListener('click', function(){ track(c, 'carousel', i + 1); }, true);
+  });
+  document.querySelectorAll('#entryList .entry-row').forEach(function(r, i){
+    r.addEventListener('click', function(){ track(r, 'latest_entries', i + 1); }, true);
+  });
+})();
 </script>
 </body>
 </html>

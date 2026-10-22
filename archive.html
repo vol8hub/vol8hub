@@ -36,7 +36,11 @@
   frame-ancestors 'none';
 ">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQC4GTRMK1"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PQC4GTRMK1');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());
+/* Vol8Hub tracking v2 (2026-10-22): internal-traffic flag (visit ?internal=1 once per device, ?internal=0 to clear) + page_name on page_view */
+(function(){try{var q=new URLSearchParams(location.search).get('internal');if(q==='1')localStorage.setItem('v8_internal','1');if(q==='0')localStorage.removeItem('v8_internal');window.v8Internal=localStorage.getItem('v8_internal')==='1';}catch(e){window.v8Internal=false;}})();
+if(window.v8Internal){gtag('set',{traffic_type:'internal'});}
+gtag('config','G-PQC4GTRMK1',{page_name:'archive'});</script>
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
 /* ─── ARCHIVE PAGE STYLES ────────────────────────────────────────────── */
@@ -2705,7 +2709,7 @@ function toggleCard(header) {
   // Open this one if it was closed
   if (!wasOpen) {
     card.classList.add('open');
-    gtag('event', 'entry_expand', { entry_id: card.id });
+    gtag('event', 'entry_expand', { entry_id: card.id, fleet: card.dataset.fleet, cycle: card.dataset.cycle });
     // Smooth scroll into view if header is above viewport
     setTimeout(() => {
       const rect = card.getBoundingClientRect();
@@ -2787,10 +2791,27 @@ function applyFilters() {
 })();
 </script>
 <script>
-  gtag('event', 'page_view_named', {
-    page_name: 'archive',
-    page_location: window.location.href
-  });
+/* entry_read = KEY EVENT (2026-10-22): an entry card open and on screen for 30s of visible time. Fires once per entry per page view. */
+(function(){
+  var READ_SECONDS = 30, seen = {}, onScreen = {};
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ onScreen[e.target.id] = e.isIntersecting; });
+  }, { threshold: 0.25 }) : null;
+  document.querySelectorAll('.entry-card').forEach(function(c){ if (io) io.observe(c); else onScreen[c.id] = true; });
+  setInterval(function(){
+    if (document.visibilityState !== 'visible') return;
+    document.querySelectorAll('.entry-card.open').forEach(function(c){
+      if (!onScreen[c.id]) return;
+      var r = seen[c.id] = seen[c.id] || { t: 0, sent: false };
+      if (r.sent) return;
+      r.t += 1;
+      if (r.t >= READ_SECONDS) {
+        r.sent = true;
+        gtag('event', 'entry_read', { entry_id: c.id, fleet: c.dataset.fleet, cycle: c.dataset.cycle, read_seconds: READ_SECONDS });
+      }
+    });
+  }, 1000);
+})();
 </script>
 </body>
 </html>
